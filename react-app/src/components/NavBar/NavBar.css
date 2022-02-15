@@ -1,0 +1,16 @@
+.nav-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  top: 0;
+  max-width: none !important;
+  height: 64px;
+}
+
+.logo-img {
+    width: 130px;
+    margin: 5px 20px 0 20px;
+    cursor: pointer;
+  }
