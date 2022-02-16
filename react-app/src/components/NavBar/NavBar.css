@@ -3,6 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgba(90, 196, 59, 0.35);
   margin: 0;
   top: 0;
   max-width: none !important;
@@ -14,3 +15,61 @@
     margin: 5px 20px 0 20px;
     cursor: pointer;
   }
+
+#signup-button {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  background-color: white;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  height: 32px;
+  line-height: 32px;
+  min-width: 80px;
+  margin: 0 20px;
+}
+
+#demo-button {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  margin: 0 20px;
+}
+
+#login-button {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.logo-img:hover, #login-button:hover, #demo-button:hover {
+  opacity: 70%;
+}
+
+#signup-button:hover {
+  color:rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+#logout-button {
+  background-color: white;
+  font-size: 13px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+}
+
+#logout-button:hover {
+  color: white;
+  background-color: rgba(77, 169, 190, 0.836);
+  border: 1px solid rgba(77, 169, 190, 0.836);
+}

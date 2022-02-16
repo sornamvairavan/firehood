@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    balance = db.Column(db.Float, nullable=False)
+    cash = db.Column(db.Float, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     portfolio = db.relationship("Portfolio", back_populates="user")
@@ -36,5 +36,5 @@ class User(db.Model, UserMixin):
             'fullname': self.full_name,
             'username': self.username,
             'email': self.email,
-            'balance': self.balance
+            'cash': self.cash
         }

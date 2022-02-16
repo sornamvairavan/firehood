@@ -67,7 +67,7 @@ def sign_up():
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
-            balance=5000
+            cash=5000
         )
         db.session.add(user)
         db.session.commit()

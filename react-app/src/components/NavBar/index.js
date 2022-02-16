@@ -23,9 +23,9 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <>
-        <Link onClick={demoLogin} to="#">Demo</Link>
-        <NavLink to="/login" activeClassName='active'>Login</NavLink>
-        <NavLink to="/sign-up" activeClassName='active'>Sign Up</NavLink>
+        <Link onClick={demoLogin} to="#" id="demo-button">Demo</Link>
+        <NavLink to="/login" activeClassName='active' id="login-button">Login</NavLink>
+        <NavLink to="/sign-up" activeClassName='active' id='signup-button'>Sign Up</NavLink>
       </>
     )
   }
