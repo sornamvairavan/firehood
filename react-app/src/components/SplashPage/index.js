@@ -14,7 +14,9 @@ export default function SplashPage() {
       <div className="splash-container">
         <div className="splash-text-container">
           <h2 className="header1">Investing for Everyone</h2>
+          <h5 className="one-liner">Your way to Financial Independence, Retire Early (FIRE)</h5>
           <h5 className="one-liner">Commission-free investing, plus the tools you need to put your money in motion.</h5>
+
         </div>
         {/* <footer className='network-links'>
           <div>Sornam Vairavan</div>
