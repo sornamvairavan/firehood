@@ -1,4 +1,4 @@
-"""empty message
+"""updated_users_table
 
 Revision ID: 7f9180c6c38a
 Revises: ffdc0a98111c

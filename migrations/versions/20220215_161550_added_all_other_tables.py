@@ -1,4 +1,4 @@
-"""empty message
+"""added_all_other_tables
 
 Revision ID: 5c3803d92d04
 Revises: 7f9180c6c38a
