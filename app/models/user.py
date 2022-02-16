@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy import func
 
 
 class User(db.Model, UserMixin):
@@ -12,6 +13,11 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     balance = db.Column(db.Float, nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+
+    portfolio = db.relationship("Portfolio", back_populates="user")
+    transaction = db.relationship("Transaction", back_populates="user")
+    watchlist = db.relationship("Watchlist", back_populates="user")
 
     @property
     def password(self):
@@ -27,6 +33,8 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'fullname': self.full_name,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'balance': self.balance
         }
