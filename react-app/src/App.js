@@ -6,6 +6,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import SplashPage from './components/SplashPage';
+import Portfolio from './components/Portfolio';
 import { authenticate } from './store/session';
 
 function App() {
@@ -39,6 +40,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <ProtectedRoute path='/portfolio' exact={true}>
+          <Portfolio />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

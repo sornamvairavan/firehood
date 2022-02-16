@@ -66,10 +66,11 @@
   border-radius: 3px;
   cursor: pointer;
   font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  margin: 3px;
 }
 
 #logout-button:hover {
   color: white;
-  background-color: rgba(77, 169, 190, 0.836);
-  border: 1px solid rgba(77, 169, 190, 0.836);
+  background-color: rgba(90, 196, 59);;
+  border: 1px solid rgba(90, 196, 59);;
 }

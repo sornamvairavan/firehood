@@ -17,6 +17,7 @@ const NavBar = () => {
   if (user) {
     sessionLinks = (
       <>
+        <span>Welcome {user.fullname}! </span>
         <LogoutButton />
       </>
     )

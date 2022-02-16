@@ -1,6 +1,15 @@
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './SplashPage.css'
 
 export default function SplashPage() {
+
+  const user = useSelector(state => state.session.user);
+
+  if (user) {
+    return <Redirect to='/portfolio' />;
+  }
+
     return (
       <div className="splash-container">
         <div className="splash-text-container">
