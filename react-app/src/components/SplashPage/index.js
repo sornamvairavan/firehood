@@ -7,7 +7,7 @@ export default function SplashPage() {
   const user = useSelector(state => state.session.user);
 
   if (user) {
-    return <Redirect to='/portfolio' />;
+    return <Redirect to='/' />;
   }
 
     return (
