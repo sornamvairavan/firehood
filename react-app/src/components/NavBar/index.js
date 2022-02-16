@@ -34,7 +34,7 @@ const NavBar = () => {
     <div className="nav-bar">
         <span className="left-nav-bar">
           <NavLink to='/' exact={true} >
-            <img src="/images/firehood.png" alt="home" className="logo-img"/>
+            <img src="/images/firehood-logo.png" alt="home" className="logo-img"/>
           </NavLink>
         </span>
         <span className="right-nav-bar">
