@@ -102,3 +102,31 @@ export const deleteWatchlistById = (watchlistId) => async (dispatch) => {
     }
 }
 
+/* ------ REDUCER ------ */
+const initialState = { watchlists: {} };
+export default function watchlistReducer(state = initialState, action) {
+    let newState;
+    switch (action.type) {
+        case GET_WATCHLISTS:
+            newState = {...state}
+            newState.watchlists = action.watchlists.reduce((watchlists, watchlist) => {
+                watchlists[watchlist.id] = watchlist
+                return watchlists
+            }, {})
+            return newState
+        case ADD_WATCHLIST:
+            newState = {...state}
+            newState.watchlists[action.watchlist.id] = action.watchlist
+            return newState
+        case EDIT_WATCHLIST:
+            newState = {...state}
+            newState.watchlists[action.watchlist.id] = action.watchlist
+            return newState
+        case DELETE_WATCHLIST:
+            newState = {...state}
+            delete newState.watchlists[action.watchlistId]
+            return newState
+        default:
+            return state;
+    }
+}
