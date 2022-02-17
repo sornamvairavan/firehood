@@ -1,46 +1,59 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getUserWatchlists } from '../../store/watchlist'
+import { addStockToList } from '../../store/watchlist';
 
-export default function AddToWatchlistForm({ setShowAddtoListModal }, stockId) {
+export default function AddToWatchlistForm({ setShowAddtoListModal, stockId }) {
     const dispatch = useDispatch()
 
-    const [name, setName] = useState("")
-    const [errors, setErrors] = useState([])
+    const userWatchlistsObj = useSelector(state => state.watchlist.watchlists)
+    const userWatchlistsArr = Object.values(userWatchlistsObj)
 
-    const addToWatchlist = async (e) => {
+    const [errors, setErrors] = useState([])
+    const [watchlistId, setWatchlistId] = useState("")
+
+    const addToList = async (e) => {
         e.preventDefault()
 
-        // const payload = {
-        //     name: name
-        // }
+        const payload = {
+            stockId, 
+            watchlistId
+        }
 
-        // const data = await dispatch(addOneWatchlist(payload))
-        // if (data.errors) {
-        //     setErrors(data.errors)
-        // } else {
-        //     dispatch(getUserWatchlists())
-        //     setShowAddtoListModal(false)
-        // }
+        const data = await dispatch(addStockToList(payload))
+        if (data.errors) {
+            setErrors(data.errors)
+        } else {
+            dispatch(getUserWatchlists())
+            setShowAddtoListModal(false)
+        }
         
     }
 
     return (
+        <>
         <div className="watchlist-form">
+            <i className="fa-solid fa-xmark" onClick={() => setShowAddtoListModal(false)}></i>
+            <h3 className="watchlist-title">Add Stock to Your Lists</h3>
             <div>
                 {errors?.length > 0 && <ul className="errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
             </div>
             <form>
-                <input
-                autoComplete="off"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                />
-                <span onClick={() => setShowAddtoListModal(false)}>Cancel</span>
-                <button onClick={addToWatchlist} type="submit" disabled={!name}>Create List</button>
+                <select
+                required
+                value={watchlistId}
+                onChange={(e) => setWatchlistId(e.target.value)}
+                >
+                <option value='' disabled={true}>Select a List</option>
+                {userWatchlistsArr.map((watchlist) => (
+                    <option key={watchlist?.id} value={watchlist?.id}>{watchlist?.name}</option>
+                ))}
+                </select>
+                <button onClick={addToList} type="submit" disabled={!watchlistId}>Save Changes</button>
             </form>
         </div>
+     </>
     )
 }

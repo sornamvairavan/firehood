@@ -112,7 +112,7 @@ export const deleteWatchlistById = (watchlistId) => async (dispatch) => {
 }
 
 export const addStockToList = ({ stockId, watchlistId }) => async (dispatch)  => {
-    const response = await fetch(`/api/watchlists/${watchlistId}`, {
+    const response = await fetch(`/api/watchlists/add_stock/${watchlistId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
