@@ -60,11 +60,11 @@ export const addOneWatchlist = (watchlistDetails) => async (dispatch) => {
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
-          return data.errors;
+            return data;
         }
-      } else {
+    } else {
         return ['An error occurred. Please try again.']
-      }
+    }
 }
 
 export const editWatchlistById = ({ watchlistId, name }) => async (dispatch)  => {
@@ -82,6 +82,13 @@ export const editWatchlistById = ({ watchlistId, name }) => async (dispatch)  =>
         const editedWatchlist = await response.json()
         dispatch(editWatchlist(editedWatchlist))
         return editedWatchlist
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
     }
 }
 

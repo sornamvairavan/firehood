@@ -10,6 +10,7 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
     const watchlist = useSelector(state => state.watchlist?.watchlists[+watchlistId])
 
     const [name, setName] = useState(watchlist?.name)
+    const [errors, setErrors] = useState([])
 
     const editWatchlist = async (e) => {
         e.preventDefault()
@@ -19,13 +20,14 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
             name: name
         }
 
-        const editedWatchlist = await dispatch(editWatchlistById(payload))
-
-        if (editedWatchlist) {
+        const data = await dispatch(editWatchlistById(payload))
+        if (data.errors) {
+            setErrors(data.errors)
+        } else {
             dispatch(getUserWatchlists(userId))
             setShowEditModal(false)
         }
-        
+
     }
 
     return (
@@ -33,6 +35,11 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
             <div className="watchlist-form">
                 <i className="fa-solid fa-xmark" onClick={() => setShowEditModal(false)}></i>
                 <h3 className="watchlist-title">Edit list</h3>
+                <div>
+                    {errors?.length > 0 && <ul className="errors">
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>}
+                </div>
                 <form>
                     <div className="watchlist-input-container">
                         <input

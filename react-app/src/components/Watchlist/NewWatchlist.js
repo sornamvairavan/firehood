@@ -8,6 +8,7 @@ export default function AddWatchlistForm({ setShowAddForm }) {
 
     const userId = useSelector(state => state.session.user?.id)
     const [name, setName] = useState("")
+    const [errors, setErrors] = useState([])
 
     const addWatchlist = async (e) => {
         e.preventDefault()
@@ -16,9 +17,10 @@ export default function AddWatchlistForm({ setShowAddForm }) {
             name: name
         }
 
-        const newWatchlist = await dispatch(addOneWatchlist(payload))
-
-        if (newWatchlist) {
+        const data = await dispatch(addOneWatchlist(payload))
+        if (data.errors) {
+            setErrors(data.errors)
+        } else {
             dispatch(getUserWatchlists(userId))
             setShowAddForm(false)
         }
@@ -27,6 +29,11 @@ export default function AddWatchlistForm({ setShowAddForm }) {
 
     return (
         <div className="watchlist-form">
+            <div>
+                {errors?.length > 0 && <ul className="errors">
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>}
+            </div>
             <form>
                 <input
                 autoComplete="off"

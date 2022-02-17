@@ -25,3 +25,6 @@ def get_stock_detail(ticker):
 
     print(data)
     return {"stock": [data]}
+
+
+

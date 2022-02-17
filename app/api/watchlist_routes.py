@@ -38,7 +38,7 @@ def add_watchlist():
         db.session.add(new_watchlist)
         db.session.commit()
         return new_watchlist.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 @watchlist_routes.route("/<int:id>", methods=['PUT'])
@@ -52,8 +52,7 @@ def edit_watchlist(id):
         watchlist.name = form.data['name']
         db.session.commit()
         return watchlist.to_dict()
-
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 @watchlist_routes.route("/<int:id>", methods=['DELETE'])
@@ -65,4 +64,4 @@ def delete_watchlist(id):
         db.session.delete(watchlist)
         db.session.commit()
         return "Delete successful"
-    return 401
+    return 400
