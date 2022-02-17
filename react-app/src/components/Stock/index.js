@@ -20,6 +20,7 @@ export default function Stocks() {
             <div>{stock?.company_name}</div>
             <div>{stock?.ticker}</div>
             <div>${price}</div>
+            <button>Add to Watchlist</button>
         </>
     )
 }
