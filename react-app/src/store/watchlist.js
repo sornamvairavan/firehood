@@ -3,6 +3,7 @@ const GET_WATCHLISTS = 'watchlists/GET_WATCHLISTS'
 const ADD_WATCHLIST = 'watchlists/ADD_WATCHLIST'
 const EDIT_WATCHLIST = 'watchlists/EDIT_WATCHLIST'
 const DELETE_WATCHLIST = 'watchlists/DELETE_WATCHLIST'
+const 
 
 /* ----- ACTION CREATORS------ */
 const getWatchlists = (watchlists) => {

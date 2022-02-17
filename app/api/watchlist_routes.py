@@ -1,7 +1,7 @@
 from aiohttp import request
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Watchlist, db
+from app.models import Watchlist, db, Stock
 from app.forms import WatchlistForm
 
 
@@ -18,6 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
+# Get all of the user's watchlists 
 @watchlist_routes.route("/<int:user_id>")
 @login_required
 def get_users_watchlist(user_id):
@@ -25,6 +26,7 @@ def get_users_watchlist(user_id):
     return jsonify([watchlist.to_dict() for watchlist in user_watchlists])
 
 
+# Add a list to the watchlists
 @watchlist_routes.route("/", methods=['POST'])
 @login_required
 def add_watchlist():
@@ -41,6 +43,27 @@ def add_watchlist():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
+
+# Add a stock to a list
+@watchlist_routes.route("/add_stock/<int:watchlist_id>", methods=['PUT'])
+@login_required
+def add_stock_to_list(watchlist_id):
+    stock_id = int(request.json['stockId'])
+    watchlist = Watchlist.query.filter(Watchlist.id == watchlist_id).first()
+    for stock in watchlist.stocks:
+        if (stock.id == stock_id):
+            return {"errors": ["Stock already in the list"]}
+    
+    stock = Stock.query.filter(Stock.id == stock_id).first()
+
+    watchlist.stocks.append(stock)
+    db.session.commit()
+
+    return watchlist.to_dict()
+
+
+
+# Edit the name of a list
 @watchlist_routes.route("/<int:id>", methods=['PUT'])
 @login_required
 def edit_watchlist(id):
@@ -55,6 +78,7 @@ def edit_watchlist(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
+# Delete a list
 @watchlist_routes.route("/<int:id>", methods=['DELETE'])
 @login_required
 def delete_watchlist(id):
