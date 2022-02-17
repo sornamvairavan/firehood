@@ -31,7 +31,10 @@ def add_watchlist():
     form = WatchlistForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        new_watchlist = Watchlist(name = form.data['name'])
+        new_watchlist = Watchlist(
+            user_id = int(current_user.id),
+            name = form.data['name']
+            )
         db.session.add(new_watchlist)
         db.session.commit()
         return new_watchlist.to_dict()
@@ -53,12 +56,12 @@ def edit_watchlist(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-watchlist_routes.route("/<int:id>", methods=['DELETE'])
+@watchlist_routes.route("/<int:id>", methods=['DELETE'])
 @login_required
-def edit_watchlist(id):
+def delete_watchlist(id):
     watchlist = Watchlist.query.get(id)
 
-    if int(current_user.id) == int(Watchlist.user_id):
+    if int(current_user.id) == watchlist.user_id:
         db.session.delete(watchlist)
         db.session.commit()
         return "Delete successful"

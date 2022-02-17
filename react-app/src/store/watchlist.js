@@ -87,13 +87,7 @@ export const editWatchlistById = ({ watchlistId, name }) => async (dispatch)  =>
 
 export const deleteWatchlistById = (watchlistId) => async (dispatch) => {
     const response = await fetch(`/api/watchlists/${watchlistId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            watchlistId
-        })
+        method: 'DELETE'
     })
 
     if (response.ok) {
