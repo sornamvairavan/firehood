@@ -9,7 +9,6 @@ export default function Stocks() {
     const { ticker } = useParams();
     const stock = useSelector(state => state.stock?.stocks[ticker])
     const price = useSelector(state => state.stock?.price)
-    console.log("stockkkkkk", stock)
 
     useEffect(() => {
         dispatch(getAllStocks())
