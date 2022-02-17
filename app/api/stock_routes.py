@@ -17,9 +17,9 @@ def get_stocks():
 
 
 @stock_routes.route('/<int:id>')
-# @login_required
+@login_required
 def get_stock_detail(id):
-    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey={API_KEY}'
+    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey={API_KEY}'
     r = requests.get(url)
     data = r.json()
 
