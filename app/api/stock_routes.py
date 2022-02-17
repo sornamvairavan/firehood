@@ -1,6 +1,7 @@
 import os
 from flask import Blueprint, jsonify
 from flask_login import login_required
+from itsdangerous import json
 from app.models import Stock
 import requests
 
@@ -10,9 +11,9 @@ stock_routes = Blueprint('stocks', __name__)
 
 @stock_routes.route('/')
 @login_required
-def get_stocks():
+def get_all_stocks():
     stocks = Stock.query.all()
-    return {"stocks": [stock.to_dict() for stock in stocks]}
+    return jsonify([stock.to_dict() for stock in stocks])
 
 
 @stock_routes.route('/<ticker>')
@@ -23,8 +24,8 @@ def get_stock_detail(ticker):
     r = requests.get(url)
     data = r.json()
 
-    print(data)
-    return {"stock": [data]}
+    return jsonify([data])
+
 
 
 
