@@ -12,14 +12,14 @@ stock_routes = Blueprint('stocks', __name__)
 @login_required
 def get_stocks():
     stocks = Stock.query.all()
-    # return {"stocks": [stock.to_dict() for stock in stocks]}
-    return "HELLO"
+    return {"stocks": [stock.to_dict() for stock in stocks]}
 
 
-@stock_routes.route('/<int:id>')
+@stock_routes.route('/<ticker>')
 @login_required
-def get_stock_detail(id):
-    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey={API_KEY}'
+def get_stock_detail(ticker):
+
+    url = f'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={ticker}&apikey={API_KEY}'
     r = requests.get(url)
     data = r.json()
 

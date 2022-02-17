@@ -6,7 +6,7 @@ class Stock(db.Model):
     __tablename__ = 'stocks'
 
     id = db.Column(db.Integer, primary_key=True)
-    company_name = db.Column(db.String(50), nullable=False)
+    company_name = db.Column(db.String(255), nullable=False)
     ticker_symbol = db.Column(db.String(20), nullable=False)
     # price = db.Column(db.Float)
 
