@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import SplashPage from './components/SplashPage';
 import Portfolio from './components/Portfolio';
 import { authenticate } from './store/session';
+import Stocks from './components/Stock';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,6 +39,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <ProtectedRoute path='/stocks/:ticker' exact={true}>
+          <Stocks />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
