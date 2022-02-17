@@ -63,6 +63,19 @@ def add_stock_to_list(watchlist_id):
     return watchlist.to_dict()
 
 
+# Remove a stock to a list
+@watchlist_routes.route("/remove_stock/<int:watchlist_id>", methods=['PUT'])
+@login_required
+def remove_stock_from_list(watchlist_id):
+    stock_id = int(request.json['stockId'])
+    watchlist = Watchlist.query.filter(Watchlist.id == watchlist_id).first()
+    for stock in watchlist.stocks:
+        if (stock.id == stock_id):
+            watchlist.stocks.remove(stock)
+            db.session.commit()
+    
+    return watchlist.to_dict()
+
 
 # Edit the name of a list
 @watchlist_routes.route("/<int:id>", methods=['PUT'])
