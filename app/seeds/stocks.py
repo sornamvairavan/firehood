@@ -5,7 +5,7 @@ from app.models import db, Stock
 def seed_stocks():
     stocks = [
         ["AAPL",	"Apple Inc."], 
-        ["ABNB",	"Airbnb, Inc. Class A"], 
+        ["ABNB",	"Airbnb, Inc. Class A Common Stock"], 
         ["ADBE",    "Adobe Inc."], 
         ["ADI",     "Analog Devices, Inc."], 
         ["ADP",     "Automatic Data Processing, Inc."], 
