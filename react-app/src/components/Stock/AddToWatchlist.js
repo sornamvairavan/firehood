@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserWatchlists } from '../../store/watchlist'
 import { addStockToList } from '../../store/watchlist';
@@ -11,6 +11,10 @@ export default function AddToWatchlistForm({ setShowAddtoListModal, stockId }) {
 
     const [errors, setErrors] = useState([])
     const [watchlistId, setWatchlistId] = useState("")
+
+    useEffect(() => {
+        dispatch(getUserWatchlists())
+    }, [dispatch])
 
     const addToList = async (e) => {
         e.preventDefault()
@@ -27,7 +31,6 @@ export default function AddToWatchlistForm({ setShowAddtoListModal, stockId }) {
             dispatch(getUserWatchlists())
             setShowAddtoListModal(false)
         }
-        
     }
 
     return (

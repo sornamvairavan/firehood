@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { editWatchlistById, getUserWatchlists } from '../../store/watchlist'
 // import './Watchlists.css'
@@ -11,12 +11,16 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
     const [name, setName] = useState(watchlist?.name)
     const [errors, setErrors] = useState([])
 
+    useEffect(() => {
+        dispatch(getUserWatchlists())
+    }, [dispatch])
+
     const editWatchlist = async (e) => {
         e.preventDefault()
 
         const payload = {
             watchlistId,
-            name: name
+            name
         }
 
         const data = await dispatch(editWatchlistById(payload))
