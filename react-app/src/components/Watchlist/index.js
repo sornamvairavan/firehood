@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import { Modal } from '../../context/Modal'
 import EditWatchlistForm from "./EditWatchlist"
 import NewWatchlistForm from "./NewWatchlist"
-import { getUserWatchlists, deleteWatchlistById } from "../../store/watchlist"
-
+import { getUserWatchlists, deleteWatchlistById, removeStockFromList } from "../../store/watchlist"
 
 export default function Watchlist() {
     const dispatch = useDispatch()
@@ -20,7 +19,7 @@ export default function Watchlist() {
     useEffect(() => {
         dispatch(getUserWatchlists())
             .then(() => setIsLoaded(true)) 
-    }, [dispatch])
+    }, [dispatch, isLoaded])
 
     const openNewWatchlistForm = (e) => {
         setShowNewForm(true)
@@ -35,6 +34,17 @@ export default function Watchlist() {
         return dispatch(deleteWatchlistById(Number(e.target.id)))
             .then(() => setIsLoaded(!isLoaded))
       }
+
+
+    const removeStock = (stockId, watchlistId) => {
+        let payload = {
+            stockId,
+            watchlistId
+        }
+        return dispatch(removeStockFromList(payload))
+            .then(() => setIsLoaded(!isLoaded))
+    }   
+
 
     return (
         <div>
@@ -51,7 +61,11 @@ export default function Watchlist() {
                         <i className="fa-solid fa-gear" onClick={openEditWatchlistForm} id={watchlist.id}></i>
                         <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id}></i>
                         {watchlist.stocks?.length > 0 && <ul>
-                            {watchlist.stocks.map((stock, idx) => <li key={idx}><Link to={`/stocks/${stock.ticker}`}>{stock.ticker}</Link></li>)}
+                            {watchlist.stocks.map((stock, idx) => (
+                                <li key={idx}>
+                                    <Link to={`/stocks/${stock.ticker}`}>{stock.ticker}</Link>
+                                    <i className="fa-solid fa-xmark" onClick={(e) => removeStock(stock.id, watchlist.id)}></i>
+                                </li>))}
                             </ul>}
                     </div>
                 </div>
