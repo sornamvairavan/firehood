@@ -19,9 +19,10 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 # Get all of the user's watchlists 
-@watchlist_routes.route("/<int:user_id>")
+@watchlist_routes.route("/")
 @login_required
-def get_users_watchlist(user_id):
+def get_users_watchlist():
+    user_id = int(current_user.id)
     user_watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
     return jsonify([watchlist.to_dict() for watchlist in user_watchlists])
 
@@ -52,7 +53,7 @@ def add_stock_to_list(watchlist_id):
     watchlist = Watchlist.query.filter(Watchlist.id == watchlist_id).first()
     for stock in watchlist.stocks:
         if (stock.id == stock_id):
-            return {"errors": ["Stock already in the list"]}
+            return {"errors": ["Stock already in the list"]}, 400
     
     stock = Stock.query.filter(Stock.id == stock_id).first()
 

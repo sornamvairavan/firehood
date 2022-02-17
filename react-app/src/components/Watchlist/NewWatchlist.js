@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addOneWatchlist, getUserWatchlists } from '../../store/watchlist'
 // import './Watchlists.css'
 
-export default function AddWatchlistForm({ setShowAddForm }) {
+export default function NewWatchlistForm({ setShowNewForm }) {
     const dispatch = useDispatch()
 
-    const userId = useSelector(state => state.session.user?.id)
     const [name, setName] = useState("")
     const [errors, setErrors] = useState([])
 
-    const addWatchlist = async (e) => {
+    const newWatchlist = async (e) => {
         e.preventDefault()
 
         const payload = {
@@ -21,8 +20,8 @@ export default function AddWatchlistForm({ setShowAddForm }) {
         if (data.errors) {
             setErrors(data.errors)
         } else {
-            dispatch(getUserWatchlists(userId))
-            setShowAddForm(false)
+            dispatch(getUserWatchlists())
+            setShowNewForm(false)
         }
         
     }
@@ -40,8 +39,8 @@ export default function AddWatchlistForm({ setShowAddForm }) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 />
-                <span onClick={() => setShowAddForm(false)}>Cancel</span>
-                <button onClick={addWatchlist} type="submit" disabled={!name}>Create List</button>
+                <span onClick={() => setShowNewForm(false)}>Cancel</span>
+                <button onClick={newWatchlist} type="submit" disabled={!name}>Create List</button>
             </form>
         </div>
     )

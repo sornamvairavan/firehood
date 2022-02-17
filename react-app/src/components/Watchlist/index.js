@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Link } from 'react-router-dom'
 import { Modal } from '../../context/Modal'
 import EditWatchlistForm from "./EditWatchlist"
-import AddWatchlistForm from "./NewWatchlist"
+import NewWatchlistForm from "./NewWatchlist"
 import { getUserWatchlists, deleteWatchlistById } from "../../store/watchlist"
 
 
@@ -11,20 +11,19 @@ export default function Watchlist() {
     const dispatch = useDispatch()
 
     const [isLoaded, setIsLoaded] = useState(false);
-    const [showAddForm, setShowAddForm] = useState(false)
+    const [showNewForm, setShowNewForm] = useState(false)
     const [showEditModal, setShowEditModal] = useState(false)
     const [editWatchlistId, setEditWatchlistId] = useState("")
-    const userId = useSelector(state => state.session.user?.id)
     const userWatchlistsObj = useSelector(state => state.watchlist.watchlists)
     const userWatchlistsArr = Object.values(userWatchlistsObj)
 
     useEffect(() => {
-        dispatch(getUserWatchlists(userId))
+        dispatch(getUserWatchlists())
             .then(() => setIsLoaded(true)) 
     }, [dispatch])
 
-    const openAddWatchlistForm = (e) => {
-        setShowAddForm(true)
+    const openNewWatchlistForm = (e) => {
+        setShowNewForm(true)
     }
     
     const openEditWatchlistForm = (e) => {
@@ -40,10 +39,10 @@ export default function Watchlist() {
     return (
         <div>
             <span>Watchlist</span>
-            <i className="fa-solid fa-plus" onClick={openAddWatchlistForm}></i>
+            <i className="fa-solid fa-plus" onClick={openNewWatchlistForm}></i>
             <div className="watchlist-list">
-            {showAddForm && (
-                <AddWatchlistForm setShowAddForm={setShowAddForm}/>
+            {showNewForm && (
+                <NewWatchlistForm setShowNewForm={setShowNewForm}/>
             )}
             {userWatchlistsArr.length > 0 && userWatchlistsArr.map((watchlist, idx) => (
                 <div key={idx}>

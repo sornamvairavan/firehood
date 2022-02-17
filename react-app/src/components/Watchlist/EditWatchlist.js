@@ -6,7 +6,6 @@ import { editWatchlistById, getUserWatchlists } from '../../store/watchlist'
 export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
     const dispatch = useDispatch()
 
-    const userId = useSelector(state => state.session.user?.id)
     const watchlist = useSelector(state => state.watchlist?.watchlists[+watchlistId])
 
     const [name, setName] = useState(watchlist?.name)
@@ -24,7 +23,7 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
         if (data.errors) {
             setErrors(data.errors)
         } else {
-            dispatch(getUserWatchlists(userId))
+            dispatch(getUserWatchlists())
             setShowEditModal(false)
         }
 

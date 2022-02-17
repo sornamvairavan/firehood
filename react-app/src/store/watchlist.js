@@ -3,7 +3,7 @@ const GET_WATCHLISTS = 'watchlists/GET_WATCHLISTS'
 const ADD_WATCHLIST = 'watchlists/ADD_WATCHLIST'
 const EDIT_WATCHLIST = 'watchlists/EDIT_WATCHLIST'
 const DELETE_WATCHLIST = 'watchlists/DELETE_WATCHLIST'
-const 
+const ADD_STOCK = 'watchlists/ADD_STOCK'
 
 /* ----- ACTION CREATORS------ */
 const getWatchlists = (watchlists) => {
@@ -34,9 +34,16 @@ const deleteWatchlist = (watchlistId) => {
     }
 }
 
+const addStock = (watchlist) => {
+    return {
+        type: ADD_STOCK,
+        watchlist
+    }
+}
+
 /* ------ THUNK ACTIONS ------ */
-export const getUserWatchlists = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/watchlists/${userId}`)
+export const getUserWatchlists = () => async (dispatch) => {
+    const response = await fetch(`/api/watchlists/`)
 
     if (response.ok) {
         const watchlists = await response.json()
@@ -104,6 +111,32 @@ export const deleteWatchlistById = (watchlistId) => async (dispatch) => {
     }
 }
 
+export const addStockToList = ({ stockId, watchlistId }) => async (dispatch)  => {
+    const response = await fetch(`/api/watchlists/${watchlistId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            stockId
+        })
+    })
+
+    if (response.ok) {
+        const updatedWatchlist = await response.json()
+        dispatch(addStock(updatedWatchlist))
+        return updatedWatchlist
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+
 /* ------ REDUCER ------ */
 const initialState = { watchlists: {} };
 export default function watchlistReducer(state = initialState, action) {
@@ -127,6 +160,10 @@ export default function watchlistReducer(state = initialState, action) {
         case DELETE_WATCHLIST:
             newState = {...state}
             delete newState.watchlists[action.watchlistId]
+            return newState
+        case ADD_STOCK:
+            newState = {...state}
+            newState.watchlists[action.watchlist.id] = action.watchlist
             return newState
         default:
             return state;
