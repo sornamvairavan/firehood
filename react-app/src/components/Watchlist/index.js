@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { Link } from 'react-router-dom'
 import { Modal } from '../../context/Modal'
 import EditWatchlistForm from "./EditWatchlist"
 import AddWatchlistForm from "./NewWatchlist"
@@ -50,6 +51,9 @@ export default function Watchlist() {
                         <span>{watchlist.name}</span>
                         <i className="fa-solid fa-gear" onClick={openEditWatchlistForm} id={watchlist.id}></i>
                         <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id}></i>
+                        {watchlist.stocks?.length > 0 && <ul>
+                            {watchlist.stocks.map((stock, idx) => <li key={idx}><Link to={`/stocks/${stock.ticker}`}>{stock.ticker}</Link></li>)}
+                            </ul>}
                     </div>
                 </div>
             ))}
