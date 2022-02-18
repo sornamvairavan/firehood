@@ -1,7 +1,6 @@
 import os
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from itsdangerous import json
 from app.models import Stock
 import requests
 

@@ -23,5 +23,6 @@ class Transaction(db.Model):
             'quantity': self.quantity,
             'user_id': self.user_id,
             'stock_id': self.stock_id,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            'stock': self.stock.to_dict()
         }
