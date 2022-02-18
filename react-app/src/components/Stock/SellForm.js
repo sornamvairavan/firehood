@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import { sellStock } from '../../store/portfolio'
 import { getAllStocks } from '../../store/stock'
 
@@ -30,7 +30,6 @@ export default function SellForm({ stockId }) {
             setErrors(data.errors)
         } else {
             setIsLoaded(!isLoaded)
-            setQuantity(0)
             history.push("/")
         }
     }

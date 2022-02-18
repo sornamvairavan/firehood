@@ -2,7 +2,7 @@
 const GET_PORTFOLIOS = 'portfolios/GET_PORTFOLIOS'
 const ADD_PORTFOLIO = 'portfolios/ADD_PORTFOLIO'
 const UPDATE_PORTFOLIO = 'portfolios/UPDATE_PORTFOLIO'
-// const DELETE_PORTFOLIO = 'portfolios/DELETE_PORTFOLIO'
+const DELETE_PORTFOLIO = 'portfolios/DELETE_PORTFOLIO'
 
 /* ----- ACTION CREATORS------ */
 const getPortfolios = (portfolios) => {
@@ -26,12 +26,12 @@ const updatePortfolio = (portfolio) => {
     }
 }
 
-// const deletePortfolio = (portfolio) => {
-//     return {
-//         type: DELETE_PORTFOLIO,
-//         portfolio
-//     }
-// }
+const deletePortfolio = (portfolio) => {
+    return {
+        type: DELETE_PORTFOLIO,
+        portfolio
+    }
+}
 /* ------ THUNK ACTIONS ------ */
 export const getUserPortfolios = () => async (dispatch) => {
     const response = await fetch(`/api/portfolios/`)
@@ -82,12 +82,13 @@ export const sellStock = ({ stockId, quantity }) => async (dispatch)  => {
 
     if (response.ok) {
         const updatedPortfolio = await response.json()
-        if (updatedPortfolio.portfolio) {
+        if (updatedPortfolio.delete) {
+            console.log("in delete")
+            dispatch(deletePortfolio(updatedPortfolio.delete))
+        } else {
+            console.log("in update")
             dispatch(updatePortfolio(updatedPortfolio))
-        } 
-        // else {
-        //     dispatch(deletePortfolio(updatePortfolio))
-        // }
+        }
         return updatedPortfolio
     } else if (response.status < 500) {
         const data = await response.json();
@@ -119,6 +120,10 @@ export default function portfolioReducer(state = initialState, action) {
         case UPDATE_PORTFOLIO:
             newState = {...state}
             newState.portfolios[action.portfolio.id] = action.portfolio
+            return newState
+        case DELETE_PORTFOLIO:
+            newState = {...state}
+            delete newState.portfolios[action.portfolioId]
             return newState
         default:
             return state;

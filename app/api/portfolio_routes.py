@@ -86,9 +86,9 @@ def update_portfolio(stock_id):
     if updated_portfolio.quantity == 0:
         db.session.delete(updated_portfolio)
         db.session.commit()
-        return "Delete successful"
+        return {"delete": portfolioId}
     else:
-        return {"portfolio": updated_portfolio.to_dict()}
+        return updated_portfolio.to_dict()
 
 
     
