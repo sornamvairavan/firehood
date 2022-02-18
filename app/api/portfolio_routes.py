@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Portfolio, db
+from app.models import Portfolio, db, Transaction
 
 
 portfolio_routes = Blueprint('portfolios', __name__)
@@ -35,12 +35,19 @@ def add_portfolio(stock_id):
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
     if int(new_port["quantity"]) < 0:
-        print(new_port, "#######################")
         return {"errors": ["Quantity should not be less than 0"]}, 400
 
     for portfolio in user_portfolios:
         if portfolio.stock_id == stock_id:
             portfolio.quantity += int(new_port["quantity"])
+            new_transaction = Transaction(
+                type = "Buy",
+                price = portfolio.purchase_price,
+                quantity = new_port["quantity"],
+                user_id = user_id,
+                stock_id = stock_id
+            )
+            db.session.add(new_transaction)
             db.session.commit()
             return portfolio.to_dict()
     
@@ -50,8 +57,16 @@ def add_portfolio(stock_id):
         user_id = user_id,
         stock_id = stock_id
     )
+    new_transaction = Transaction(
+        type = "Buy",
+        price = new_port["purchase_price"],
+        quantity = new_port["quantity"],
+        user_id = user_id,
+        stock_id = stock_id
+    )
 
     db.session.add(new_portfolio)
+    db.session.add(new_transaction)
     db.session.commit()
     return new_portfolio.to_dict()
 
@@ -79,6 +94,14 @@ def update_portfolio(stock_id):
             else:
                 portfolioId = portfolio.id
                 portfolio.quantity -= int(updated_port["quantity"])
+                new_transaction = Transaction(
+                    type = "Sell",
+                    price = portfolio.purchase_price,
+                    quantity = updated_port["quantity"],
+                    user_id = user_id,
+                    stock_id = stock_id
+                )
+                db.session.add(new_transaction)
                 db.session.commit()
 
     updated_portfolio = Portfolio.query.get(portfolioId)

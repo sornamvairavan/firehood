@@ -19,6 +19,8 @@ const NavBar = () => {
   if (user) {
     sessionLinks = (
       <>
+        <NavLink to="/" className="nav-tabs" exact>Portfolio</NavLink>
+        <NavLink to="/transactions" className="nav-tabs">Transactions</NavLink>
         <span>Welcome {user.fullname}! </span>
         <LogoutButton />
       </>
@@ -27,8 +29,8 @@ const NavBar = () => {
     sessionLinks = (
       <>
         <Link onClick={demoLogin} to="#" id="demo-button">Demo</Link>
-        <NavLink to="/login" activeClassName='active' id="login-button">Login</NavLink>
-        <NavLink to="/sign-up" activeClassName='active' id='signup-button'>Sign Up</NavLink>
+        <NavLink to="/login" id="login-button">Login</NavLink>
+        <NavLink to="/sign-up" id='signup-button'>Sign Up</NavLink>
       </>
     )
   }

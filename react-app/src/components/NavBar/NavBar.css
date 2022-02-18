@@ -16,6 +16,20 @@
     cursor: pointer;
   }
 
+.nav-tabs {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.active.nav-tabs {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgba(255, 255, 255, 0.774);
+}
+
 #signup-button {
   text-decoration: none;
   color: black;

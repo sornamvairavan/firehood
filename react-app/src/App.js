@@ -9,6 +9,7 @@ import SplashPage from './components/SplashPage';
 import Portfolio from './components/Portfolio';
 import { authenticate } from './store/session';
 import Stocks from './components/Stock';
+import Transaction from './components/Transactions';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,6 +42,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/stocks/:ticker' exact={true}>
           <Stocks />
+        </ProtectedRoute>
+        <ProtectedRoute path='/transactions' exact={true}>
+          <Transaction />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
