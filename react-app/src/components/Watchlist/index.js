@@ -54,6 +54,18 @@ export default function Watchlist() {
             {showNewForm && (
                 <NewWatchlistForm setShowNewForm={setShowNewForm}/>
             )}
+            {userWatchlistsArr.length > 0 && (
+                userWatchlistsArr.map((watchlist, idx) => (
+                    <Link to={`/stocks/${portfolio?.stock?.ticker}`}>
+                        <div key={idx} className="stock-card">
+                            <div class="card-ticker-shares">
+                                <div>{portfolio?.stock?.ticker}</div>
+                                <div>{portfolio?.quantity} shares</div>
+                            </div>
+                            <div>{portfolio?.stock?.price}$price</div>
+                        </div>
+                    </Link>
+                )))}
             {userWatchlistsArr.length > 0 && userWatchlistsArr.map((watchlist, idx) => (
                 <div key={idx}>
                     <div>

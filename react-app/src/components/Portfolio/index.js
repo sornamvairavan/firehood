@@ -19,26 +19,19 @@ export default function Portfolio() {
 
     return (
         <>
-            <h2>Portfolio</h2>
+            <h3>Portfolio</h3>
             {userPortfoliosArr.length > 0 && (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Stock</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {userPortfoliosArr.map((portfolio, idx) => (
-                    <tr key={idx}>
-                        <td><Link to={`/stocks/${portfolio?.stock?.ticker}`}>{portfolio?.stock?.ticker}</Link></td>
-                        <td>{portfolio?.stock?.price}</td>
-                        <td>{portfolio?.quantity}</td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>)}               
+                userPortfoliosArr.map((portfolio, idx) => (
+                    <Link to={`/stocks/${portfolio?.stock?.ticker}`}>
+                        <div key={idx} className="stock-card">
+                            <div class="card-ticker-shares">
+                                <div>{portfolio?.stock?.ticker}</div>
+                                <div>{portfolio?.quantity} shares</div>
+                            </div>
+                            <div>{portfolio?.stock?.price}$price</div>
+                        </div>
+                    </Link>
+                )))}
             <Watchlist />
         </>
     )
