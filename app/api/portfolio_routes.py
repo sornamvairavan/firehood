@@ -23,3 +23,64 @@ def get_users_portfolios():
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
     return jsonify([portfolio.to_dict() for portfolio in user_portfolios])
 
+# Buy a stock
+@portfolio_routes.route("/<int:stock_id>", methods=['POST'])
+@login_required
+def add_portfolio(stock_id):
+    
+    new_port = request.json()
+
+    user_id = int(current_user.id)
+
+    user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
+
+    for portfolio in user_portfolios:
+        if portfolio.stock_id == stock_id:
+            portfolio.quanity += int(new_port["quantity"])
+            db.session.commit()
+            return portfolio.to_dict()
+    
+    new_portfolio = Portfolio(
+        purchase_price = new_port["purchase_price"],
+        quantity = new_port["quantity"],
+        user_id = user_id,
+        stock_id = stock_id
+    )
+
+    db.session.add(new_portfolio)
+    db.session.commit()
+    return new_portfolio.to_dict()
+
+
+# Sell a stock
+@portfolio_routes.route("/<int:stock_id>", methods=['PUT'])
+@login_required
+def update_portfolio(stock_id):
+
+    user_id = int(current_user.id)
+
+    updated_port = request.json()
+
+    user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
+
+    portfolioId = None
+
+    for portfolio in user_portfolios:
+        if portfolio.stock_id == stock_id:
+            if int(updated_port["quantity"]) > portfolio.quantity:
+                return {"errors": "You can only sell within the number of shares you own"}, 400
+            portfolioId = portfolio.id
+            portfolio.quantity -= int(updated_port["quantity"])
+            db.session.commit()
+
+    updated_portfolio = Portfolio.query.get(portfolioId)
+
+    if updated_portfolio.quantity == 0:
+        db.session.delete(updated_portfolio)
+        db.session.commit()
+        return "Delete successful"
+
+    return updated_portfolio.to_dict()
+
+
+    
