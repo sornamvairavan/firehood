@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { editWatchlistById, getUserWatchlists } from '../../store/watchlist'
+import { editWatchlistById } from '../../store/watchlist'
 // import './Watchlists.css'
 
 export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
@@ -10,10 +10,6 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
 
     const [name, setName] = useState(watchlist?.name)
     const [errors, setErrors] = useState([])
-
-    useEffect(() => {
-        dispatch(getUserWatchlists())
-    }, [dispatch])
 
     const editWatchlist = async (e) => {
         e.preventDefault()
@@ -27,7 +23,6 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
         if (data.errors) {
             setErrors(data.errors)
         } else {
-            dispatch(getUserWatchlists())
             setShowEditModal(false)
         }
 

@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { buyStock } from '../../store/portfolio'
-import { getAllStocks } from '../../store/stock'
 
 export default function BuyForm({ stockId }) {
     const dispatch = useDispatch()
@@ -10,12 +9,6 @@ export default function BuyForm({ stockId }) {
 
     const [errors, setErrors] = useState([])
     const [quantity, setQuantity] = useState(0)
-    const [isLoaded, setIsLoaded] = useState(false)
-
-    useEffect(() => {
-        dispatch(getAllStocks())
-        .then(() => setIsLoaded(true))
-    }, [dispatch, isLoaded])
 
     const buyShares = async (e) => {
         e.preventDefault()
@@ -26,13 +19,10 @@ export default function BuyForm({ stockId }) {
             purchase_price: 100
         }
 
-        console.log(payload, "payload")
-
         const data = await dispatch(buyStock(payload))
         if (data.errors) {
             setErrors(data.errors)
         } else {
-            setIsLoaded(!isLoaded)
             history.push("/")
         }
     }

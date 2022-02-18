@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addOneWatchlist, getUserWatchlists } from '../../store/watchlist'
+import { addOneWatchlist } from '../../store/watchlist'
 // import './Watchlists.css'
 
 export default function NewWatchlistForm({ setShowNewForm }) {
@@ -8,10 +8,6 @@ export default function NewWatchlistForm({ setShowNewForm }) {
 
     const [name, setName] = useState("")
     const [errors, setErrors] = useState([])
-    
-    useEffect(() => {
-        dispatch(getUserWatchlists())
-    }, [dispatch])
 
     const newWatchlist = async (e) => {
         e.preventDefault()
@@ -20,7 +16,6 @@ export default function NewWatchlistForm({ setShowNewForm }) {
         if (data.errors) {
             setErrors(data.errors)
         } else {
-            dispatch(getUserWatchlists())
             setShowNewForm(false)
         }
     }

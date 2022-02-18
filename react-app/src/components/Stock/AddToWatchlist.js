@@ -28,8 +28,8 @@ export default function AddToWatchlistForm({ setShowAddtoListModal, stockId }) {
         if (data.errors) {
             setErrors(data.errors)
         } else {
-            dispatch(getUserWatchlists())
             setShowAddtoListModal(false)
+            alert("Successfully added to Watchlist")
         }
     }
 
