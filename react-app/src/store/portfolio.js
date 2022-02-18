@@ -83,10 +83,8 @@ export const sellStock = ({ stockId, quantity }) => async (dispatch)  => {
     if (response.ok) {
         const updatedPortfolio = await response.json()
         if (updatedPortfolio.delete) {
-            console.log("in delete")
             dispatch(deletePortfolio(updatedPortfolio.delete))
         } else {
-            console.log("in update")
             dispatch(updatePortfolio(updatedPortfolio))
         }
         return updatedPortfolio
