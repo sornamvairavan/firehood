@@ -10,10 +10,10 @@ const getStocks = (stocks) => {
     }
 }
 
-const getStock = (stockDetail) => {
+const getStock = (stock) => {
     return {
         type: GET_STOCK,
-        stockDetail
+        stock
     }
 }
 
@@ -51,7 +51,7 @@ export default function stockReducer(state = initialState, action) {
             }, {})
             return newState
         case GET_STOCK:
-            newState = {...state, price: action.stockDetail};
+            newState = {...state, price: action.stock};
             return newState;
         default:
             return state;
