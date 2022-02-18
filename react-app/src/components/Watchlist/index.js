@@ -62,8 +62,8 @@ export default function Watchlist() {
                         <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id}></i>
                         {watchlist.stocks?.length > 0 &&  (
                             watchlist.stocks.map((stock, idx) => (
-                                <div>
-                                    <div key={idx} className="stock-card">
+                                <div key={idx}>
+                                    <div className="stock-card">
                                         <Link to={`/stocks/${stock?.ticker}`}>
                                             <div>
                                                 <h4>{stock?.ticker}</h4>

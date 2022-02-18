@@ -22,8 +22,8 @@ export default function Portfolio() {
             <h3>Portfolio</h3>
             {userPortfoliosArr.length > 0 && (
                 userPortfoliosArr.map((portfolio, idx) => (
-                    <Link to={`/stocks/${portfolio?.stock?.ticker}`}>
-                        <div key={idx} className="stock-card">
+                    <Link to={`/stocks/${portfolio?.stock?.ticker}`} key={idx}>
+                        <div className="stock-card">
                             <div>
                                 <h4>{portfolio?.stock?.ticker}</h4>
                                 <p>{portfolio?.quantity} shares</p>
