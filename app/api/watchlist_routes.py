@@ -1,4 +1,3 @@
-from aiohttp import request
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Watchlist, db, Stock

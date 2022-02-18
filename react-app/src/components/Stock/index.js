@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOneStock } from '../../store/stock';
+import { getAllStocks, getOneStock } from '../../store/stock';
 import { Modal } from '../../context/Modal'
 import AddToWatchlistForm from './AddToWatchlist';
+import BuyForm from './BuyForm';
+import SellForm from './SellForm';
 
 export default function Stocks() {
     const dispatch = useDispatch();
@@ -15,6 +17,7 @@ export default function Stocks() {
     const [stockId, setStockId] = useState("")
 
     useEffect(() => {
+        dispatch(getAllStocks())
         dispatch(getOneStock(ticker))
     }, [dispatch, ticker])
 
@@ -30,6 +33,10 @@ export default function Stocks() {
             <div>{stock?.ticker}</div>
             <div>${stock?.price}</div>
             <button onClick={openWishlistForm} id={stock?.id}>Add to Watchlist</button>
+            <h4>Buy {stock?.ticker}</h4>
+                <BuyForm stockId={stockId} />
+            <h4>Sell {stock?.ticker}</h4>
+                <SellForm stockId={stockId} />
             {showAddtoListModal && (
             <Modal onClose={() => setShowAddtoListModal(false)}>
                 <AddToWatchlistForm stockId={stockId} setShowAddtoListModal={setShowAddtoListModal}/>
