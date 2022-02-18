@@ -33,7 +33,7 @@ export default function BuyForm({ stockId }) {
             setErrors(data.errors)
         } else {
             setIsLoaded(!isLoaded)
-            // history.push("/")
+            history.push("/")
         }
     }
 

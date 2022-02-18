@@ -33,7 +33,7 @@ export default function Transaction() {
                     </tr>
                 </thead>
                 <tbody>
-                {(userTransactionsArr.map((transaction, idx) => (
+                {userTransactionsArr.map((transaction, idx) => (
                     <tr key={idx}>
                         <td>{transaction?.created_at}</td>
                         <td>{transaction?.type}</td>
@@ -41,7 +41,7 @@ export default function Transaction() {
                         <td>$price</td>
                         <td>{transaction?.quantity}</td>
                     </tr>
-                )))}
+                ))}
                 </tbody>
             </table>
             )}
