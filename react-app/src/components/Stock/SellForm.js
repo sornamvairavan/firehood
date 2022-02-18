@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { sellStock } from '../../store/portfolio'
@@ -9,17 +9,6 @@ export default function SellForm({ stockId }) {
 
     const [errors, setErrors] = useState([])
     const [quantity, setQuantity] = useState(0)
-    const [isLoaded, setIsLoaded] = useState(false)
-
-    useEffect(() => {
-        setIsLoaded(true)
-    }, [dispatch, isLoaded])
-
-    useEffect(() => {
-        return () => {
-         setIsLoaded(false)
-        }
-      }, [])
 
     const sellShares = async (e) => {
         e.preventDefault()
@@ -33,7 +22,6 @@ export default function SellForm({ stockId }) {
         if (data.errors) {
             setErrors(data.errors)
         } else {
-            setIsLoaded(!isLoaded)
             history.push("/")
         }
     }
