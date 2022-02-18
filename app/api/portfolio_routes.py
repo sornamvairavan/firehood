@@ -28,15 +28,19 @@ def get_users_portfolios():
 @login_required
 def add_portfolio(stock_id):
     
-    new_port = request.json()
+    new_port = request.json
 
     user_id = int(current_user.id)
 
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
+    if int(new_port["quantity"]) < 0:
+        print(new_port, "#######################")
+        return {"errors": ["Quantity should not be less than 0"]}, 400
+
     for portfolio in user_portfolios:
         if portfolio.stock_id == stock_id:
-            portfolio.quanity += int(new_port["quantity"])
+            portfolio.quantity += int(new_port["quantity"])
             db.session.commit()
             return portfolio.to_dict()
     
@@ -53,27 +57,38 @@ def add_portfolio(stock_id):
 
 
 # Sell a stock
-@portfolio_routes.route("/<int:portfolio_id>", methods=['PUT'])
+@portfolio_routes.route("/<int:stock_id>", methods=['PUT'])
 @login_required
-def update_portfolio(portfolio_id):
+def update_portfolio(stock_id):
 
-    updated_port = request.json()
+    updated_port = request.json
 
-    portfolio = Portfolio.query.get(portfolio_id)
+    if int(updated_port["quantity"]) < 0:
+        return {"errors": ["Quantity should not be less than 0"]}, 400
+ 
+    user_id = int(current_user.id)
 
-    if int(updated_port["quantity"]) > portfolio.quantity:
-        return {"errors": "You can only sell within the number of shares you own"}, 400
-    portfolio.quantity -= int(updated_port["quantity"])
-    db.session.commit()
+    user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
-    updated_portfolio = Portfolio.query.get(portfolio_id)
+    portfolioId = None
+
+    for portfolio in user_portfolios:
+        if portfolio.stock_id == stock_id:
+            if int(updated_port["quantity"]) > portfolio.quantity:
+                return {"errors": ["You can only sell within the number of shares you own"]}, 400
+            else:
+                portfolioId = portfolio.id
+                portfolio.quantity -= int(updated_port["quantity"])
+                db.session.commit()
+
+    updated_portfolio = Portfolio.query.get(portfolioId)
 
     if updated_portfolio.quantity == 0:
         db.session.delete(updated_portfolio)
         db.session.commit()
         return "Delete successful"
-
-    return updated_portfolio.to_dict()
+    else:
+        return {"portfolio": updated_portfolio.to_dict()}
 
 
     

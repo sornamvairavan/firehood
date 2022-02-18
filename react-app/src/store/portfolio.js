@@ -2,7 +2,7 @@
 const GET_PORTFOLIOS = 'portfolios/GET_PORTFOLIOS'
 const ADD_PORTFOLIO = 'portfolios/ADD_PORTFOLIO'
 const UPDATE_PORTFOLIO = 'portfolios/UPDATE_PORTFOLIO'
-
+// const DELETE_PORTFOLIO = 'portfolios/DELETE_PORTFOLIO'
 
 /* ----- ACTION CREATORS------ */
 const getPortfolios = (portfolios) => {
@@ -26,6 +26,12 @@ const updatePortfolio = (portfolio) => {
     }
 }
 
+// const deletePortfolio = (portfolio) => {
+//     return {
+//         type: DELETE_PORTFOLIO,
+//         portfolio
+//     }
+// }
 /* ------ THUNK ACTIONS ------ */
 export const getUserPortfolios = () => async (dispatch) => {
     const response = await fetch(`/api/portfolios/`)
@@ -37,7 +43,7 @@ export const getUserPortfolios = () => async (dispatch) => {
     }
 }
 
-export const addOnePortfolio = ({ stockId, purchase_price, quantity }) => async (dispatch) => {
+export const buyStock = ({ stockId, purchase_price, quantity }) => async (dispatch) => {
     const response = await fetch(`/api/portfolios/${stockId}`, {
         method: 'POST',
         headers: {
@@ -53,13 +59,18 @@ export const addOnePortfolio = ({ stockId, purchase_price, quantity }) => async 
         const portfolio = await response.json()
         dispatch(addPortfolio(portfolio))
         return portfolio
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data;
+        }
     } else {
         return ['An error occurred. Please try again.']
     }
 }
 
-export const updatePortfolioById = ({ portfolioId, quantity }) => async (dispatch)  => {
-    const response = await fetch(`/api/portfolios/${portfolioId}`, {
+export const sellStock = ({ stockId, quantity }) => async (dispatch)  => {
+    const response = await fetch(`/api/portfolios/${stockId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -71,7 +82,12 @@ export const updatePortfolioById = ({ portfolioId, quantity }) => async (dispatc
 
     if (response.ok) {
         const updatedPortfolio = await response.json()
-        dispatch(updatePortfolio(updatedPortfolio))
+        if (updatedPortfolio.portfolio) {
+            dispatch(updatePortfolio(updatedPortfolio))
+        } 
+        // else {
+        //     dispatch(deletePortfolio(updatePortfolio))
+        // }
         return updatedPortfolio
     } else if (response.status < 500) {
         const data = await response.json();

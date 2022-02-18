@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { buyStock } from '../../store/portfolio'
+import { getAllStocks } from '../../store/stock'
 
 export default function BuyForm({ stockId }) {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const [errors, setErrors] = useState([])
     const [quantity, setQuantity] = useState(0)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
-        
-    }, [])
+        dispatch(getAllStocks())
+        .then(() => setIsLoaded(true))
+    }, [dispatch, isLoaded])
 
     const buyShares = async (e) => {
         e.preventDefault()
@@ -18,12 +23,18 @@ export default function BuyForm({ stockId }) {
         const payload = {
             stockId, 
             quantity,
-            purchase_price: $100
+            purchase_price: 100
         }
+
+        console.log(payload, "payload")
 
         const data = await dispatch(buyStock(payload))
         if (data.errors) {
             setErrors(data.errors)
+        } else {
+            setIsLoaded(!isLoaded)
+            setQuantity(0)
+            history.push("/")
         }
     }
 
@@ -38,7 +49,9 @@ export default function BuyForm({ stockId }) {
             <h5>Buying Power: </h5>
             <form>
                 <label htmlFor='quantity'>Quantity</label>
-                <input 
+                <input
+                type="number"
+                min="0"
                 autoComplete="off"
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
@@ -46,7 +59,7 @@ export default function BuyForm({ stockId }) {
                 <label htmlFor='marketprice'>Market Price</label>
                 <span>$</span>
                 <h6>Estimated Total: $</h6>
-                <button type="submit" onClick={buyShares}>Buy Shares</button>
+                <button type="submit" onClick={buyShares} disabled={!quantity}>Buy Shares</button>
             </form>
         </div>
      </>

@@ -14,12 +14,14 @@ export default function Stocks() {
     // const price = useSelector(state => state.stock?.price)
 
     const [showAddtoListModal, setShowAddtoListModal] = useState(false)
-    const [stockId, setStockId] = useState("")
+    const [stockId, setStockId] = useState(stock?.id)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         dispatch(getAllStocks())
         dispatch(getOneStock(ticker))
-    }, [dispatch, ticker])
+        .then(() => setIsLoaded(true))
+    }, [dispatch, ticker, isLoaded])
 
     const openWishlistForm = (e) => {
         e.preventDefault()
@@ -34,9 +36,9 @@ export default function Stocks() {
             <div>${stock?.price}</div>
             <button onClick={openWishlistForm} id={stock?.id}>Add to Watchlist</button>
             <h4>Buy {stock?.ticker}</h4>
-                <BuyForm stockId={stockId} />
+                <BuyForm stockId={stock?.id} />
             <h4>Sell {stock?.ticker}</h4>
-                <SellForm stockId={stockId} />
+                <SellForm stockId={stock?.id} />
             {showAddtoListModal && (
             <Modal onClose={() => setShowAddtoListModal(false)}>
                 <AddToWatchlistForm stockId={stockId} setShowAddtoListModal={setShowAddtoListModal}/>

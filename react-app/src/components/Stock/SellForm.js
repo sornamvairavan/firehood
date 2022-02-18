@@ -1,33 +1,40 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { sellStock } from '../../store/portfolio'
+import { getAllStocks } from '../../store/stock'
 
 export default function SellForm({ stockId }) {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const [errors, setErrors] = useState([])
     const [quantity, setQuantity] = useState(0)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
-        
-    }, [])
+        dispatch(getAllStocks())
+        .then(() => setIsLoaded(true))
+    }, [dispatch, isLoaded])
 
-    // const addToList = async (e) => {
-    //     e.preventDefault()
+    const sellShares = async (e) => {
+        e.preventDefault()
 
-    //     const payload = {
-    //         stockId, 
-    //         watchlistId
-    //     }
+        const payload = {
+            stockId,
+            quantity
+        }
 
-    //     const data = await dispatch(addStockToList(payload))
-    //     if (data.errors) {
-    //         setErrors(data.errors)
-    //     } else {
-    //         dispatch(getUserWatchlists())
-    //         setShowAddtoListModal(false)
-    //     }
-    // }
+        const data = await dispatch(sellStock(payload))
+        if (data.errors) {
+            setErrors(data.errors)
+        } else {
+            setIsLoaded(!isLoaded)
+            setQuantity(0)
+            history.push("/")
+        }
+    }
+
 
     return (
         <>
@@ -40,7 +47,9 @@ export default function SellForm({ stockId }) {
             <h5>Currently held: </h5>
             <form>
                 <label htmlFor='quantity'>Quantity</label>
-                <input 
+                <input
+                type="number"
+                min="0"
                 autoComplete="off"
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
@@ -48,7 +57,7 @@ export default function SellForm({ stockId }) {
                 <label htmlFor='marketprice'>Market Price</label>
                 <span>$</span>
                 <h6>Estimated Cost: $</h6>
-                <button type="submit">Sell Shares</button>
+                <button type="submit" onClick={sellShares} disabled={!quantity}>Sell Shares</button>
             </form>
         </div>
      </>
