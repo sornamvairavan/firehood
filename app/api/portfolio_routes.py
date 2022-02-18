@@ -90,7 +90,7 @@ def update_portfolio(stock_id):
     for portfolio in user_portfolios:
         if portfolio.stock_id == stock_id:
             if int(updated_port["quantity"]) > portfolio.quantity:
-                return {"errors": ["You can only sell within the number of shares you own"]}, 400
+                return {"errors": ["You can only sell within the number of shares you hold"]}, 400
             else:
                 portfolioId = portfolio.id
                 portfolio.quantity -= int(updated_port["quantity"])
@@ -103,6 +103,8 @@ def update_portfolio(stock_id):
                 )
                 db.session.add(new_transaction)
                 db.session.commit()
+        else:
+            return {"errors": ["You do not hold any of these shares to sell"]}, 400
 
     updated_portfolio = Portfolio.query.get(portfolioId)
 
