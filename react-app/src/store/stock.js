@@ -33,8 +33,8 @@ export const getOneStock = (ticker) => async (dispatch) => {
 
     if (response.ok) {
         const stockDetail = await response.json()
-        dispatch(getStock(stockDetail))
-        return stockDetail
+        dispatch(getStock(stockDetail.stockdata))
+        return stockDetail.stockdata
     }
 }
 
@@ -51,7 +51,7 @@ export default function stockReducer(state = initialState, action) {
             }, {})
             return newState
         case GET_STOCK:
-            newState = {...state, price: action.stockDetail[0]["Global Quote"]["05. price"]};
+            newState = {...state, price: action.stockDetail};
             return newState;
         default:
             return state;

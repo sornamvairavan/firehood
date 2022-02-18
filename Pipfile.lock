@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0301b4ce58a219465356ab84c8ae1ec6aaab3cc7fbbf3225ba4f1115c761b333"
+            "sha256": "74327385a8ede3478b0d87b5bd91ea445c19a1fbfdd50fd61ea8968959ea95b2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -146,7 +146,7 @@
                 "sha256:2857e29ff0d34db842cd7ca3230549d1a697f96ee6d3fb071cfa6c7393832597",
                 "sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df"
             ],
-            "markers": "python_full_version >= '3.5.0'",
+            "markers": "python_version >= '3'",
             "version": "==2.0.12"
         },
         "click": {
@@ -156,6 +156,14 @@
             ],
             "index": "pypi",
             "version": "==7.1.2"
+        },
+        "finnhub-python": {
+            "hashes": [
+                "sha256:5be38a649ad2e81f1aaa41375d7870b1dec0e6f64055813b3d30e4e534222b8f",
+                "sha256:6bc25e57aabb942fa6a62bc95cd4451a3f974ed71a27b4b2e5fab54d85003a51"
+            ],
+            "index": "pypi",
+            "version": "==2.4.10"
         },
         "flask": {
             "hashes": [
@@ -338,7 +346,7 @@
                 "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
                 "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"
             ],
-            "markers": "python_full_version >= '3.5.0'",
+            "markers": "python_version >= '3'",
             "version": "==3.3"
         },
         "itsdangerous": {

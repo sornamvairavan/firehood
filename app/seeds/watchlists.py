@@ -16,14 +16,15 @@ def seed_watchlists():
     tesla = Stock.query.get(92)
 
     demo_wl1.stocks.append(apple)
-    demo_wl1.stocks.append(amazon)
-    demo_wl1.stocks.append(netflix)
+    # demo_wl1.stocks.append(amazon)
+    # demo_wl1.stocks.append(netflix)
 
+    demo_wl2.stocks.append(apple)
     demo_wl2.stocks.append(google)
-    demo_wl2.stocks.append(fb)
-    demo_wl2.stocks.append(microsoft)
+    # demo_wl2.stocks.append(fb)
+    # demo_wl2.stocks.append(microsoft)
 
-    demo_wl3.stocks.append(tesla)
+    # demo_wl3.stocks.append(tesla)
 
     db.session.add(demo_wl1)
     db.session.add(demo_wl2)

@@ -61,9 +61,10 @@ export default function Watchlist() {
                         <i className="fa-solid fa-gear" onClick={openEditWatchlistForm} id={watchlist.id}></i>
                         <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id}></i>
                         {watchlist.stocks?.length > 0 && <ul>
-                            {watchlist.stocks.map((stock, idx) => (
+                            {watchlist.stocks?.map((stock, idx) => (
                                 <li key={idx}>
-                                    <Link to={`/stocks/${stock.ticker}`}>{stock.ticker}</Link>
+                                    <Link to={`/stocks/${stock?.ticker}`}>{stock?.ticker}</Link>
+                                    <span>{stock?.price}</span>
                                     <i className="fa-solid fa-xmark" onClick={(e) => removeStock(stock.id, watchlist.id)}></i>
                                 </li>))}
                             </ul>}

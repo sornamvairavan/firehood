@@ -1,6 +1,20 @@
+import os
 from .db import db
 from .watchlist import watchlists_stocks
+import finnhub
 
+
+FIN_KEY = os.environ.get("FIN_KEY")
+FIN_KEY2 = os.environ.get("FIN_KEY2")
+finnhub_client = finnhub.Client(api_key={FIN_KEY})
+finnhub2_client = finnhub.Client(api_key={FIN_KEY2})
+
+def get_price(ticker):
+    try:
+        price = finnhub_client.quote(ticker)["c"]
+    except:
+        price = finnhub2_client.quote(ticker)["c"]
+    return float(price)
 
 class Stock(db.Model):
     __tablename__ = 'stocks'
@@ -14,7 +28,10 @@ class Stock(db.Model):
     transaction = db.relationship("Transaction", back_populates="stock")
     watchlists = db.relationship("Watchlist", back_populates="stocks", secondary=watchlists_stocks)
 
-    def to_dict(self):
+    def to_dict(self): 
+        # if not self.price:
+        #    self.price = get_price(self.ticker_symbol)
+
         return {
             'id': self.id,
             'company_name': self.company_name,
