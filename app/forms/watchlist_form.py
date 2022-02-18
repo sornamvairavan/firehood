@@ -2,14 +2,17 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, ValidationError
 from app.models import Watchlist
-
+from flask_login import current_user
 
 def watchlist_exists(form, field):
-    # Checking if watchlist name already exists
+    # Checking if user watchlist name already exists
     name = field.data
-    watchlist = Watchlist.query.filter(Watchlist.name == name).first()
-    if watchlist:
-        raise ValidationError('Watchlist already exists.')
+    user_id = int(current_user.id)
+    user_watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
+
+    for w in user_watchlists:
+        if (w.name == name):
+            raise ValidationError('Watchlist already exists.')
 
 class WatchlistForm(FlaskForm):
     name = StringField('name', validators=[DataRequired(), watchlist_exists])
