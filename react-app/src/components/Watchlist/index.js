@@ -5,6 +5,7 @@ import { Modal } from '../../context/Modal'
 import EditWatchlistForm from "./EditWatchlist"
 import NewWatchlistForm from "./NewWatchlist"
 import { getUserWatchlists, deleteWatchlistById, removeStockFromList } from "../../store/watchlist"
+import './Watchlist.css'
 
 export default function Watchlist() {
     const dispatch = useDispatch()
@@ -54,44 +55,25 @@ export default function Watchlist() {
             {showNewForm && (
                 <NewWatchlistForm setShowNewForm={setShowNewForm}/>
             )}
-            {userWatchlistsArr.length > 0 && (
-                userWatchlistsArr.map((watchlist, idx) => (
-                    <Link to={`/stocks/${portfolio?.stock?.ticker}`}>
-                        <div key={idx} className="stock-card">
-                            <div class="card-ticker-shares">
-                                <div>{portfolio?.stock?.ticker}</div>
-                                <div>{portfolio?.quantity} shares</div>
-                            </div>
-                            <div>{portfolio?.stock?.price}$price</div>
-                        </div>
-                    </Link>
-                )))}
-            {userWatchlistsArr.length > 0 && userWatchlistsArr.map((watchlist, idx) => (
+             {userWatchlistsArr.length > 0 && userWatchlistsArr.map((watchlist, idx) => (
                 <div key={idx}>
-                    <div>
-                        <span>{watchlist.name}</span>
+                        <h3 className="watchlist-title">{watchlist.name}</h3>
                         <i className="fa-solid fa-gear" onClick={openEditWatchlistForm} id={watchlist.id}></i>
                         <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id}></i>
-                        {watchlist.stocks?.length > 0 && (
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Stock</th>
-                                    <th>Price</th>
-                                    <th>Delete from List</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {watchlist.stocks.map((stock, idx) => (
-                                <tr key={idx}>
-                                    <td><Link to={`/stocks/${stock?.ticker}`}>{stock?.ticker}</Link></td>
-                                    <td>{stock?.price}</td>
-                                    <td><i className="fa-solid fa-xmark" onClick={(e) => removeStock(stock.id, watchlist.id)}></i></td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>)}
-                    </div>
+                        {watchlist.stocks?.length > 0 &&  (
+                            watchlist.stocks.map((stock, idx) => (
+                                <div>
+                                    <div key={idx} className="stock-card">
+                                        <Link to={`/stocks/${stock?.ticker}`}>
+                                            <div>
+                                                <h4>{stock?.ticker}</h4>
+                                            </div>
+                                            <div>{stock?.price}$price</div>
+                                        </Link>
+                                        <i className="fa-solid fa-xmark" onClick={(e) => removeStock(stock.id, watchlist.id)}></i>
+                                    </div>
+                                </div>
+                            )))}
                 </div>
             ))}
             </div>

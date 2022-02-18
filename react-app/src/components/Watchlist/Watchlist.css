@@ -1,0 +1,41 @@
+.watchlist-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 7%;
+    padding-right: 11%
+}
+
+.stock-card{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 3px;
+}
+
+.stock-card h4 {
+    margin-top: 15%;
+    margin-bottom: 15%;
+    font-size: .8em;
+    font-weight: bold;;
+}
+
+.stock-card p {
+    margin-top: 15%;
+    margin-bottom: 15%;
+    font-size: .8em;
+}
+
+.stock-card:hover{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.stocklist-container {
+    position: fixed;
+    top: 13%;
+    right: 12%;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    width: 270px;
+    height: 77%;
+}
