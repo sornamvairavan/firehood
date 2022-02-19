@@ -57,6 +57,10 @@
     margin-top: 20px;
 }
 
+.splash-signup:hover {
+    color: black;
+    background-color: white;
+}
 
 .network-links {
     background-color: whitesmoke;

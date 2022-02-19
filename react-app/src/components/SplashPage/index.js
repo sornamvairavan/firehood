@@ -21,7 +21,7 @@ export default function SplashPage() {
               <h3 className="one-liner">Commission-free investing, plus the tools you need to put your money in motion.</h3>
             </div>
             <div className="signup-cont">
-              <Link to="/signup" className='splash-signup'>Sign up</Link>
+              <Link to="/sign-up" className='splash-signup'>Sign up</Link>
             </div>
           </div>
           <div className='logo'>
