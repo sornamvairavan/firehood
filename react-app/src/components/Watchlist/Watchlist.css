@@ -105,18 +105,24 @@ a {
     overflow-y: scroll;
 }
 
-.new-watchlist-form {
+.watchlist-form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.new-watchlist-form input {
+.watchlist-form input {
     height: 25px;
-    width: 70%;
+    width: 80%;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 5px;
     margin-bottom: 10px;
+}
+
+.watchlist-form-title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.25rem;
 }
 
 .form-button-container {
@@ -135,7 +141,7 @@ a {
     font-size: .8rem;
 }
 
-.create-button {
+.save-button {
     margin-right: 5px;
     border: 1px solid rgb(0,200,5);
     background-color: rgb(0,200,5);
@@ -147,20 +153,20 @@ a {
     color: white
 }
 
-.cancel-button:hover {
+.save-button:hover {
     cursor: pointer;
     background-color: rgba(0, 200, 7, 0.5);
     color: white;
     border: 1px solid rgba(0, 200, 7, 0.5);
 }
 
-.create-button:hover {
+.save-button:hover {
     background-color:  rgb(0, 180, 7);
     cursor: pointer;
     border: 1px solid rgb(0, 180, 7);
 }
 
-.create-button:disabled {
+.save-button:disabled {
     background-color: rgba(0, 200, 7, 0.25);
     padding: 7px 11px;
     cursor: auto;

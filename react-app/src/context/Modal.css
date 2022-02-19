@@ -22,9 +22,9 @@
 #modal-content {
     background-color: rgba(255, 255, 255, 1);
     position: absolute;
-    width: fit-content;
+    width: 30%;
     height: fit-content;
-    padding: 30px;
+    padding: 15px;
     border-radius: 3px;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
 }

@@ -30,23 +30,21 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
 
     return (
         <>
-            <div className="watchlist-form">
+            <div>
                 <i className="fa-solid fa-xmark" onClick={() => setShowEditModal(false)}></i>
-                <h3 className="watchlist-title">Edit list</h3>
+                <h3 className="watchlist-form-title">Edit list</h3>
                 <div>
                     {errors?.length > 0 && <ul className="errors">
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>}
                 </div>
-                <form>
-                    <div className="watchlist-input-container">
-                        <input
-                        autoComplete="off"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        />
-                        <button onClick={editWatchlist} type="submit" disabled={!name}>Save</button>
-                    </div>
+                <form className="watchlist-form">
+                    <input
+                    autoComplete="off"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    />
+                    <button onClick={editWatchlist} type="submit" disabled={!name} className="save-button">Save Changes</button>
                 </form>
             </div>
          </>

@@ -22,13 +22,13 @@ export default function NewWatchlistForm({ setShowNewForm }) {
 
 
     return (
-        <div className="watchlist-form">
+        <div>
             <div>
                 {errors?.length > 0 && <ul className="errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
             </div>
-            <form className="new-watchlist-form">
+            <form className="watchlist-form">
                 <input
                 required
                 autoComplete="off"
@@ -38,7 +38,7 @@ export default function NewWatchlistForm({ setShowNewForm }) {
                 />
                 <div className='form-button-container'>
                     <span onClick={() => setShowNewForm(false)} className="cancel-button">Cancel</span>
-                    <button onClick={newWatchlist} type="submit" disabled={!name} className="create-button">Create List</button>
+                    <button onClick={newWatchlist} type="submit" disabled={!name} className="save-button">Create List</button>
                 </div>
             </form>
         </div>
