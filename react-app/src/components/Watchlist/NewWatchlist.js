@@ -35,8 +35,10 @@ export default function NewWatchlistForm({ setShowNewForm }) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 />
-                <span onClick={() => setShowNewForm(false)}>Cancel</span>
-                <button onClick={newWatchlist} type="submit" disabled={!name}>Create List</button>
+                <div className='form-button-container'>
+                    <span onClick={() => setShowNewForm(false)} className="cancel-button">Cancel</span>
+                    <button onClick={newWatchlist} type="submit" disabled={!name} className="create-button">Create List</button>
+                </div>
             </form>
         </div>
     )

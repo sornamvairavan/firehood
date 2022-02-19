@@ -3,11 +3,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(90, 196, 59, 0.35);
+  background: rgba(90, 196, 59, 0.15);
   margin: 0;
   top: 0;
-  max-width: none !important;
-  height: 64px;
+  height: 60px;
 }
 
 .logo-img {

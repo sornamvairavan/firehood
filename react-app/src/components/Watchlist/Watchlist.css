@@ -98,3 +98,52 @@ a {
     flex-direction: column;
     align-items: center;
 }
+
+.new-watchlist-form input {
+    height: 25px;
+    width: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.form-button-container {
+    margin: 3px 0px;
+    margin-bottom: 15px;
+}
+
+.cancel-button {
+    margin-right: 5px;
+    border: 1px solid rgb(0,200,5);;
+    color: rgb(0,200,5);
+    text-align: center;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: .8rem;
+}
+
+.create-button {
+    margin-right: 5px;
+    border: 1px solid rgb(0,200,5);
+    background-color: rgb(0,200,5);
+    text-align: center;
+    box-sizing: border-box;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: .8rem;
+    color: white
+}
+
+.cancel-button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 200, 7, 0.4);
+    color: white;
+    border: 1px solid rgba(0, 200, 7, 0.4);
+}
+
+.create-button:hover {
+    background-color:  rgb(0, 180, 7);
+    cursor: pointer;
+    border: 1px solid rgb(0, 180, 7);
+}
