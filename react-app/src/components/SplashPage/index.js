@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import logo from '../../images/logo.png'
 import './SplashPage.css'
 
 export default function SplashPage() {
@@ -12,6 +13,9 @@ export default function SplashPage() {
 
     return (
       <div className="splash-container">
+        <div className='logo'>
+          <img src={logo} alt="logo" className="splash-logo"/>
+        </div>
         <div className="splash-text-container">
           <h2 className="header1">Investing for Everyone</h2>
           <h5 className="one-liner">Your way to Financial Independence, Retire Early (FIRE)</h5>

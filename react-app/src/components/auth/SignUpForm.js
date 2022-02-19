@@ -58,13 +58,10 @@ const SignUpForm = () => {
 
   return (
     <div className='auth-container'>
-      <div className='auth-image'>
-        <img src={logo} alt="logo" className="logo"/>
-      </div>
-      <div className='right-auth-form'>
         <div className='auth-form-container'>
           <form onSubmit={onSignUp} className="auth-form">
           <h1 className="form-title">Sign up for Firehood</h1>
+          <img src={logo} alt="logo" className="auth-logo"/>
             <div>
               {errors.length > 0 && <ul className="errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -113,7 +110,6 @@ const SignUpForm = () => {
             </div>
           </form>
         </div>
-      </div>
     </div>
   );
 };
