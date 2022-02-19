@@ -1,12 +1,11 @@
 .nav-bar {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(90, 196, 59, 0.15);
-  margin: 0;
   top: 0;
   height: 60px;
+  font-size: 0.8em;
+  margin: 10px;
 }
 
 .logo-img {
@@ -26,6 +25,11 @@
   text-underline-offset: 2px;
   text-decoration-thickness: 1.5px;
   /* text-decoration-color: rgba(255, 255, 255, 0.774); */
+  color: rgba(0,180,5,1)
+}
+
+.nav-tabs:hover {
+  color: rgba(0,180,5,0.7)
 }
 
 #signup-button {
@@ -78,7 +82,8 @@
   border-radius: 3px;
   cursor: pointer;
   font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-  margin: 3px;
+  margin: 3px 10px;
+  margin-right: 30px;
 }
 
 #logout-button:hover {
