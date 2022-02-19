@@ -57,6 +57,7 @@ export default function Watchlist() {
             {showNewForm && (
                 <NewWatchlistForm setShowNewForm={setShowNewForm}/>
             )}
+            <div className="watchlists-container">
              {userWatchlistsArr.length > 0 && userWatchlistsArr.map((watchlist, idx) => (
                 <div key={idx}>
                     <div className="watchlist-name-container">
@@ -85,8 +86,9 @@ export default function Watchlist() {
                                 
                             </div>
                         )))}
+                    </div>
+                ))}
                 </div>
-            ))}
             </div>
             {showEditModal && (
                 <Modal onClose={() => setShowEditModal(false)}>
