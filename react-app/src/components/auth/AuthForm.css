@@ -107,11 +107,11 @@ input:focus, select:focus {
 }
 
 .errors {
-    margin: 5px auto;
-    width: 90%;
+    margin: 10px auto;
+    width: 75%;
     list-style: none;
     padding: 5px;
-    background-color: #f8d7da;
+    background-color: #f7dddf;
     text-align: center;
     border-radius: 7px;
 }
