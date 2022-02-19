@@ -77,11 +77,16 @@
     text-decoration: none;
   }
   
-  .network-links .fab, .network-links > div {
+.network-links .fab, .network-links > div {
     color: rgba(0, 0, 0, 0.8);
     margin: 10px;
-  }
-  
-  .network-links .fab:hover {
+}
+
+.network-links .fab:hover {
     opacity: 0.7;
-  }
+}
+
+.tech {
+    display: flex;
+    flex-direction: row;
+}

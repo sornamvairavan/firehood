@@ -29,6 +29,13 @@ export default function SplashPage() {
           </div>
         </div>
           <footer className='network-links'>
+            <div className='tech'>
+              <div>React</div>
+              <div>Redux</div>
+              <div>JavaScript</div>
+              <div>Python</div>
+              <div>Flask</div>
+            </div>
             <div>Sornam Vairavan</div>
             <a href="https://www.linkedin.com/in/sornamvairavan" target="_blank" rel="noreferrer">
               <i className="fab fa-linkedin fa-lg"></i>
