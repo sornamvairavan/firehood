@@ -89,4 +89,9 @@
 .tech {
     display: flex;
     flex-direction: row;
+    font-size: 0.8em;
+}
+
+.tech > * {
+    margin: 10px;
 }
