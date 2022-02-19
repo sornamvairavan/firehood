@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .portfolio-title-container {
     padding: 24px 24px 14px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -73,10 +77,6 @@
     cursor: pointer;
     opacity: 0.8;
     color:rgb(0,200,5);
-}
-
-a {
-    text-decoration: none;
 }
 
 .stock-card:hover{
