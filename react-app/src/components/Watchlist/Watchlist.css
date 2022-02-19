@@ -1,0 +1,156 @@
+.portfolio-title-container {
+    padding: 24px 24px 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 1rem;
+}
+
+.watchlist-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.watchlist-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 24px 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+.watchlist-name-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px 14px;
+    font-size: 0.9em;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stock-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 24px;
+}
+
+.stock-card h4 {
+    margin-top: 15%;
+    margin-bottom: 15%;
+    font-size: .8em;
+    font-weight: bold;;
+}
+
+.stock-card p {
+    margin-top: 15%;
+    margin-bottom: 15%;
+    font-size: .8em;
+}
+
+.remove-price {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    margin-bottom: 18px;
+}
+
+.remove, .fa-circle-xmark {
+    color: rgb(204, 40, 40)
+}
+
+.fa-solid {
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.fa-gear {
+    color: green
+}
+
+.fa-solid:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    opacity: 0.8;
+    color:rgb(0,200,5);
+}
+
+a {
+    text-decoration: none;
+}
+
+.stock-card:hover{
+    background-color: rgba(169, 169, 169, 0.1);
+}
+
+.stocklist-container {
+    position: fixed;
+    top: 100px;
+    right: 100px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    width: 300px;
+    height: auto;
+}
+
+.new-watchlist-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-watchlist-form input {
+    height: 25px;
+    width: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.form-button-container {
+    margin: 3px 0px;
+    margin-bottom: 15px;
+}
+
+.cancel-button {
+    margin-right: 5px;
+    border: 1px solid rgb(0,200,5);;
+    color: rgb(0,200,5);
+    text-align: center;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: .8rem;
+}
+
+.create-button {
+    margin-right: 5px;
+    border: 1px solid rgb(0,200,5);
+    background-color: rgb(0,200,5);
+    text-align: center;
+    box-sizing: border-box;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: .8rem;
+    color: white
+}
+
+.cancel-button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 200, 7, 0.5);
+    color: white;
+    border: 1px solid rgba(0, 200, 7, 0.5);
+}
+
+.create-button:hover {
+    background-color:  rgb(0, 180, 7);
+    cursor: pointer;
+    border: 1px solid rgb(0, 180, 7);
+}
+
+.create-button:disabled {
+    background-color: rgba(0, 200, 7, 0.25);
+    padding: 7px 11px;
+    cursor: auto;
+    border: none;
+}

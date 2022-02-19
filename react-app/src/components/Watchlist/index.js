@@ -5,6 +5,7 @@ import { Modal } from '../../context/Modal'
 import EditWatchlistForm from "./EditWatchlist"
 import NewWatchlistForm from "./NewWatchlist"
 import { getUserWatchlists, deleteWatchlistById, removeStockFromList } from "../../store/watchlist"
+import './Watchlist.css'
 
 export default function Watchlist() {
     const dispatch = useDispatch()
@@ -48,38 +49,42 @@ export default function Watchlist() {
 
     return (
         <div>
-            <span>Watchlist</span>
-            <i className="fa-solid fa-plus" onClick={openNewWatchlistForm}></i>
-            <div className="watchlist-list">
+            <div className="watchlist-title-container">
+                <span className="watchlist-title">Watchlists</span>
+                <span><i className="fa-solid fa-plus" onClick={openNewWatchlistForm}></i></span>
+            </div>
+            <div>
             {showNewForm && (
                 <NewWatchlistForm setShowNewForm={setShowNewForm}/>
             )}
-            {userWatchlistsArr.length > 0 && userWatchlistsArr.map((watchlist, idx) => (
+             {userWatchlistsArr.length > 0 && userWatchlistsArr.map((watchlist, idx) => (
                 <div key={idx}>
-                    <div>
-                        <span>{watchlist.name}</span>
-                        <i className="fa-solid fa-gear" onClick={openEditWatchlistForm} id={watchlist.id}></i>
-                        <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id}></i>
-                        {watchlist.stocks?.length > 0 && (
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Stock</th>
-                                    <th>Price</th>
-                                    <th>Delete from List</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {watchlist.stocks.map((stock, idx) => (
-                                <tr key={idx}>
-                                    <td><Link to={`/stocks/${stock?.ticker}`}>{stock?.ticker}</Link></td>
-                                    <td>{stock?.price}</td>
-                                    <td><i className="fa-solid fa-xmark" onClick={(e) => removeStock(stock.id, watchlist.id)}></i></td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>)}
+                    <div className="watchlist-name-container">
+                        <div>{watchlist.name}</div>
+                        <div>
+                            <i className="fa-solid fa-gear" onClick={openEditWatchlistForm} id={watchlist.id}></i>
+                            <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id}></i>
+                        </div>
                     </div>
+                    {watchlist.stocks?.length > 0 &&  (
+                        watchlist.stocks.map((stock, idx) => (
+                            <div key={idx}>
+                                    <div className="stock-card">
+                                        <div>
+                                        <Link to={`/stocks/${stock?.ticker}`}>
+                                            <h5>{stock?.ticker}</h5>
+                                        </Link>
+                                        </div>
+                                        <div>
+                                            <span className="remove-price">
+                                                <div>{stock?.price}$price</div>
+                                                <span><i className="fa-solid fa-xmark remove" onClick={(e) => removeStock(stock.id, watchlist.id)}></i></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        )))}
                 </div>
             ))}
             </div>

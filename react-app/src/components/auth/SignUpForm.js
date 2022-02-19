@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { signUp, login } from '../../store/session';
+import logo from '../../images/logo.png'
 import './AuthForm.css'
 
 const SignUpForm = () => {
@@ -13,6 +14,11 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const demoLogin = e => {
+    e.preventDefault()
+    return dispatch(login("demo@aa.io", "password"))
+  }
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -54,6 +60,7 @@ const SignUpForm = () => {
     <div className='auth-form-container'>
       <form onSubmit={onSignUp} className="auth-form">
       <h1 className="form-title">Sign up for Firehood</h1>
+      <img src={logo} alt="logo" className="auth-logo"/>
         <div>
           {errors.length > 0 && <ul className="errors">
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -97,6 +104,7 @@ const SignUpForm = () => {
             required={true}
           ></input>
           <button type='submit' className="auth-button">Sign Up</button>
+          <button onClick={demoLogin} to="#" id="demo-button">Demo</button>
           <p>Already have an account? <Link to="/login">Login here.</Link></p>
         </div>
       </form>
