@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import logo from '../../images/logo.png'
 import './AuthForm.css'
 
 const LoginForm = () => {
@@ -41,6 +42,7 @@ const LoginForm = () => {
     <div className='auth-form-container'>
       <form onSubmit={onLogin} className="auth-form">
       <h1 className="form-title">Login to Firehood</h1>
+      <img src={logo} alt="logo" className="auth-logo"/>
         <div>
         {errors.length > 0 && <ul className="errors">
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
