@@ -10,6 +10,7 @@ import Portfolio from './components/Portfolio';
 import { authenticate } from './store/session';
 import Stocks from './components/Stock';
 import Transaction from './components/Transactions';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +47,9 @@ function App() {
         <ProtectedRoute path='/transactions' exact={true}>
           <Transaction />
         </ProtectedRoute>
+        <Route>
+          <PageNotFound />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
