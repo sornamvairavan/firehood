@@ -137,13 +137,20 @@ a {
 
 .cancel-button:hover {
     cursor: pointer;
-    background-color: rgba(0, 200, 7, 0.4);
+    background-color: rgba(0, 200, 7, 0.5);
     color: white;
-    border: 1px solid rgba(0, 200, 7, 0.4);
+    border: 1px solid rgba(0, 200, 7, 0.5);
 }
 
 .create-button:hover {
     background-color:  rgb(0, 180, 7);
     cursor: pointer;
     border: 1px solid rgb(0, 180, 7);
+}
+
+.create-button:disabled {
+    background-color: rgba(0, 200, 7, 0.25);
+    padding: 7px 11px;
+    cursor: auto;
+    border: none;
 }

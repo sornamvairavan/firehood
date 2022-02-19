@@ -30,6 +30,7 @@ export default function NewWatchlistForm({ setShowNewForm }) {
             </div>
             <form className="new-watchlist-form">
                 <input
+                required
                 autoComplete="off"
                 placeholder='List name'
                 value={name}
