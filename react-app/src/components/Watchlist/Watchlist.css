@@ -1,18 +1,31 @@
-.portfolio-title {
-    font-weight: bold;
-    padding: 4px 24px 0px;
+.portfolio-title-container {
+    padding: 24px 24px 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 1rem;
 }
 
 .watchlist-title {
-    /* padding-top: 20px; */
     font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .watchlist-title-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 24px 0px;
+    padding: 24px 24px 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+.watchlist-name-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px 14px;
+    font-size: 0.9em;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .stock-card {
@@ -35,6 +48,33 @@
     font-size: .8em;
 }
 
+.remove-price {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    margin-bottom: 18px;
+}
+
+.fa-xmark, .fa-circle-xmark {
+    color: rgb(204, 40, 40)
+}
+
+.fa-solid {
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.fa-gear {
+    color: green
+}
+
+.fa-solid:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    opacity: 0.8;
+    color:rgb(0,200,5);
+}
+
 a {
     text-decoration: none;
 }
@@ -46,9 +86,15 @@ a {
 .stocklist-container {
     position: fixed;
     top: 100px;
-    padding-top: 10px;
     right: 100px;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
     border-radius: 5px;
     width: 300px;
+    height: auto;
+}
+
+.new-watchlist-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

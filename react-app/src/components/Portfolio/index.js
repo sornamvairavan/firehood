@@ -19,7 +19,9 @@ export default function Portfolio() {
 
     return (
         <div className="stocklist-container">
-            <span className="portfolio-title">Portfolio</span>
+            <div className="portfolio-title-container">
+                <span className="watchlist-title">Portfolio</span>
+            </div>
             {userPortfoliosArr.length > 0 && (
                 userPortfoliosArr.map((portfolio, idx) => (
                     <Link to={`/stocks/${portfolio?.stock?.ticker}`} key={idx}>

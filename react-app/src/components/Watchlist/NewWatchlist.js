@@ -28,9 +28,10 @@ export default function NewWatchlistForm({ setShowNewForm }) {
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
             </div>
-            <form>
+            <form className="new-watchlist-form">
                 <input
                 autoComplete="off"
+                placeholder='List name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 />
