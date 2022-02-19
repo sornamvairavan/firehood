@@ -35,6 +35,7 @@ export default function SplashPage() {
               <div>JavaScript</div>
               <div>Python</div>
               <div>Flask</div>
+              <div>PostgreSQL</div>
             </div>
             <div>Sornam Vairavan</div>
             <a href="https://www.linkedin.com/in/sornamvairavan" target="_blank" rel="noreferrer">
