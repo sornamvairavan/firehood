@@ -1,3 +1,10 @@
+.auth-container {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    width: 90%;
+    margin: 20px auto;
+}
+
 .auth-form-container {
     display: grid;
     width: 100%;
@@ -5,7 +12,6 @@
 
 .auth-form {
     background-color: white;
-    margin: 100px auto;
     width: 22rem;
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding: 1.5rem;

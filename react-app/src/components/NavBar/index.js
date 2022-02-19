@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import homelogo from '../../images/firehood-logo.png'
@@ -7,7 +7,6 @@ import './NavBar.css'
 
 
 const NavBar = () => {
-  const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
   let sessionLinks;
