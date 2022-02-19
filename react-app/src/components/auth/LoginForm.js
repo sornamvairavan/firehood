@@ -11,6 +11,12 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+
+  const demoLogin = e => {
+    e.preventDefault()
+    return dispatch(login("demo@aa.io", "password"))
+  }
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -45,7 +51,6 @@ const LoginForm = () => {
           <input
             name='email'
             type='text'
-            placeholder='Email'
             value={email}
             onChange={updateEmail}
           />
@@ -53,11 +58,11 @@ const LoginForm = () => {
           <input
             name='password'
             type='password'
-            placeholder='Password'
             value={password}
             onChange={updatePassword}
           />
           <button type='submit' className="auth-button">Login</button>
+          <button onClick={demoLogin} to="#" id="demo-button">Demo</button>
           <p>Don't have an account? <Link to="/sign-up">Sign up here.</Link></p>
         </div>
       </form>

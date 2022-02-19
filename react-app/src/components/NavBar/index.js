@@ -1,8 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
-import { login } from '../../store/session';
 import homelogo from '../../images/firehood-logo.png'
 import './NavBar.css'
 
@@ -11,9 +10,6 @@ const NavBar = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
-  const demoLogin = e => {
-    return dispatch(login("demo@aa.io", "password"))
-  }
   let sessionLinks;
 
   if (user) {
@@ -28,7 +24,6 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <>
-        <Link onClick={demoLogin} to="#" id="demo-button">Demo</Link>
         <NavLink to="/login" id="login-button">Login</NavLink>
         <NavLink to="/sign-up" id='signup-button'>Sign Up</NavLink>
       </>
