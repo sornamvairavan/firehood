@@ -29,14 +29,14 @@ export default function SellForm({ stockId }) {
 
     return (
         <>
-        <div className="share-form">
+        <div className='share-form-container2'>
             <div>
                 {errors?.length > 0 && <ul className="errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
             </div>
             <h5>Currently held: </h5>
-            <form>
+            <form className="share-form">
                 <label htmlFor='quantity'>Quantity</label>
                 <input
                 type="number"
