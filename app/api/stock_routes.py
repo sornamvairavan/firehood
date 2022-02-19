@@ -19,11 +19,12 @@ def get_all_stocks():
 @login_required
 def get_stock_detail(ticker):
 
-    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&apikey={API_KEY}'
-    r = requests.get(url)
-    data = r.json()
-    last_refreshed = data["Meta Data"]["3. Last Refreshed"]
-    close_price = data["Time Series (Daily)"][last_refreshed]["4. close"]
-    return {"stockdata": {"last_refreshed": last_refreshed, "close_price": close_price}}
+    # url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&apikey={API_KEY}'
+    # r = requests.get(url)
+    # data = r.json()
+    # last_refreshed = data["Meta Data"]["3. Last Refreshed"]
+    # close_price = data["Time Series (Daily)"][last_refreshed]["4. close"]
+    # return {"stockdata": {"last_refreshed": last_refreshed, "close_price": close_price}}
+    return "hello"
 
 

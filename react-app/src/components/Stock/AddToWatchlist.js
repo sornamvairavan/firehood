@@ -35,15 +35,15 @@ export default function AddToWatchlistForm({ setShowAddtoListModal, stockId }) {
 
     return (
         <>
-        <div className="watchlist-form">
+        <div>
             <i className="fa-solid fa-xmark" onClick={() => setShowAddtoListModal(false)}></i>
-            <h3 className="watchlist-title">Add Stock to Your Lists</h3>
+            <h3 className="watchlist-form-title">Add Stock to Your Lists</h3>
             <div>
                 {errors?.length > 0 && <ul className="errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
             </div>
-            <form>
+            <form className="watchlist-form">
                 <select
                 required
                 value={watchlistId}
@@ -54,7 +54,7 @@ export default function AddToWatchlistForm({ setShowAddtoListModal, stockId }) {
                     <option key={watchlist?.id} value={watchlist?.id}>{watchlist?.name}</option>
                 ))}
                 </select>
-                <button onClick={addToList} type="submit" disabled={!watchlistId}>Save Changes</button>
+                <button onClick={addToList} type="submit" disabled={!watchlistId} className="save-button">Save Changes</button>
             </form>
         </div>
      </>

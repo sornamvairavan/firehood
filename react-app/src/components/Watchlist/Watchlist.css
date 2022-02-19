@@ -111,8 +111,8 @@ a {
     align-items: center;
 }
 
-.watchlist-form input {
-    height: 25px;
+.watchlist-form input, select {
+    height: 28px;
     width: 80%;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 5px;

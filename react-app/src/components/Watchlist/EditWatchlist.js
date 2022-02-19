@@ -32,7 +32,7 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
         <>
             <div>
                 <i className="fa-solid fa-xmark" onClick={() => setShowEditModal(false)}></i>
-                <h3 className="watchlist-form-title">Edit list</h3>
+                <h3 className="watchlist-form-title">Edit List</h3>
                 <div>
                     {errors?.length > 0 && <ul className="errors">
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
