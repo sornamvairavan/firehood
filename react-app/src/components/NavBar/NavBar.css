@@ -1,6 +1,6 @@
-/* a:visited {
+.nav-tabs:visited {
   color: black
-} */
+}
 
 .nav-bar {
   display: flex;

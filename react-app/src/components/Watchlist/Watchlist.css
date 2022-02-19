@@ -39,6 +39,11 @@ a {
     padding: 5px 24px;
 }
 
+
+.stock-card-link:visited {
+    color: black
+}
+
 .stock-card h4 {
     margin-top: 15%;
     margin-bottom: 15%;

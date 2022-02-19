@@ -53,6 +53,7 @@ const LoginForm = () => {
           <input
             name='email'
             type='text'
+            autoComplete='off'
             value={email}
             onChange={updateEmail}
           />

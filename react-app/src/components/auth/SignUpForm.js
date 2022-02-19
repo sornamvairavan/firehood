@@ -71,6 +71,7 @@ const SignUpForm = () => {
           <input
             type='text'
             name='fullname'
+            autoComplete='off'
             onChange={updateFullname}
             value={fullname}
           ></input>
@@ -78,6 +79,7 @@ const SignUpForm = () => {
           <input
             type='text'
             name='username'
+            autoComplete='off'
             onChange={updateUsername}
             value={username}
           ></input>
@@ -85,6 +87,7 @@ const SignUpForm = () => {
           <input
             type='text'
             name='email'
+            autoComplete='off'
             onChange={updateEmail}
             value={email}
           ></input>
