@@ -1,4 +1,6 @@
 /* TODO Add site wide styles */
-body {
+body, html {
+   margin: 0;
+   padding: 0;
    font-family:  Capsule Sans Text,-apple-system,BlinkMacSystemFont,sans-serif;
 }
