@@ -49,15 +49,17 @@ export default function Watchlist() {
 
     return (
         <div>
-            <span>Watchlist</span>
-            <i className="fa-solid fa-plus" onClick={openNewWatchlistForm}></i>
-            <div className="watchlist-list">
+            <div className="watchlist-title-container">
+                <span className="watchlist-title">Watchlists</span>
+                <span><i className="fa-solid fa-plus" onClick={openNewWatchlistForm}></i></span>
+            </div>
+            <div>
             {showNewForm && (
                 <NewWatchlistForm setShowNewForm={setShowNewForm}/>
             )}
              {userWatchlistsArr.length > 0 && userWatchlistsArr.map((watchlist, idx) => (
                 <div key={idx}>
-                        <h3 className="watchlist-title">{watchlist.name}</h3>
+                        <h4>{watchlist.name}</h4>
                         <i className="fa-solid fa-gear" onClick={openEditWatchlistForm} id={watchlist.id}></i>
                         <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id}></i>
                         {watchlist.stocks?.length > 0 &&  (
@@ -66,11 +68,13 @@ export default function Watchlist() {
                                     <div className="stock-card">
                                         <Link to={`/stocks/${stock?.ticker}`}>
                                             <div>
-                                                <h4>{stock?.ticker}</h4>
+                                                <h5>{stock?.ticker}</h5>
                                             </div>
-                                            <div>{stock?.price}$price</div>
                                         </Link>
-                                        <i className="fa-solid fa-xmark" onClick={(e) => removeStock(stock.id, watchlist.id)}></i>
+                                            <div>{stock?.price}$price</div>
+                                        <div>
+                                            <i className="fa-solid fa-xmark" onClick={(e) => removeStock(stock.id, watchlist.id)}></i>
+                                        </div>
                                     </div>
                                 </div>
                             )))}

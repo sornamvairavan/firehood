@@ -1,16 +1,25 @@
+.portfolio-title {
+    font-weight: bold;
+    padding: 4px 24px 0px;
+}
+
 .watchlist-title {
+    /* padding-top: 20px; */
+    font-weight: bold;
+}
+
+.watchlist-title-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 7%;
-    padding-right: 11%
+    padding: 24px 24px 0px;
 }
 
-.stock-card{
+.stock-card {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    padding: 3px;
+    padding: 5px 24px;
 }
 
 .stock-card h4 {
@@ -26,16 +35,20 @@
     font-size: .8em;
 }
 
+a {
+    text-decoration: none;
+}
+
 .stock-card:hover{
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(169, 169, 169, 0.1);
 }
 
 .stocklist-container {
     position: fixed;
-    top: 13%;
-    right: 12%;
-    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
-    width: 270px;
-    height: 77%;
+    top: 100px;
+    padding-top: 10px;
+    right: 100px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    width: 300px;
 }
