@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { buyStock } from '../../store/portfolio'
+import { authenticate } from '../../store/session'
+
 
 export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPrice }) {
     const dispatch = useDispatch()
@@ -11,16 +13,22 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
     const [errors, setErrors] = useState([])
     const [quantity, setQuantity] = useState(0)
     const [cost, setCost] = useState(0.00)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         setCost(quantity * parseFloat(stockIntPrice))
     }, [quantity, stockIntPrice])
 
     useEffect(() => {
+        dispatch(authenticate())
+    }, [dispatch, isLoaded])
+
+    useEffect(() => {
         return () => {
          setErrors([])
          setQuantity(0)
          setCost(0)
+         setIsLoaded(false)
         }
       }, [])
 
@@ -38,6 +46,7 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
         if (data.errors) {
             setErrors(data.errors)
         } else {
+            setIsLoaded(true)
             history.push("/")
         }
     }

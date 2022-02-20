@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { sellStock } from '../../store/portfolio'
+import { getUserPortfolios, sellStock } from '../../store/portfolio'
 
 export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPrice }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    // const portfolio = useSelector((state) => state.session.portfolios.portfolio);
+    const userPortfoliosObj = useSelector(state => state.portfolio.portfolios)
+    const userPortfoliosArr = Object.values(userPortfoliosObj)
+    const portfolio = userPortfoliosArr.find(portfolio => portfolio.stock_id === +stockId)
+
     const [errors, setErrors] = useState([])
     const [quantity, setQuantity] = useState(0)
     const [cost, setCost] = useState(0.00)
 
+    useEffect(() => {
+        dispatch(getUserPortfolios())
+    }, [dispatch])
 
     useEffect(() => {
         setCost(quantity * parseFloat(stockIntPrice))
@@ -74,7 +80,7 @@ export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPri
                 <div className='buy-sell-button'>
                     <button type="submit" onClick={sellShares} disabled={!quantity} className="sell-review-order">Sell Shares</button>
                 </div>
-                <div className="stock-card-user-sell">shares available</div>
+                <div className="stock-card-user-sell">{portfolio?.quantity || "0"} shares available</div>
             </form>
         </div>
     )
