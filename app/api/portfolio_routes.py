@@ -36,6 +36,9 @@ def add_portfolio(stock_id):
     
     new_port = request.json
 
+    if int(new_port["quantity"]) == 0:
+        return {"errors": ["Please enter a valid quantity"]}, 400
+
     if float(new_port["cost"]) > float(current_user.cash):
         return {"errors": ["You don't have sufficient cash"]}, 400
 
@@ -89,6 +92,9 @@ def add_portfolio(stock_id):
 def update_portfolio(stock_id):
 
     updated_port = request.json
+
+    if int(updated_port["quantity"]) == 0:
+        return {"errors": ["Please enter a valid quantity"]}, 400
 
     if int(updated_port["quantity"]) < 0:
         return {"errors": ["Quantity should not be less than 0"]}, 400

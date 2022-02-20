@@ -1,6 +1,6 @@
 .share-forms {
     position: absolute;
-    top: 100px;
+    top: 75px;
     right: 80px;
 }
 
@@ -45,11 +45,12 @@
 }
 
 .stock-card-user-buy {
-    color: #FF5000;
+    color: rgb(0,200,5);
+    
 }
 
 .stock-card-user-sell {
-    color: rgb(0,200,5)
+    color: #FF5000;
 }
 
 .buy-review-order, .sell-review-order {
@@ -62,13 +63,14 @@
 }
 
 .buy-review-order {
-    border: 1px solid #FF5000;
-    background-color: #FF5000;
+    border: 1px solid rgb(0,200,5);
+    background-color: rgb(0,200,5);
 }
 
 .sell-review-order {
-    border: 1px solid rgb(0,200,5);
-    background-color: rgb(0,200,5);
+    border: 1px solid #FF5000;
+    background-color: #FF5000;
+
 }
 
 .buy-sell-button {
@@ -77,15 +79,16 @@
     margin: 6px 0px;
 }
 
+.buy-review-order:hover, .sell-review-order:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
 .buy-review-order:disabled, .sell-review-order:disabled {
     cursor: auto;
     opacity: 0.3;
 }
 
-.buy-review-order:hover, .sell-review-order:hover {
-    cursor: pointer;
-    opacity: 0.7;
-}
 
 .add-to-list {
     border: 1px solid #FF5000;

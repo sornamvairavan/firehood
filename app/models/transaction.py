@@ -26,5 +26,7 @@ class Transaction(db.Model):
             'user_id': self.user_id,
             'stock_id': self.stock_id,
             'created_at': self.created_at.strftime("%d %b, %Y"),
-            'stock': self.stock.to_dict()
+            'stock': self.stock.to_dict(),
+            'value': "${:,.2f}".format(self.quantity * self.price),
+            'cap_type': self.type.upper()
         }

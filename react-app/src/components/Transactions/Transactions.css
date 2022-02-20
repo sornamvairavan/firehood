@@ -1,0 +1,57 @@
+.transactions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.transactions-container h4 {
+    font-size: 2em;
+    margin: 20px 0px;
+    opacity: 0.75;
+}
+
+.table-container {
+    height: 70vh;
+    width: 80%;
+    overflow-y: scroll;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    vertical-align: bottom;
+    border: 1px solid #ddd;
+    font-size: 0.8em;
+    
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#SELL {
+    color: rgb(204, 40, 40);
+    font-weight: 700;
+}
+
+#BUY {
+    color: rgb(0, 180, 7);
+    font-weight: 700;
+}
+
+.Buy:hover {
+    background-color: rgba(0, 180, 7, 0.2);
+}
+
+.Sell:hover {
+    background-color: rgba(204, 40, 40, 0.2);
+}
+
+th {
+    background-color: #9a9b9b;
+    color: white;
+    text-align: center;
+}
