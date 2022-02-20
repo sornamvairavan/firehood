@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import logo from '../../images/logo.png'
-import robin from '../../images/robinhood-login.jpeg'
 import robinlogin from '../../images/robinhood-login-image.jpeg'
 import './AuthForm.css'
 
