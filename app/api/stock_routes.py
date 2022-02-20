@@ -14,11 +14,11 @@ finnhub2_client = finnhub.Client(api_key="c87ggciad3i9lkntnqd0")
 def get_price(ticker):
     try:
         data = finnhub_client.quote(ticker)
-        price = data["c"]
+        price = data["pc"]
         time = data["t"]
     except:
         data = finnhub2_client.quote(ticker)
-        price = data["c"]
+        price = data["pc"]
         time = data["t"]
     return [price, time]
     
