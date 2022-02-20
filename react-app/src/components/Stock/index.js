@@ -30,13 +30,13 @@ export default function Stocks() {
     }
 
     return (
-        <>  
+        <div className='stock-page-container'>  
             <div className='stock-details'>
                 <div>{stock?.company_name}</div>
-                <div>{stock?.ticker}</div>
+                {/* <div>{stock?.ticker}</div> */}
                 <div>{stock?.price}</div>
+                <button onClick={openWishlistForm} id={stock?.id} className="add-to-list">Add to Lists</button>
             </div>
-            <button onClick={openWishlistForm} id={stock?.id} className="add-to-list">Add to Lists</button>
             <div className='share-forms'>
                 <BuyForm stockId={stock?.id} stockPrice={stock?.price} stockTicker={stock?.ticker} stockIntPrice={stock?.int_price} />
                 <SellForm stockId={stock?.id} stockPrice={stock?.price} stockTicker={stock?.ticker} stockIntPrice={stock?.int_price}/>
@@ -46,6 +46,6 @@ export default function Stocks() {
                 <AddToWatchlistForm stockId={stockId} setShowAddtoListModal={setShowAddtoListModal} stockTicker={stock?.ticker}/>
             </Modal>
         )}
-        </>
+        </div>
     )
 }

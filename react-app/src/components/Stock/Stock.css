@@ -1,7 +1,11 @@
+.stock-page-container {
+    margin: 0 100px;
+}
+
 .share-forms {
     position: absolute;
     top: 75px;
-    right: 80px;
+    right: 100px;
 }
 
 .share-form-container {
@@ -95,10 +99,13 @@
     color: #FF5000;
     text-align: center;
     box-sizing: border-box;
-    padding: 6px 15px;
+    padding: 6px 20px;
     border-radius: 5px;
-    font-size: .8rem;  
+    font-size: .85rem;  
     background-color: white;
+    align-self: flex-start;
+    margin-top: 10px;
+    margin-left: 7px;
 }
 
 .add-to-list:hover {
@@ -107,5 +114,15 @@
 }
 
 .stock-details {
-    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 32px;
+    margin: 30px;
+    width: 50%;
+}
+
+.stock-details > * {
+    font-weight: 500;
+    padding: 5px;
+    letter-spacing: -.33px;
 }
