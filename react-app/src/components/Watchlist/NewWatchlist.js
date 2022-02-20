@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addOneWatchlist } from '../../store/watchlist'
-// import './Watchlists.css'
+import './Watchlist.css'
 
 export default function NewWatchlistForm({ setShowNewForm }) {
     const dispatch = useDispatch()
 
     const [name, setName] = useState("")
     const [errors, setErrors] = useState([])
+
+    useEffect(() => {
+        setErrors([])
+    }, [name])
 
     const newWatchlist = async (e) => {
         e.preventDefault()

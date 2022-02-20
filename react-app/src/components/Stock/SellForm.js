@@ -25,6 +25,7 @@ export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPri
 
     useEffect(() => {
         setCost(quantity * parseFloat(stockIntPrice))
+        setErrors([])
     }, [quantity, stockIntPrice])
 
     useEffect(() => {

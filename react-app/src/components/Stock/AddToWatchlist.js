@@ -12,6 +12,11 @@ export default function AddToWatchlistForm({ setShowAddtoListModal, stockId, sto
     const [errors, setErrors] = useState([])
     const [watchlistId, setWatchlistId] = useState("")
 
+
+    useEffect(() => {
+        setErrors([])
+    }, [watchlistId])
+
     useEffect(() => {
         dispatch(getUserWatchlists())
     }, [dispatch])

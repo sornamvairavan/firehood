@@ -17,6 +17,7 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
 
     useEffect(() => {
         setCost(quantity * parseFloat(stockIntPrice))
+        setErrors([])
     }, [quantity, stockIntPrice])
 
     useEffect(() => {

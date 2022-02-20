@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import logo from '../../images/logo.png'
 import robin from '../../images/robinhood-login.jpeg'
+import robinlogin from '../../images/robinhood-login-image.jpeg'
 import './AuthForm.css'
 
 const LoginForm = () => {
@@ -42,7 +43,7 @@ const LoginForm = () => {
   return (
     <div className='auth-container'>
       <div className='login-image'>
-        <img src={robin} alt="logo" className="robin-image"/>
+        <img src={robinlogin} alt="logo" className="robin-image"/>
       </div>
       <div className='auth-form-container'>
         <form onSubmit={onLogin} className="auth-form">
@@ -69,7 +70,7 @@ const LoginForm = () => {
               value={password}
               onChange={updatePassword}
             />
-            {/* <button type='submit' className="auth-button">Login</button> */}
+            <button type='submit' className="auth-button">Login</button>
             {/* <button onClick={demoLogin} to="#" id="demo-button">Demo</button> */}
             <p>Don't have an account? <Link to="/sign-up">Sign up here.</Link></p>
           </div>

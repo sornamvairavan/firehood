@@ -1,12 +1,17 @@
 .auth-container {
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    height: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: fixed;
 }
 
-.login-image {
-    height: 89.5vh
+.robin-image, .login-image {
+    height: 100%;
+    overflow: hidden;
 }
 
 .auth-form-container {

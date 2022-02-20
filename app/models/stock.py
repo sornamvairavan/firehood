@@ -1,7 +1,6 @@
-import os
 from .db import db
 from .watchlist import watchlists_stocks
-
+from sqlalchemy import func
 
 class Stock(db.Model):
     __tablename__ = 'stocks'
@@ -11,6 +10,7 @@ class Stock(db.Model):
     ticker_symbol = db.Column(db.String(20), nullable=False)
     price = db.Column(db.Float, nullable=False)
     last_updated = db.Column(db.BigInteger, nullable=False)
+    updated_at = db.Column(db.DateTime)
 
     portfolio = db.relationship("Portfolio", back_populates="stock")
     transaction = db.relationship("Transaction", back_populates="stock")
