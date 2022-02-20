@@ -38,7 +38,7 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
         const payload = {
             stockId, 
             quantity,
-            price: stockPrice,
+            price: stockIntPrice,
             cost
         }
 
