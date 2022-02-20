@@ -38,6 +38,10 @@ a {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.list-price {
+    font-size: .8em;
+}
+
 .stock-card {
     display: flex;
     justify-content: space-between;

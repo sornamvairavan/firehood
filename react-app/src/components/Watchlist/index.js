@@ -22,6 +22,12 @@ export default function Watchlist() {
             .then(() => setIsLoaded(true)) 
     }, [dispatch, isLoaded])
 
+    useEffect(() => {
+        return () => {
+         setIsLoaded(false)
+        }
+      }, [])
+
     const openNewWatchlistForm = (e) => {
         setShowNewForm(true)
     }
@@ -78,8 +84,8 @@ export default function Watchlist() {
                                         </div>
                                         <div>
                                             <span className="remove-price">
-                                                <div>{stock?.price}</div>
-                                                <span><i className="fa-solid fa-xmark remove" onClick={(e) => removeStock(stock.id, watchlist.id)}></i></span>
+                                                <div className="list-price">{stock?.price}</div>
+                                                <span><i className="fa-solid fa-xmark remove fa-xs" onClick={(e) => removeStock(stock.id, watchlist.id)}></i></span>
                                             </span>
                                         </div>
                                     </div>
