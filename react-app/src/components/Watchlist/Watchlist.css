@@ -96,13 +96,18 @@ a {
 .stocklist-container {
     position: fixed;
     top: 100px;
-    right: 100px;
+    right: 80px;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
     border-radius: 5px;
     width: 300px;
-    max-height: 77%;
-    overflow-y: scroll;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: none;
 }
+
+/* .stocklist-container::-webkit-scrollbar {
+    display: none;
+  } */
 
 .watchlist-form {
     display: flex;
@@ -112,7 +117,7 @@ a {
 
 .watchlist-form input, select {
     height: 28px;
-    width: 80%;
+    width: 70%;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 5px;
     margin-bottom: 10px;
@@ -152,7 +157,7 @@ a {
     color: white
 }
 
-.save-button:hover {
+.cancel-button:hover {
     cursor: pointer;
     background-color: rgba(0, 200, 7, 0.5);
     color: white;
@@ -170,22 +175,4 @@ a {
     padding: 7px 11px;
     cursor: auto;
     border: none;
-}
-
-.share-form-container1 {
-    position: absolute;
-    top: 100px;
-    right: 100px;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
-    border-radius: 5px;
-    width: 300px;
-}
-
-.share-form-container2 {
-    position: absolute;
-    top: 350px;
-    right: 100px;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
-    border-radius: 5px;
-    width: 300px;
 }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUserWatchlists } from '../../store/watchlist'
 import { addStockToList } from '../../store/watchlist';
 
-export default function AddToWatchlistForm({ setShowAddtoListModal, stockId }) {
+export default function AddToWatchlistForm({ setShowAddtoListModal, stockId, stockTicker }) {
     const dispatch = useDispatch()
 
     const userWatchlistsObj = useSelector(state => state.watchlist.watchlists)
@@ -29,7 +29,7 @@ export default function AddToWatchlistForm({ setShowAddtoListModal, stockId }) {
             setErrors(data.errors)
         } else {
             setShowAddtoListModal(false)
-            alert("Successfully added to Watchlist")
+            alert(`Successfully added ${stockTicker} to List`)
         }
     }
 

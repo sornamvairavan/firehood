@@ -50,7 +50,7 @@ export default function Watchlist() {
     return (
         <div>
             <div className="watchlist-title-container">
-                <span className="watchlist-title">Watchlists</span>
+                <span className="watchlist-title">Lists</span>
                 <span><i className="fa-solid fa-plus" onClick={openNewWatchlistForm}></i></span>
             </div>
             <div>

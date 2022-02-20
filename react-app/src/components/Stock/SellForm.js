@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { sellStock } from '../../store/portfolio'
 
-export default function SellForm({ stockId, stockPrice }) {
+export default function SellForm({ stockId, stockPrice, stockTicker }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -28,29 +28,36 @@ export default function SellForm({ stockId, stockPrice }) {
 
 
     return (
-        <>
-        <div className='share-form-container2'>
+        <div className='share-form-container'>
+            <h4 className='portfolio-title-container'>Sell {stockTicker}</h4>
             <div>
                 {errors?.length > 0 && <ul className="errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
             </div>
-            <h5>Currently held: </h5>
+            <h5 className="stock-card">Currently held: </h5>
             <form className="share-form">
-                <label htmlFor='quantity'>Quantity</label>
-                <input
-                type="number"
-                min="0"
-                autoComplete="off"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-                />
-                <label htmlFor='marketprice'>Market Price</label>
-                <span>{stockPrice}</span>
-                <h6>Estimated Cost: $</h6>
+                <div className="stock-card">
+                    <label htmlFor='quantity'>Quantity</label>
+                    <input
+                    type="number"
+                    min="0"
+                    autoComplete="off"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                    className="shares-input"
+                    />
+                </div>
+                <div className="stock-card">
+                    <label htmlFor='marketprice'>Market Price</label>
+                    <span>{stockPrice}</span>
+                </div>
+                <div className="stock-card">
+                    <h6>Estimated Cost: </h6>
+                    <span>$</span>
+                </div>
                 <button type="submit" onClick={sellShares} disabled={!quantity}>Sell Shares</button>
             </form>
         </div>
-     </>
     )
 }
