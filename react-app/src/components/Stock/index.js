@@ -34,7 +34,7 @@ export default function Stocks() {
             <div>{stock?.company_name}</div>
             <div>{stock?.ticker}</div>
             <div>{stock?.price}</div>
-            <button onClick={openWishlistForm} id={stock?.id}>Add to Lists</button>
+            <button onClick={openWishlistForm} id={stock?.id} className="add-to-list">Add to Lists</button>
             <div className='share-forms'>
                 <BuyForm stockId={stock?.id} stockPrice={stock?.price} stockTicker={stock?.ticker} />
                 <SellForm stockId={stock?.id} stockPrice={stock?.price} stockTicker={stock?.ticker}/>

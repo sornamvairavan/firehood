@@ -16,6 +16,7 @@
 .shares-input {
     height: 18px;
     width: 40px;
+    margin: 2px 0;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 5px;
 }
@@ -74,4 +75,25 @@
     display: flex;
     justify-content: center;
     margin: 6px 0px;
+}
+
+.buy-review-order:hover, .sell-review-order:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.add-to-list {
+    border: 1px solid #FF5000;
+    color: #FF5000;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 6px 15px;
+    border-radius: 5px;
+    font-size: .8rem;  
+    background-color: white;
+}
+
+.add-to-list:hover {
+    cursor: pointer;
+    background-color: #ff51002f;
 }
