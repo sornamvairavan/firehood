@@ -1,6 +1,6 @@
 /* ----- CONSTANTS ------ */
 const GET_STOCKS = 'stocks/GET_STOCKS'
-const GET_STOCK = 'stocks/GET_STOCK'
+// const GET_STOCK = 'stocks/GET_STOCK'
 
 /* ----- ACTION CREATORS------ */
 const getStocks = (stocks) => {
@@ -10,12 +10,12 @@ const getStocks = (stocks) => {
     }
 }
 
-const getStock = (stock) => {
-    return {
-        type: GET_STOCK,
-        stock
-    }
-}
+// const getStock = (stock) => {
+//     return {
+//         type: GET_STOCK,
+//         stock
+//     }
+// }
 
 /* ------ THUNK ACTIONS ------ */
 export const getAllStocks = () => async (dispatch) => {
@@ -28,15 +28,15 @@ export const getAllStocks = () => async (dispatch) => {
     }
 }
 
-export const getOneStock = (ticker) => async (dispatch) => {
-    const response = await fetch(`/api/stocks/${ticker}`)
+// export const getOneStock = (ticker) => async (dispatch) => {
+//     const response = await fetch(`/api/stocks/${ticker}`)
 
-    if (response.ok) {
-        const stockDetail = await response.json()
-        dispatch(getStock(stockDetail.stockdata))
-        return stockDetail.stockdata
-    }
-}
+//     if (response.ok) {
+//         const stockDetail = await response.json()
+//         dispatch(getStock(stockDetail.stockdata))
+//         return stockDetail.stockdata
+//     }
+// }
 
 /* ------ REDUCER ------ */
 const initialState = { stocks: {} };
@@ -50,9 +50,9 @@ export default function stockReducer(state = initialState, action) {
                 return stocks
             }, {})
             return newState
-        case GET_STOCK:
-            newState = {...state, price: action.stock};
-            return newState;
+        // case GET_STOCK:
+        //     newState = {...state};
+        //     return newState;
         default:
             return state;
     }

@@ -1,7 +1,6 @@
 import os
 from .db import db
 from .watchlist import watchlists_stocks
-import finnhub
 
 
 class Stock(db.Model):
@@ -23,6 +22,6 @@ class Stock(db.Model):
             'id': self.id,
             'company_name': self.company_name,
             'ticker': self.ticker_symbol,
-            'price': self.price,
+            'price': "{:,.2f}".format(self.price),
             'last_updated': self.last_updated
         }

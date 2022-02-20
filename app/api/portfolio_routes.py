@@ -43,7 +43,7 @@ def add_portfolio(stock_id):
             portfolio.quantity += int(new_port["quantity"])
             new_transaction = Transaction(
                 type = "Buy",
-                price = portfolio.purchase_price,
+                price = portfolio.price,
                 quantity = new_port["quantity"],
                 user_id = user_id,
                 stock_id = stock_id,
@@ -54,14 +54,14 @@ def add_portfolio(stock_id):
             return portfolio.to_dict()
     
     new_portfolio = Portfolio(
-        purchase_price = new_port["purchase_price"],
+        price = new_port["price"],
         quantity = new_port["quantity"],
         user_id = user_id,
         stock_id = stock_id
     )
     new_transaction = Transaction(
         type = "Buy",
-        price = new_port["purchase_price"],
+        price = new_port["price"],
         quantity = new_port["quantity"],
         user_id = user_id,
         stock_id = stock_id,
@@ -88,18 +88,16 @@ def update_portfolio(stock_id):
 
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
-    portfolioId = None
-
     for portfolio in user_portfolios:
+        
         if portfolio.stock_id == stock_id:
             if int(updated_port["quantity"]) > portfolio.quantity:
                 return {"errors": ["You can only sell within the number of shares you hold"]}, 400
             else:
-                portfolioId = portfolio.id
                 portfolio.quantity -= int(updated_port["quantity"])
                 new_transaction = Transaction(
                     type = "Sell",
-                    price = portfolio.purchase_price,
+                    price = portfolio.price,
                     quantity = updated_port["quantity"],
                     user_id = user_id,
                     stock_id = stock_id,
@@ -107,17 +105,19 @@ def update_portfolio(stock_id):
                 )
                 db.session.add(new_transaction)
                 db.session.commit()
-        else:
-            return {"errors": ["You do not hold any of these shares to sell"]}, 400
 
-    updated_portfolio = Portfolio.query.get(portfolioId)
+                updated_portfolio = Portfolio.query.get(portfolio.id)
 
-    if updated_portfolio.quantity == 0:
-        db.session.delete(updated_portfolio)
-        db.session.commit()
-        return {"delete": portfolioId}
-    else:
-        return updated_portfolio.to_dict()
+                if updated_portfolio.quantity == 0:
+                    db.session.delete(updated_portfolio)
+                    db.session.commit()
+                    return {"delete": portfolio.id}
+                else:
+                    return updated_portfolio.to_dict()
+
+    return {"errors": ["You do not hold any of these shares to sell"]}, 400
+
+        
 
 
     

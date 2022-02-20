@@ -5,7 +5,7 @@ class Portfolio(db.Model):
     __tablename__ = 'portfolios'
 
     id = db.Column(db.Integer, primary_key=True)
-    purchase_price = db.Column(db.Float, nullable=False)
+    price = db.Column(db.Float, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     stock_id = db.Column(db.Integer, db.ForeignKey("stocks.id"), nullable=False)
@@ -17,7 +17,7 @@ class Portfolio(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'purchase_price': self.purchase_price,
+            'price': "{:,.2f}".format(self.price),
             'quantity': self.quantity,
             'user_id': self.user_id,
             'stock_id': self.stock_id,

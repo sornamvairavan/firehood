@@ -38,7 +38,7 @@ export default function Transaction() {
                         <td>{transaction?.created_at}</td>
                         <td>{transaction?.type}</td>
                         <td>{transaction?.stock?.ticker}</td>
-                        <td>$price</td>
+                        <td>${transaction?.stock?.price}</td>
                         <td>{transaction?.quantity}</td>
                     </tr>
                 ))}

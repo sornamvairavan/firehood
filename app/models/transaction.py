@@ -17,13 +17,10 @@ class Transaction(db.Model):
     stock = db.relationship("Stock", back_populates="transaction")
 
     def to_dict(self):
-
-
-
         return {
             'id': self.id,
             'type': self.type,
-            'price': self.price,
+            'price': "{:,.2f}".format(self.price),
             'quantity': self.quantity,
             'user_id': self.user_id,
             'stock_id': self.stock_id,

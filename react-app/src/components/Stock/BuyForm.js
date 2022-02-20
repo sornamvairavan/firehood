@@ -16,7 +16,7 @@ export default function BuyForm({ stockId }) {
         const payload = {
             stockId, 
             quantity,
-            purchase_price: 100
+            price: 100
         }
 
         const data = await dispatch(buyStock(payload))

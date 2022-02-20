@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getAllStocks, getOneStock } from '../../store/stock';
+import { getAllStocks } from '../../store/stock';
 import { Modal } from '../../context/Modal'
 import AddToWatchlistForm from './AddToWatchlist';
 import BuyForm from './BuyForm';
@@ -19,7 +19,7 @@ export default function Stocks() {
 
     useEffect(() => {
         dispatch(getAllStocks())
-        dispatch(getOneStock(ticker))
+        // dispatch(getOneStock(ticker))
         .then(() => setIsLoaded(true))
     }, [dispatch, ticker, isLoaded])
 

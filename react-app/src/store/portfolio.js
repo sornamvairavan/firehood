@@ -43,14 +43,14 @@ export const getUserPortfolios = () => async (dispatch) => {
     }
 }
 
-export const buyStock = ({ stockId, purchase_price, quantity }) => async (dispatch) => {
+export const buyStock = ({ stockId, price, quantity }) => async (dispatch) => {
     const response = await fetch(`/api/portfolios/${stockId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            purchase_price,
+            price,
             quantity
         })
     })
