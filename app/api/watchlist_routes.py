@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Watchlist, db, Stock
 from app.forms import WatchlistForm
-
+from app.api.stock_routes import more_than_oneday
 
 watchlist_routes = Blueprint('watchlists', __name__)
 
@@ -23,6 +23,11 @@ def validation_errors_to_error_messages(validation_errors):
 def get_users_watchlist():
     user_id = int(current_user.id)
     user_watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
+
+    for watchlist in user_watchlists:
+        for stock in watchlist.stocks:
+            more_than_oneday(stock)
+
     return jsonify([watchlist.to_dict() for watchlist in user_watchlists])
 
 
