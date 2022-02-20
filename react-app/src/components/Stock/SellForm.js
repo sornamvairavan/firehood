@@ -1,22 +1,37 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { sellStock } from '../../store/portfolio'
 
-export default function SellForm({ stockId, stockPrice, stockTicker }) {
+export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPrice }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
     // const portfolio = useSelector((state) => state.session.portfolios.portfolio);
     const [errors, setErrors] = useState([])
     const [quantity, setQuantity] = useState(0)
+    const [cost, setCost] = useState(0.00)
+
+
+    useEffect(() => {
+        setCost(quantity * parseFloat(stockIntPrice))
+    }, [quantity, stockIntPrice])
+
+    useEffect(() => {
+        return () => {
+         setErrors([])
+         setQuantity(0)
+         setCost(0)
+        }
+      }, [])
 
     const sellShares = async (e) => {
         e.preventDefault()
 
         const payload = {
             stockId,
-            quantity
+            quantity, 
+            cost
         }
 
         const data = await dispatch(sellStock(payload))
@@ -41,7 +56,7 @@ export default function SellForm({ stockId, stockPrice, stockTicker }) {
                     <label htmlFor='quantity'>Quantity</label>
                     <input
                     type="number"
-                    min="0"
+                    min="1"
                     autoComplete="off"
                     value={quantity}
                     onChange={(e) => setQuantity(e.target.value)}
@@ -54,7 +69,7 @@ export default function SellForm({ stockId, stockPrice, stockTicker }) {
                 </div>
                 <div className="stock-card-cost">
                     <span>Estimated Cost: </span>
-                    <span>$0.00</span>
+                    <span>${cost.toFixed(2)}</span>
                 </div>
                 <div className='buy-sell-button'>
                     <button type="submit" onClick={sellShares} disabled={!quantity} className="sell-review-order">Sell Shares</button>

@@ -77,6 +77,11 @@
     margin: 6px 0px;
 }
 
+.buy-review-order:disabled, .sell-review-order:disabled {
+    cursor: auto;
+    opacity: 0.3;
+}
+
 .buy-review-order:hover, .sell-review-order:hover {
     cursor: pointer;
     opacity: 0.7;

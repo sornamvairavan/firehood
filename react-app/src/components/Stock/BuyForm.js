@@ -1,15 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { buyStock } from '../../store/portfolio'
 
-export default function BuyForm({ stockId, stockPrice, stockTicker }) {
+export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPrice }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const user = useSelector((state) => state.session.user);
+    const userCash = useSelector((state) => state.session.user.cash);
     const [errors, setErrors] = useState([])
     const [quantity, setQuantity] = useState(0)
+    const [cost, setCost] = useState(0.00)
+
+    useEffect(() => {
+        setCost(quantity * parseFloat(stockIntPrice))
+    }, [quantity, stockIntPrice])
+
+    useEffect(() => {
+        return () => {
+         setErrors([])
+         setQuantity(0)
+         setCost(0)
+        }
+      }, [])
 
     const buyShares = async (e) => {
         e.preventDefault()
@@ -17,7 +30,8 @@ export default function BuyForm({ stockId, stockPrice, stockTicker }) {
         const payload = {
             stockId, 
             quantity,
-            price: 100
+            price: stockPrice,
+            cost
         }
 
         const data = await dispatch(buyStock(payload))
@@ -41,7 +55,7 @@ export default function BuyForm({ stockId, stockPrice, stockTicker }) {
                     <label htmlFor='quantity'>Quantity</label>
                     <input
                     type="number"
-                    min="0"
+                    min="1"
                     autoComplete="off"
                     value={quantity}
                     onChange={(e) => setQuantity(e.target.value)}
@@ -54,12 +68,12 @@ export default function BuyForm({ stockId, stockPrice, stockTicker }) {
                 </div>
                 <div className="stock-card-cost">
                     <span>Estimated Cost: </span>
-                    <span>$0.00</span>
+                    <span>${cost.toFixed(2)}</span>
                 </div>
                 <div className="buy-sell-button">
                     <button type="submit" onClick={buyShares} disabled={!quantity} className="buy-review-order">Buy Shares</button>
                 </div>
-                <div className="stock-card-user-buy">{user?.cash} buying power available</div>
+                <div className="stock-card-user-buy">{userCash} buying power available</div>
             </form>
         </div>
     )

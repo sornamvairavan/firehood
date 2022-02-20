@@ -43,7 +43,7 @@ export const getUserPortfolios = () => async (dispatch) => {
     }
 }
 
-export const buyStock = ({ stockId, price, quantity }) => async (dispatch) => {
+export const buyStock = ({ stockId, price, quantity, cost }) => async (dispatch) => {
     const response = await fetch(`/api/portfolios/${stockId}`, {
         method: 'POST',
         headers: {
@@ -51,7 +51,8 @@ export const buyStock = ({ stockId, price, quantity }) => async (dispatch) => {
         },
         body: JSON.stringify({
             price,
-            quantity
+            quantity,
+            cost
         })
     })
 
@@ -69,14 +70,15 @@ export const buyStock = ({ stockId, price, quantity }) => async (dispatch) => {
     }
 }
 
-export const sellStock = ({ stockId, quantity }) => async (dispatch)  => {
+export const sellStock = ({ stockId, quantity, cost }) => async (dispatch)  => {
     const response = await fetch(`/api/portfolios/${stockId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            quantity
+            quantity,
+            cost
         })
     })
 

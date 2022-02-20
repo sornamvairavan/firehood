@@ -36,6 +36,9 @@ def add_portfolio(stock_id):
     
     new_port = request.json
 
+    if float(new_port["cost"]) > float(current_user.cash):
+        return {"errors": ["You don't have sufficient cash"]}, 400
+
     user_id = int(current_user.id)
 
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
@@ -54,6 +57,7 @@ def add_portfolio(stock_id):
                 stock_id = stock_id,
                 created_at = datetime.now()
             )
+            current_user.cash -= new_port["cost"]
             db.session.add(new_transaction)
             db.session.commit()
             return portfolio.to_dict()
@@ -108,6 +112,7 @@ def update_portfolio(stock_id):
                     stock_id = stock_id,
                     created_at = datetime.now()
                 )
+                current_user.cash += float(updated_port["cost"])
                 db.session.add(new_transaction)
                 db.session.commit()
 
