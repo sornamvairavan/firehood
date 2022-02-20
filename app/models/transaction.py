@@ -1,6 +1,7 @@
 from .db import db
 from sqlalchemy import func
 
+
 class Transaction(db.Model):
     __tablename__ = 'transactions'
 
@@ -16,6 +17,9 @@ class Transaction(db.Model):
     stock = db.relationship("Stock", back_populates="transaction")
 
     def to_dict(self):
+
+
+
         return {
             'id': self.id,
             'type': self.type,
@@ -23,6 +27,6 @@ class Transaction(db.Model):
             'quantity': self.quantity,
             'user_id': self.user_id,
             'stock_id': self.stock_id,
-            'created_at': self.created_at,
+            'created_at': self.created_at.strftime("%d %b, %Y"),
             'stock': self.stock.to_dict()
         }

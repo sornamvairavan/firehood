@@ -36,5 +36,6 @@ class User(db.Model, UserMixin):
             'fullname': self.full_name,
             'username': self.username,
             'email': self.email,
-            'cash': self.cash
+            'cash': self.cash,
+            'join': self.created_at.strftime("%Y")
         }

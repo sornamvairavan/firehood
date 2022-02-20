@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Portfolio, db, Transaction
+from datetime import datetime
 
 
 portfolio_routes = Blueprint('portfolios', __name__)
@@ -45,7 +46,8 @@ def add_portfolio(stock_id):
                 price = portfolio.purchase_price,
                 quantity = new_port["quantity"],
                 user_id = user_id,
-                stock_id = stock_id
+                stock_id = stock_id,
+                created_at = datetime.now()
             )
             db.session.add(new_transaction)
             db.session.commit()
@@ -62,7 +64,8 @@ def add_portfolio(stock_id):
         price = new_port["purchase_price"],
         quantity = new_port["quantity"],
         user_id = user_id,
-        stock_id = stock_id
+        stock_id = stock_id,
+        created_at = datetime.now()
     )
 
     db.session.add(new_portfolio)
@@ -99,7 +102,8 @@ def update_portfolio(stock_id):
                     price = portfolio.purchase_price,
                     quantity = updated_port["quantity"],
                     user_id = user_id,
-                    stock_id = stock_id
+                    stock_id = stock_id,
+                    created_at = datetime.now()
                 )
                 db.session.add(new_transaction)
                 db.session.commit()
