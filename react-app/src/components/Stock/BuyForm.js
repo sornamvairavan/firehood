@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { buyStock } from '../../store/portfolio'
 
@@ -7,6 +7,7 @@ export default function BuyForm({ stockId, stockPrice, stockTicker }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
+    const user = useSelector((state) => state.session.user);
     const [errors, setErrors] = useState([])
     const [quantity, setQuantity] = useState(0)
 
@@ -35,7 +36,6 @@ export default function BuyForm({ stockId, stockPrice, stockTicker }) {
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
             </div>
-            <h5 className="stock-card">Buying Power: </h5>
             <form className="share-form">
                 <div className="stock-card">
                     <label htmlFor='quantity'>Quantity</label>
@@ -49,14 +49,15 @@ export default function BuyForm({ stockId, stockPrice, stockTicker }) {
                     />
                 </div>
                 <div className="stock-card">
-                    <label htmlFor='marketprice'>Market Price</label>
+                    <label htmlFor='marketprice' className='market-price'>Market Price</label>
                     <span>{stockPrice}</span>
                 </div>
-                <div className="stock-card">
-                    <h6>Estimated Cost: </h6>
-                    <span>$</span>
+                <div className="stock-card-cost">
+                    <span>Estimated Cost: </span>
+                    <span>$0.00</span>
                 </div>
                 <button type="submit" onClick={buyShares} disabled={!quantity}>Buy Shares</button>
+                <div className="stock-card-user">{user?.cash} buying power available</div>
             </form>
         </div>
     )

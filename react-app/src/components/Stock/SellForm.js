@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { sellStock } from '../../store/portfolio'
 
@@ -7,6 +7,7 @@ export default function SellForm({ stockId, stockPrice, stockTicker }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
+    // const portfolio = useSelector((state) => state.session.portfolios.portfolio);
     const [errors, setErrors] = useState([])
     const [quantity, setQuantity] = useState(0)
 
@@ -35,7 +36,6 @@ export default function SellForm({ stockId, stockPrice, stockTicker }) {
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
             </div>
-            <h5 className="stock-card">Currently held: </h5>
             <form className="share-form">
                 <div className="stock-card">
                     <label htmlFor='quantity'>Quantity</label>
@@ -57,6 +57,7 @@ export default function SellForm({ stockId, stockPrice, stockTicker }) {
                     <span>$</span>
                 </div>
                 <button type="submit" onClick={sellShares} disabled={!quantity}>Sell Shares</button>
+                <div className="stock-card-user">Currently holding shares</div>
             </form>
         </div>
     )
