@@ -17,10 +17,19 @@ export default function Portfolio() {
             .then(() => setIsLoaded(true)) 
     }, [dispatch, isLoaded])
 
+    function portfolioValue(userPortfoliosArr){
+        let sum = 0;
+        userPortfoliosArr.forEach((portfolio) => {
+            sum += (portfolio.quantity * portfolio.int_price)
+        })
+        return sum.toFixed(2)
+    }
+
     return (
         <div className="stocklist-container">
             <div className="portfolio-title-container">
                 <span className="watchlist-title">Portfolio</span>
+                <span>${portfolioValue(userPortfoliosArr)}</span>
             </div>
             {userPortfoliosArr.length > 0 && (
                 userPortfoliosArr.map((portfolio, idx) => (

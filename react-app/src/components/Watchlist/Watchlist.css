@@ -3,9 +3,13 @@ a {
 }
 
 .portfolio-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 24px 24px 14px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     font-size: 1rem;
+    font-weight: bold;
 }
 
 .watchlist-title {
