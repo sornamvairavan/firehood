@@ -22,6 +22,7 @@ class Stock(db.Model):
             'id': self.id,
             'company_name': self.company_name,
             'ticker': self.ticker_symbol,
-            'price': "{:,.2f}".format(self.price),
+            'int_price': self.price,
+            'price': "${:,.2f}".format(self.price),
             'last_updated': self.last_updated
         }

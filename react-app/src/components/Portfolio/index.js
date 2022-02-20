@@ -30,7 +30,7 @@ export default function Portfolio() {
                                 <h4>{portfolio?.stock?.ticker}</h4>
                                 <p>{portfolio?.quantity} shares</p>
                             </div>
-                            <div>${portfolio?.stock?.price}</div>
+                            <div>{portfolio?.stock?.price}</div>
                         </div>
                     </Link>
                 )))}

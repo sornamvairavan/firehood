@@ -17,7 +17,8 @@ class Portfolio(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'price': "{:,.2f}".format(self.price),
+            'int_price': self.price,
+            'price': "${:,.2f}".format(self.price),
             'quantity': self.quantity,
             'user_id': self.user_id,
             'stock_id': self.stock_id,

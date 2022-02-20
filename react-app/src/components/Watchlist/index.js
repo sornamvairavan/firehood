@@ -78,7 +78,7 @@ export default function Watchlist() {
                                         </div>
                                         <div>
                                             <span className="remove-price">
-                                                <div>${stock?.price}</div>
+                                                <div>{stock?.price}</div>
                                                 <span><i className="fa-solid fa-xmark remove" onClick={(e) => removeStock(stock.id, watchlist.id)}></i></span>
                                             </span>
                                         </div>

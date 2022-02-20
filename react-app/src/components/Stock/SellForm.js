@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { sellStock } from '../../store/portfolio'
 
-export default function SellForm({ stockId }) {
+export default function SellForm({ stockId, stockPrice }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -46,7 +46,7 @@ export default function SellForm({ stockId }) {
                 onChange={(e) => setQuantity(e.target.value)}
                 />
                 <label htmlFor='marketprice'>Market Price</label>
-                <span>$</span>
+                <span>{stockPrice}</span>
                 <h6>Estimated Cost: $</h6>
                 <button type="submit" onClick={sellShares} disabled={!quantity}>Sell Shares</button>
             </form>

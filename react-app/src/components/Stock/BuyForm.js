@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { buyStock } from '../../store/portfolio'
 
-export default function BuyForm({ stockId }) {
+export default function BuyForm({ stockId, stockPrice }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -49,7 +49,7 @@ export default function BuyForm({ stockId }) {
                 </div>
                 <div>
                     <label htmlFor='marketprice'>Market Price</label>
-                    <span>$</span>
+                    <span>{stockPrice}</span>
                 </div>
                 <div>
                     <h6>Estimated Cost: </h6>
