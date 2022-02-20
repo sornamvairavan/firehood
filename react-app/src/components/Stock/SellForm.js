@@ -49,15 +49,17 @@ export default function SellForm({ stockId, stockPrice, stockTicker }) {
                     />
                 </div>
                 <div className="stock-card">
-                    <label htmlFor='marketprice'>Market Price</label>
+                    <label htmlFor='marketprice' className='market-price'>Market Price</label>
                     <span>{stockPrice}</span>
                 </div>
-                <div className="stock-card">
-                    <h6>Estimated Cost: </h6>
-                    <span>$</span>
+                <div className="stock-card-cost">
+                    <span>Estimated Cost: </span>
+                    <span>$0.00</span>
                 </div>
-                <button type="submit" onClick={sellShares} disabled={!quantity}>Sell Shares</button>
-                <div className="stock-card-user">Currently holding shares</div>
+                <div className='buy-sell-button'>
+                    <button type="submit" onClick={sellShares} disabled={!quantity} className="sell-review-order">Sell Shares</button>
+                </div>
+                <div className="stock-card-user-sell">shares available</div>
             </form>
         </div>
     )

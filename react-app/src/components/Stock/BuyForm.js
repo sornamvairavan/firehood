@@ -56,8 +56,10 @@ export default function BuyForm({ stockId, stockPrice, stockTicker }) {
                     <span>Estimated Cost: </span>
                     <span>$0.00</span>
                 </div>
-                <button type="submit" onClick={buyShares} disabled={!quantity}>Buy Shares</button>
-                <div className="stock-card-user">{user?.cash} buying power available</div>
+                <div className="buy-sell-button">
+                    <button type="submit" onClick={buyShares} disabled={!quantity} className="buy-review-order">Buy Shares</button>
+                </div>
+                <div className="stock-card-user-buy">{user?.cash} buying power available</div>
             </form>
         </div>
     )

@@ -36,10 +36,42 @@
     font-weight: 500;
 }
 
-.stock-card-user {
+.stock-card-user-buy, .stock-card-user-sell {
     border-top: 1px solid rgba(0, 0, 0, 0.03);
-    color: #FF5000;
     text-align: center;
     padding: 15px 24px;
     font-size: 0.9em;
+}
+
+.stock-card-user-buy {
+    color: #FF5000;
+}
+
+.stock-card-user-sell {
+    color: rgb(0,200,5)
+}
+
+.buy-review-order, .sell-review-order {
+    text-align: center;
+    box-sizing: border-box;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: .8rem;
+    color: white
+}
+
+.buy-review-order {
+    border: 1px solid #FF5000;
+    background-color: #FF5000;
+}
+
+.sell-review-order {
+    border: 1px solid rgb(0,200,5);
+    background-color: rgb(0,200,5);
+}
+
+.buy-sell-button {
+    display: flex;
+    justify-content: center;
+    margin: 6px 0px;
 }
