@@ -1,12 +1,21 @@
-.auth-form-container {
+.auth-container {
     display: grid;
-    margin: 20px auto;
-    justify-content: center;
+    grid-template-columns: 2fr 2fr;
+    height: 70%;
+    overflow: hidden;
+}
+
+.login-image {
+    height: 89.5vh
+}
+
+.auth-form-container {
+    margin: auto;
 }
 
 .auth-logo {
     display: block;
-    width: 55px;
+    width: 100px;
     margin: 2px auto;
 }
 

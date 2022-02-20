@@ -57,60 +57,65 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className='auth-form-container'>
-      <form onSubmit={onSignUp} className="auth-form">
-      <h1 className="form-title">Sign up for Firehood</h1>
-      <img src={logo} alt="logo" className="auth-logo"/>
-        <div>
-          {errors.length > 0 && <ul className="errors">
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>}
-        </div>
-        <div className='input-container'>
-          <label>Name</label>
-          <input
-            type='text'
-            name='fullname'
-            autoComplete='off'
-            onChange={updateFullname}
-            value={fullname}
-          ></input>
-          <label>Username</label>
-          <input
-            type='text'
-            name='username'
-            autoComplete='off'
-            onChange={updateUsername}
-            value={username}
-          ></input>
-          <label>Email</label>
-          <input
-            type='text'
-            name='email'
-            autoComplete='off'
-            onChange={updateEmail}
-            value={email}
-          ></input>
-          <label>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-          ></input>
-          <label>Repeat Password</label>
-          <input
-            type='password'
-            name='repeat_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-          <button type='submit' className="auth-button">Sign Up</button>
-          <button onClick={demoLogin} to="#" id="demo-button">Demo</button>
-          <p>Already have an account? <Link to="/login">Login here.</Link></p>
-        </div>
-      </form>
+    <div className='auth-container'>
+    <div className='signup-details'>
+      
+    </div>
+      <div className='auth-form-container'>
+        <form onSubmit={onSignUp} className="auth-form">
+        <h1 className="form-title">Sign up for Firehood</h1>
+        <img src={logo} alt="logo" className="auth-logo"/>
+          <div>
+            {errors.length > 0 && <ul className="errors">
+              {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>}
+          </div>
+          <div className='input-container'>
+            <label>Name</label>
+            <input
+              type='text'
+              name='fullname'
+              autoComplete='off'
+              onChange={updateFullname}
+              value={fullname}
+            ></input>
+            <label>Username</label>
+            <input
+              type='text'
+              name='username'
+              autoComplete='off'
+              onChange={updateUsername}
+              value={username}
+            ></input>
+            <label>Email</label>
+            <input
+              type='text'
+              name='email'
+              autoComplete='off'
+              onChange={updateEmail}
+              value={email}
+            ></input>
+            <label>Password</label>
+            <input
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+            ></input>
+            <label>Repeat Password</label>
+            <input
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+            ></input>
+            <button type='submit' className="auth-button">Sign Up</button>
+            <button onClick={demoLogin} to="#" id="demo-button">Demo</button>
+            <p>Already have an account? <Link to="/login">Login here.</Link></p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
