@@ -1,10 +1,8 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import homelogo from '../../images/firehood-logo.png'
 import './NavBar.css'
-
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
@@ -14,6 +12,7 @@ const NavBar = () => {
   if (user) {
     sessionLinks = (
       <>
+        <span className="nav-cash">Cash Balance: {user?.cash}</span>
         <NavLink to="/" className="nav-tabs" exact>Portfolio</NavLink>
         <NavLink to="/transactions" className="nav-tabs">Transactions</NavLink>
         <span>Welcome {user.fullname}! </span>

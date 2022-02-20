@@ -17,6 +17,10 @@
     overflow-y: scroll;
 }
 
+.table-container::-webkit-scrollbar {
+    display: none;
+  }
+
 table {
     width: 100%;
     text-align: center;

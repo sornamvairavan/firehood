@@ -28,7 +28,7 @@ export default function Portfolio() {
     return (
         <div className="stocklist-container">
             <div className="portfolio-title-container">
-                <span className="watchlist-title">Portfolio</span>
+                <span className="watchlist-title">Stocks</span>
                 <span>${portfolioValue(userPortfoliosArr)}</span>
             </div>
             {userPortfoliosArr.length > 0 && (
