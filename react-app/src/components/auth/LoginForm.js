@@ -70,7 +70,7 @@ const LoginForm = () => {
               onChange={updatePassword}
             />
             <button type='submit' className="auth-button">Login</button>
-            {/* <button onClick={demoLogin} to="#" id="demo-button">Demo</button> */}
+            <button onClick={demoLogin} to="#" id="demo-button">Demo</button>
             <p>Don't have an account? <Link to="/sign-up">Sign up here.</Link></p>
           </div>
         </form>

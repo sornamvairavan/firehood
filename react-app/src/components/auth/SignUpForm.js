@@ -111,7 +111,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
             <button type='submit' className="auth-button">Sign Up</button>
-            {/* <button onClick={demoLogin} to="#" id="demo-button">Demo</button> */}
+            <button onClick={demoLogin} to="#" id="demo-button">Demo</button>
             <p>Already have an account? <Link to="/login">Login here.</Link></p>
           </div>
         </form>
