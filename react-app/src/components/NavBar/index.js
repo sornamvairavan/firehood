@@ -13,16 +13,12 @@ const NavBar = () => {
   if (user) {
     sessionLinks = (
       <>
-        <div>
-          <SearchBar />
-        </div>
-        <div>
+          
           <span className="nav-cash">Cash Balance: {user?.cash}</span>
           <NavLink to="/" className="nav-tabs" exact>Portfolio</NavLink>
           <NavLink to="/transactions" className="nav-tabs">Transactions</NavLink>
           <span>Welcome {user.fullname}! </span>
           <LogoutButton />
-        </div>
       </>
     )
   } else {
@@ -39,6 +35,7 @@ const NavBar = () => {
           <NavLink to='/' exact={true} >
             <img src={homelogo} alt="home" className="logo-img"/>
           </NavLink>
+          {user && <SearchBar />}
         </span>
         <span className="right-nav-bar">
           {sessionLinks}

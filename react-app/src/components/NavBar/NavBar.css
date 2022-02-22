@@ -116,3 +116,40 @@
 .search-ticker {
   font-weight: bold;
 }
+
+.left-nav-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-container {
+  margin-left: 20px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.fa-search {
+  color:rgb(90, 90, 90)
+}
+
+.search-container input {
+  margin: 3px 10px 3px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  height: 25px;
+  width: 300px;
+}
+
+.search-results {
+  position: absolute;
+  margin: 3px 10px 3px 5px;
+  width: 300px;
+  overflow: hidden;
+  font-size: 14px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+}

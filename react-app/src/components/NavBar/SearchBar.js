@@ -19,16 +19,16 @@ export default function SearchBar() {
 
     return (
         <div className="search-container">
-            <div>
+            <div className="search-bar">
                 <i className="fas fa-search"></i>
                 <input
                     type="text"
-                    placeholder="Search for Stock"
+                    placeholder="Search"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
             </div>
-            <div>
+            <div className="search-results">
                 {query.length !== 0 && (Array.isArray(searchResults) && (
                 searchResults.map((result, idx) => (
                     <Link to={`/stocks/${result?.ticker}`} key={idx} onClick={(e) => setQuery("")}>
