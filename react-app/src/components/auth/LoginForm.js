@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import logo from '../../images/logo.png'
-import robinlogin from '../../images/robinhood-login-image.jpeg'
+// import robinlogin from '../../images/robinhood-login-image.jpeg'
 import './AuthForm.css'
 
 const LoginForm = () => {
@@ -41,9 +41,9 @@ const LoginForm = () => {
 
   return (
     <div className='auth-container'>
-      <div className='login-image'>
+      {/* <div className='login-image'>
         <img src={robinlogin} alt="logo" className="robin-image"/>
-      </div>
+      </div> */}
       <div className='auth-form-container'>
         <form onSubmit={onLogin} className="auth-form">
         <h1 className="form-title">Login to Firehood</h1>
