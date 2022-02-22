@@ -11,7 +11,7 @@ export const searchStock = (q) => async(dispatch) => {
     if (response.ok) {
         const searchResults = await response.json();
         dispatch(search(searchResults.search))
-        return searchResults.search
+        return searchResults
     }
 }
 

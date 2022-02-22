@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import homelogo from '../../images/firehood-logo.png'
+import SearchBar from './SearchBar';
 import './NavBar.css'
 
 const NavBar = () => {
@@ -12,11 +13,16 @@ const NavBar = () => {
   if (user) {
     sessionLinks = (
       <>
-        <span className="nav-cash">Cash Balance: {user?.cash}</span>
-        <NavLink to="/" className="nav-tabs" exact>Portfolio</NavLink>
-        <NavLink to="/transactions" className="nav-tabs">Transactions</NavLink>
-        <span>Welcome {user.fullname}! </span>
-        <LogoutButton />
+        <div>
+          <SearchBar />
+        </div>
+        <div>
+          <span className="nav-cash">Cash Balance: {user?.cash}</span>
+          <NavLink to="/" className="nav-tabs" exact>Portfolio</NavLink>
+          <NavLink to="/transactions" className="nav-tabs">Transactions</NavLink>
+          <span>Welcome {user.fullname}! </span>
+          <LogoutButton />
+        </div>
       </>
     )
   } else {

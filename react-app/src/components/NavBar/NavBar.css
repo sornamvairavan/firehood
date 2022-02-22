@@ -112,3 +112,7 @@
   background-color: rgba(90, 196, 59);;
   border: 1px solid rgba(90, 196, 59);;
 }
+
+.search-ticker {
+  font-weight: bold;
+}
