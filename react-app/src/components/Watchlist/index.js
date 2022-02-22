@@ -78,7 +78,7 @@ export default function Watchlist() {
                             <div key={idx}>
                                     <div className="stock-card">
                                         <div>
-                                        <Link to={`/stocks/${stock?.ticker}`} className="stock-card-link">
+                                        <Link to={`/stocks/${stock?.ticker}`}>
                                             <h5>{stock?.ticker}</h5>
                                         </Link>
                                         </div>

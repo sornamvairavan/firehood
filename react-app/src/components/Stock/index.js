@@ -18,7 +18,6 @@ export default function Stocks() {
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
-        // dispatch(getAllStocks())
         dispatch(getOneStock(ticker))
         .then(() => setIsLoaded(true))
     }, [dispatch, ticker, isLoaded])
