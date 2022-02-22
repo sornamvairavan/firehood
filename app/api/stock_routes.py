@@ -95,10 +95,9 @@ def get_stock_chart(ticker):
             data = r.json()
             dates = data["Time Series (Daily)"]
             
-            datetime_array = []
+            datetime_array = list(dates.keys())
             close_prices = []
             for date in dates.keys():
-                datetime_array.append(date)
                 close_prices.append(dates[date]["4. close"])
 
             return {"prices": close_prices, "dates": datetime_array}
