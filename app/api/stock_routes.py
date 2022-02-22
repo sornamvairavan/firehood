@@ -89,8 +89,20 @@ def get_stock_chart(ticker):
         return {"prices": close_prices, "dates": datetime_array}
         
     except:
-        return {"errors": ["No chart available at this time"]}
+        try:
+            url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&apikey={AV_KEY}'
+            r = requests.get(url)
+            data = r.json()
+            dates = data["Time Series (Daily)"]
+            
+            datetime_array = []
+            close_prices = []
+            for date in dates.keys():
+                datetime_array.append(date)
+                close_prices.append(dates[date]["4. close"])
 
-    # return {"prices": [124, 125], "dates": ["12-Feb", "13-Feb"]}
+            return {"prices": close_prices, "dates": datetime_array}
+        except:
+            return {"errors": ["No chart available at this time"]}
 
 

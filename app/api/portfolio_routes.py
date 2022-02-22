@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Portfolio, db, Transaction
+from app.models import Portfolio, db, Transaction, User
 from datetime import datetime
 from app.api.stock_routes import more_than_halfday
 
@@ -127,7 +127,14 @@ def update_portfolio(stock_id):
 
     return {"errors": ["You do not hold any of these shares to sell"]}, 400
 
-        
+
+# Portfolio value chart
+@portfolio_routes.route("/chart")
+@login_required
+def get_portfolio_chart_details():
+    user_id = int(current_user.id)
+    return "hello"
+
 
 
     
