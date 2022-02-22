@@ -22,11 +22,11 @@ export default function StockChart() {
 
     return (
         <>  
-        <div>
-            {warnings.length > 0 && <ul className="warning">
-            {warnings.map((warning, idx) => <li key={idx}>{warning}</li>)}
-            </ul>}
-        </div>
+            <div>
+                {warnings.length > 0 && <ul className="warning">
+                {warnings.map((warning, idx) => <li key={idx}>{warning}</li>)}
+                </ul>}
+            </div>
             {warnings.length === 0 && (
                 <Plot
                 data={[
@@ -38,7 +38,7 @@ export default function StockChart() {
                     marker: {color: '#FF5000'},
                 },
                 ]}
-                layout={{width: 820, height: 500}}
+                layout={{width: 820, height: 440}}
                 />
             )}
         </>

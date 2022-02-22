@@ -11,6 +11,7 @@ a {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     font-size: 1rem;
     font-weight: bold;
+    margin: 0px;
 }
 
 .watchlist-title {
@@ -31,6 +32,7 @@ a {
     padding: 24px 24px 14px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     font-size: 1rem;
+    margin: 0px;
 }
 
 .watchlist-name-container {
