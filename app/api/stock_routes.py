@@ -11,8 +11,8 @@ FIN_KEY = os.environ.get("FIN_KEY")
 FIN_KEY2 = os.environ.get("FIN_KEY2")
 YF_KEY = os.environ.get("YF_KEY")
 
-finnhub_client = finnhub.Client(api_key="c87esuiad3i9lkntmdcg")
-finnhub2_client = finnhub.Client(api_key="c87ggciad3i9lkntnqd0")
+finnhub_client = finnhub.Client(api_key={FIN_KEY})
+finnhub2_client = finnhub.Client(api_key={FIN_KEY2})
 
 def get_price(ticker):
     try:
@@ -67,9 +67,11 @@ def get_stock_chart(ticker):
         'accept': "application/json",
         'X-API-KEY': f"{YF_KEY}"
         }
+        print("error?")
 
         response = requests.request("GET", url, headers=headers)
         data = response.json()
+        print(data, "DATA")
         close_prices = data["chart"]["result"][0]["indicators"]["quote"][0]["close"]
         timestamp = data["chart"]["result"][0]["timestamp"]
 
