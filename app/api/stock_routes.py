@@ -80,7 +80,7 @@ def get_stock_chart(ticker):
             datetime_time = datetime.fromtimestamp(epoch_time).strftime('%d %b')
             datetime_array.append(datetime_time)
 
-        stock = Stock.query.filter(Stock.ticker_symbol == ticker).first()
+        # stock = Stock.query.filter(Stock.ticker_symbol == ticker).first()
         # stock.price = close_prices[-1]
         # stock.last_updated = time()
         # stock.updated_at = datetime.now()
