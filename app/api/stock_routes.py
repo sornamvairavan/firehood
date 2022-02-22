@@ -10,6 +10,8 @@ from datetime import datetime
 FIN_KEY = os.environ.get("FIN_KEY")
 FIN_KEY2 = os.environ.get("FIN_KEY2")
 YF_KEY = os.environ.get("YF_KEY")
+AV_KEY = os.environ.get("AV_KEY")
+
 
 finnhub_client = finnhub.Client(api_key={FIN_KEY})
 finnhub2_client = finnhub.Client(api_key={FIN_KEY2})
@@ -60,18 +62,16 @@ def get_stock_detail(ticker):
 @stock_routes.route('/chart/<ticker>')
 @login_required
 def get_stock_chart(ticker):
-    # try:
+    try:
         url = f'https://yfapi.net/v8/finance/chart/{ticker}?range=1mo&region=US&interval=1d&lang=en'
 
         headers = {
         'accept': "application/json",
         'X-API-KEY': f"{YF_KEY}"
         }
-        print("error?")
 
         response = requests.request("GET", url, headers=headers)
         data = response.json()
-        print(data, "DATA")
         close_prices = data["chart"]["result"][0]["indicators"]["quote"][0]["close"]
         timestamp = data["chart"]["result"][0]["timestamp"]
 
@@ -80,9 +80,16 @@ def get_stock_chart(ticker):
             datetime_time = datetime.fromtimestamp(epoch_time).strftime('%d %b')
             datetime_array.append(datetime_time)
 
+        stock = Stock.query.filter(Stock.ticker_symbol == ticker).first()
+        # stock.price = close_prices[-1]
+        # stock.last_updated = time()
+        # stock.updated_at = datetime.now()
+        # db.session.commit()
+        
         return {"prices": close_prices, "dates": datetime_array}
-    # except:
-    #     return {"errors": ["No chart available at this time"]}
+        
+    except:
+        return {"errors": ["No chart available at this time"]}
 
     # return {"prices": [124, 125], "dates": ["12-Feb", "13-Feb"]}
 
