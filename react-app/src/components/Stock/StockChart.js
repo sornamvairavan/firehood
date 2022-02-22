@@ -35,7 +35,7 @@ export default function StockChart() {
                     y: stock_prices,
                     type: 'scatter',
                     mode: 'lines+markers',
-                    marker: {color: 'red'},
+                    marker: {color: '#FF5000'},
                 },
                 ]}
                 layout={{width: 820, height: 500}}

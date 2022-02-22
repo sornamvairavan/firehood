@@ -53,7 +53,6 @@ export const getStockChart = (ticker) => async (dispatch) => {
     if (response.ok) {
         const chartDetails = await response.json()
         if (chartDetails.errors) {
-            console.log("has errors")
             return chartDetails;
         }
         dispatch(getChart(chartDetails))
