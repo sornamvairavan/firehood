@@ -10,12 +10,12 @@ export default function StockChart() {
     const stock_prices = useSelector(state => state.stock?.prices)
     const stock_dates = useSelector(state => state.stock?.dates)
 
-    const [errors, setErrors] = useState([])
+    const [warnings, setWarnings] = useState([])
 
     useEffect(() => {
         return dispatch(getStockChart(ticker))
         .then((data) => {
-          if (data.errors) setErrors(data.errors)
+          if (data.errors) setWarnings(data.errors)
         })
 
     }, [dispatch, ticker])
@@ -23,11 +23,11 @@ export default function StockChart() {
     return (
         <>  
         <div>
-            {errors.length > 0 && <ul className="warning">
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            {warnings.length > 0 && <ul className="warning">
+            {warnings.map((warning, idx) => <li key={idx}>{warning}</li>)}
             </ul>}
         </div>
-            {errors.length === 0 && (
+            {warnings.length === 0 && (
                 <Plot
                 data={[
                 {
