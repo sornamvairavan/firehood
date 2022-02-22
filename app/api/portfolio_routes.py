@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Portfolio, db, Transaction
 from datetime import datetime
-from app.api.stock_routes import more_than_oneday
+from app.api.stock_routes import more_than_halfday
 
 
 portfolio_routes = Blueprint('portfolios', __name__)
@@ -25,7 +25,7 @@ def get_users_portfolios():
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
     for portfolio in user_portfolios:
-        more_than_oneday(portfolio.stock)
+        more_than_halfday(portfolio.stock)
 
     return jsonify([portfolio.to_dict() for portfolio in user_portfolios])
 

@@ -27,7 +27,7 @@ def get_price(ticker):
         # time = data["t"]
     return [price]
     
-def more_than_oneday(stock):
+def more_than_halfday(stock):
     epoch_time = time()
     difference = epoch_time - float(stock.last_updated)
     if difference > 43200:
@@ -54,7 +54,7 @@ def get_all_stocks():
 def get_stock_detail(ticker):
 
     stock = Stock.query.filter(Stock.ticker_symbol == ticker).first()
-    more_than_oneday(stock)
+    more_than_halfday(stock)
     
     return stock.to_dict()
 
