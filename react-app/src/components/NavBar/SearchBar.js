@@ -28,14 +28,14 @@ export default function SearchBar() {
                     onChange={(e) => setQuery(e.target.value)}
                 />
             </div>
-            <div className="search-results">
                 {query.length !== 0 && (Array.isArray(searchResults) && (
-                searchResults.map((result, idx) => (
-                    <Link to={`/stocks/${result?.ticker}`} key={idx} onClick={(e) => setQuery("")} className="search-stocks">
-                        <span className="search-ticker">{result?.ticker}</span> {result?.company_name}
-                    </Link>
-                ))))}
-            </div>
+                    <div className="search-results">
+                    {searchResults.map((result, idx) => (
+                        <Link to={`/stocks/${result?.ticker}`} key={idx} onClick={(e) => setQuery("")} className="search-stocks">
+                            <span className="search-ticker">{result?.ticker}</span> {result?.company_name}
+                        </Link>))}
+                    </div>
+                ))}
         </div>
     )
 }
