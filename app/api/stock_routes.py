@@ -60,26 +60,28 @@ def get_stock_detail(ticker):
 @stock_routes.route('/chart/<ticker>')
 @login_required
 def get_stock_chart(ticker):
-    try:
-        url = f'https://yfapi.net/v8/finance/chart/{ticker}?range=1mo&region=US&interval=1d&lang=en'
+    # try:
+    #     url = f'https://yfapi.net/v8/finance/chart/{ticker}?range=1mo&region=US&interval=1d&lang=en'
 
-        headers = {
-        'accept': "application/json",
-        'X-API-KEY': f"{YF_KEY}"
-        }
+    #     headers = {
+    #     'accept': "application/json",
+    #     'X-API-KEY': f"{YF_KEY}"
+    #     }
 
-        response = requests.request("GET", url, headers=headers)
-        data = response.json()
-        close_prices = data["chart"]["result"][0]["indicators"]["quote"][0]["close"]
-        timestamp = data["chart"]["result"][0]["timestamp"]
+    #     response = requests.request("GET", url, headers=headers)
+    #     data = response.json()
+    #     close_prices = data["chart"]["result"][0]["indicators"]["quote"][0]["close"]
+    #     timestamp = data["chart"]["result"][0]["timestamp"]
 
-        datetime_array = []
-        for epoch_time in timestamp:
-            datetime_time = datetime.fromtimestamp(epoch_time).strftime('%d %b')
-            datetime_array.append(datetime_time)
+    #     datetime_array = []
+    #     for epoch_time in timestamp:
+    #         datetime_time = datetime.fromtimestamp(epoch_time).strftime('%d %b')
+    #         datetime_array.append(datetime_time)
 
-        return {"prices": close_prices, "dates": datetime_array}
-    except:
-        return {"errors": ["No chart available at this time"]}
+    #     return {"prices": close_prices, "dates": datetime_array}
+    # except:
+    #     return {"errors": ["No chart available at this time"]}
+
+    return {"prices": [124, 125], "dates": ["12-Feb", "13-Feb"]}
 
 
