@@ -31,7 +31,7 @@ export default function SearchBar() {
             <div className="search-results">
                 {query.length !== 0 && (Array.isArray(searchResults) && (
                 searchResults.map((result, idx) => (
-                    <Link to={`/stocks/${result?.ticker}`} key={idx} onClick={(e) => setQuery("")}>
+                    <Link to={`/stocks/${result?.ticker}`} key={idx} onClick={(e) => setQuery("")} className="search-stocks">
                         <span className="search-ticker">{result?.ticker}</span> {result?.company_name}
                     </Link>
                 ))))}
