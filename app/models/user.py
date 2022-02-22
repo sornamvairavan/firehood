@@ -2,6 +2,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy import func
+from sqlalchemy.types import ARRAY
 
 
 class User(db.Model, UserMixin):
@@ -13,7 +14,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     cash = db.Column(db.Float, nullable=False)
+    portfolio_value = db.Column(ARRAY(item_type=db.String))
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = (db.Column(db.DateTime))
 
     portfolio = db.relationship("Portfolio", back_populates="user")
     transaction = db.relationship("Transaction", back_populates="user")
