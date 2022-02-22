@@ -132,7 +132,7 @@
 }
 
 .fa-search {
-  color:rgb(90, 90, 90)
+  color:rgba(90, 90, 90, 0.75)
 }
 
 .search-container input {
@@ -158,10 +158,9 @@
 }
 
 .search-stocks {
-  padding: 3px 0px;
+  padding: 3px;
 }
 
 .search-stocks:hover {
-  cursor: pointer;
   background-color: rgba(169, 169, 169, 0.1);
 }
