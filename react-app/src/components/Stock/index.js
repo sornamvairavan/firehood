@@ -6,7 +6,9 @@ import { Modal } from '../../context/Modal'
 import AddToWatchlistForm from './AddToWatchlist';
 import BuyForm from './BuyForm';
 import SellForm from './SellForm';
+import StockChart from './StockChart';
 import './Stock.css'
+
 
 export default function Stocks() {
     const dispatch = useDispatch();
@@ -35,6 +37,7 @@ export default function Stocks() {
                 {/* <div>{stock?.ticker}</div> */}
                 <div>{stock?.price}</div>
                 <button onClick={openWishlistForm} id={stock?.id} className="add-to-list">Add to Lists</button>
+                <StockChart />
             </div>
             <div className='share-forms'>
                 <BuyForm stockId={stock?.id} stockPrice={stock?.price} stockTicker={stock?.ticker} stockIntPrice={stock?.int_price} />

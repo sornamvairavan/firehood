@@ -126,3 +126,21 @@
     padding: 5px;
     letter-spacing: -.33px;
 }
+
+
+.warning {
+    margin: 10px auto;
+    width: 75%;
+    list-style: none;
+    padding: 5px;
+    background-color: #facbb67c;
+    text-align: center;
+    border-radius: 7px;
+}
+
+.warning li {
+    list-style-type: none;
+    padding: 5px;
+    font-size: 14px;
+    color: #fc5f17;
+}

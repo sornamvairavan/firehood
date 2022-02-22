@@ -2,12 +2,14 @@ import os
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import Stock, db
+import requests
 import finnhub
 from time import time
 from datetime import datetime
 
 FIN_KEY = os.environ.get("FIN_KEY")
 FIN_KEY2 = os.environ.get("FIN_KEY2")
+YF_KEY = os.environ.get("YF_KEY")
 
 finnhub_client = finnhub.Client(api_key="c87esuiad3i9lkntmdcg")
 finnhub2_client = finnhub.Client(api_key="c87ggciad3i9lkntnqd0")
@@ -55,5 +57,29 @@ def get_stock_detail(ticker):
     return stock.to_dict()
 
 
+@stock_routes.route('/chart/<ticker>')
+@login_required
+def get_stock_chart(ticker):
+    # try:
+    #     url = f'https://yfapi.net/v8/finance/chart/{ticker}?range=1mo&region=US&interval=1d&lang=en'
+
+    #     headers = {
+    #     'accept': "application/json",
+    #     'X-API-KEY': f"{YF_KEY}"
+    #     }
+
+    #     response = requests.request("GET", url, headers=headers)
+    #     data = response.json()
+    #     close_prices = data["chart"]["result"][0]["indicators"]["quote"][0]["close"]
+    #     timestamp = data["chart"]["result"][0]["timestamp"]
+
+    #     datetime_array = []
+    #     for epoch_time in timestamp:
+    #         datetime_time = datetime.fromtimestamp(epoch_time).strftime('%m/%d')
+    #         datetime_array.append(datetime_time)
+
+    #     return {"prices": close_prices, "dates": datetime_array}
+    # except:
+        return {"errors": ["No chart available at this time"]}
 
 
