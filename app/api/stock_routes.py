@@ -30,7 +30,7 @@ def get_price(ticker):
 def more_than_oneday(stock):
     epoch_time = time()
     difference = epoch_time - float(stock.last_updated)
-    if difference > 86400:
+    if difference > 43200:
         result = get_price(stock.ticker_symbol)
         stock.price = result[0]
         stock.last_updated = epoch_time
