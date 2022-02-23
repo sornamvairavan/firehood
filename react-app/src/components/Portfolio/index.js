@@ -11,6 +11,7 @@ export default function Portfolio() {
     const [isLoaded, setIsLoaded] = useState(false);
     const userPortfoliosObj = useSelector(state => state.portfolio.portfolios)
     const userPortfoliosArr = Object.values(userPortfoliosObj)
+    const userCash = useSelector((state) => state.session.user.int_cash);
 
     useEffect(() => {
         dispatch(getUserPortfolios())
@@ -25,12 +26,14 @@ export default function Portfolio() {
         return sum.toFixed(2)
     }
 
+    let totalPortfolioValue = (parseFloat(portfolioValue(userPortfoliosArr)) + parseFloat(userCash)).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
     return (
         <div>
             <div className="stocklist-container">
                 <div className="portfolio-title-container">
                     <span className="watchlist-title">Stocks</span>
-                    <span>${portfolioValue(userPortfoliosArr)}</span>
+                    <span>${portfolioValue(userPortfoliosArr).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                 </div>
                 {userPortfoliosArr.length > 0 && (
                     userPortfoliosArr.map((portfolio, idx) => (
@@ -47,7 +50,7 @@ export default function Portfolio() {
                 <Watchlist />
             </div>
             <div>
-                <PortfolioChart />
+                <PortfolioChart totalPortfolioValue={totalPortfolioValue}/>
             </div>
         </div>
     )

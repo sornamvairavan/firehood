@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Plot from 'react-plotly.js';
 import { portfolioChart} from "../../store/portfolio";
 
-export default function PortfolioChart() {
+export default function PortfolioChart({totalPortfolioValue}) {
     const dispatch = useDispatch();
 
     const user_values = useSelector(state => state.portfolio.values)
@@ -18,7 +18,9 @@ export default function PortfolioChart() {
 
     return (
         <div className="portfolio-chart">  
-            {(
+            {(  
+            <>
+                <div className='portfolio-details'>${totalPortfolioValue}</div>
                 <Plot
                 data={[
                 {
@@ -31,6 +33,7 @@ export default function PortfolioChart() {
                 ]}
                 layout={{width: 850, height: 550, title: 'Portfolio Chart', yaxis: {rangemode: 'tozero', tickformat: ',d'}}}
                 />
+            </>
             )}
         </div>
     )
