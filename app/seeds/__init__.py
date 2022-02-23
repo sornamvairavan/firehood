@@ -4,6 +4,7 @@ from .users import seed_users, undo_users
 from .watchlists import seed_watchlists, undo_watchlists
 from .stocks import seed_stocks, undo_stocks
 from .portfolios import seed_portfolios, undo_portfolios
+from .transactions import seed_transactions, undo_transactions
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -17,6 +18,7 @@ def seed():
     seed_stocks()
     seed_watchlists()
     seed_portfolios()
+    seed_transactions()
     # Add other seed functions here
 
 
@@ -27,4 +29,5 @@ def undo():
     undo_stocks()
     undo_watchlists()
     undo_portfolios()
+    undo_transactions()
     # Add other undo functions here
