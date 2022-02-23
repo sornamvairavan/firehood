@@ -29,7 +29,7 @@ export default function PortfolioChart() {
                     marker: {color: 'rgb(0,200,5)'},
                 },
                 ]}
-                layout={{width: 820, height: 440, title: 'Portfolio Chart'}}
+                layout={{width: 820, height: 440, title: 'Portfolio Chart', yaxis: {rangemode: 'tozero', tickformat: ',d'}}}
                 />
             )}
         </div>
