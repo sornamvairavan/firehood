@@ -158,7 +158,7 @@ def get_portfolio_chart_details():
         date_array.append(today)
         values.append(f"{totalValue}")
         dv = f"{totalValue}+{today}"
-        user.portfolio_value.append(dv)
+        user.portfolio_value = user.portfolio_value + [dv]
         db.session.commit()
 
     return {"values": values, "dates": date_array}
