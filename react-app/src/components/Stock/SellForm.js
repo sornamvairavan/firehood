@@ -84,7 +84,7 @@ export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPri
                     <span>${cost.toFixed(2)}</span>
                 </div>
                 <div className='buy-sell-button'>
-                    <button type="submit" onClick={sellShares} disabled={!quantity} className="sell-review-order">Sell Shares</button>
+                    <button type="submit" onClick={sellShares} disabled={!quantity || quantity <= 0} className="sell-review-order">Sell Shares</button>
                 </div>
                 <div className="stock-card-user-sell">{portfolio?.quantity || "0"} shares available</div>
             </form>

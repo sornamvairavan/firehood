@@ -81,7 +81,7 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
                     <span>${cost.toFixed(2)}</span>
                 </div>
                 <div className="buy-sell-button">
-                    <button type="submit" onClick={buyShares} disabled={!quantity} className="buy-review-order">Buy Shares</button>
+                    <button type="submit" onClick={buyShares} disabled={!quantity || quantity <= 0} className="buy-review-order">Buy Shares</button>
                 </div>
                 <div className="stock-card-user-buy">{userCash} buying power available</div>
             </form>
