@@ -3,6 +3,7 @@ const GET_PORTFOLIOS = 'portfolios/GET_PORTFOLIOS'
 const ADD_PORTFOLIO = 'portfolios/ADD_PORTFOLIO'
 const UPDATE_PORTFOLIO = 'portfolios/UPDATE_PORTFOLIO'
 const DELETE_PORTFOLIO = 'portfolios/DELETE_PORTFOLIO'
+const GET_PORTFLIO_CHART = 'portfolios/GET_PORTFLIO_CHART'
 
 /* ----- ACTION CREATORS------ */
 const getPortfolios = (portfolios) => {
@@ -32,6 +33,15 @@ const deletePortfolio = (portfolio) => {
         portfolio
     }
 }
+
+
+const getPortfolioValues = (portfolioValues) => {
+    return {
+        type: GET_PORTFLIO_CHART,
+        portfolioValues
+    }
+}
+
 /* ------ THUNK ACTIONS ------ */
 export const getUserPortfolios = () => async (dispatch) => {
     const response = await fetch(`/api/portfolios/`)
@@ -97,6 +107,16 @@ export const sellStock = ({ stockId, quantity, cost }) => async (dispatch)  => {
         }
     } else {
         return ['An error occurred. Please try again.']
+    }
+}
+
+export const portfolioChart = () => async (dispatch) => {
+    const response = await fetch('/api/portfolios/chart')
+    
+    if (response.ok) {
+        const portfolioValues = await response.json()
+        dispatch(getPortfolioValues(portfolioValues))
+        return portfolioValues
     }
 }
 

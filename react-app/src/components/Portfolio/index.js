@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom";
 import Watchlist from "../Watchlist"
 import { getUserPortfolios } from "../../store/portfolio";
-
+import PortfolioChart from "./PortfolioChart";
 
 export default function Portfolio() {
     const dispatch = useDispatch()
@@ -26,24 +26,29 @@ export default function Portfolio() {
     }
 
     return (
-        <div className="stocklist-container">
-            <div className="portfolio-title-container">
-                <span className="watchlist-title">Stocks</span>
-                <span>${portfolioValue(userPortfoliosArr)}</span>
-            </div>
-            {userPortfoliosArr.length > 0 && (
-                userPortfoliosArr.map((portfolio, idx) => (
-                    <Link to={`/stocks/${portfolio?.stock?.ticker}`} key={idx}>
-                        <div className="stock-card">
-                            <div>
-                                <h4>{portfolio?.stock?.ticker}</h4>
-                                <p>{portfolio?.quantity} shares</p>
+        <>
+            <div className="stocklist-container">
+                <div className="portfolio-title-container">
+                    <span className="watchlist-title">Stocks</span>
+                    <span>${portfolioValue(userPortfoliosArr)}</span>
+                </div>
+                {userPortfoliosArr.length > 0 && (
+                    userPortfoliosArr.map((portfolio, idx) => (
+                        <Link to={`/stocks/${portfolio?.stock?.ticker}`} key={idx}>
+                            <div className="stock-card">
+                                <div>
+                                    <h4>{portfolio?.stock?.ticker}</h4>
+                                    <p>{portfolio?.quantity} shares</p>
+                                </div>
+                                <div className="list-price">{portfolio?.stock?.price}</div>
                             </div>
-                            <div className="list-price">{portfolio?.stock?.price}</div>
-                        </div>
-                    </Link>
-                )))}
-            <Watchlist />
-        </div>
+                        </Link>
+                    )))}
+                <Watchlist />
+            </div>
+            <div>
+                <PortfolioChart />
+            </div>
+        </>
     )
 }

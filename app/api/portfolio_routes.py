@@ -133,7 +133,23 @@ def update_portfolio(stock_id):
 @login_required
 def get_portfolio_chart_details():
     user_id = int(current_user.id)
-    return "hello"
+
+    user =  User.query.get(user_id)
+
+    user_values = user.portfolio_value
+
+    values = []
+    date_array = []
+
+    for val in user_values:
+        splitvd = val.split("+")
+        values.append(splitvd[0])
+        date_array.append(splitvd[1])
+
+    print(date_array[-1] == datetime.now().strftime('%d-%b'), "TRUEEEEE")
+
+
+    return {"values": values, "dates": date_array}
 
 
 
