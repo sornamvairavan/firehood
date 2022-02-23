@@ -76,6 +76,7 @@ def add_portfolio(stock_id):
         stock_id = stock_id,
         created_at = datetime.now()
     )
+    current_user.cash -= new_port["cost"]
 
     db.session.add(new_portfolio)
     db.session.add(new_transaction)
