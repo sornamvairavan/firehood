@@ -5,7 +5,7 @@ from app.models import db, User
 def seed_users():
     demo = User(
         full_name='Demo', username='Demo', email='demo@aa.io', password='password', cash=5000, 
-        portfolio_value=["2000+15-Feb", "2400+16-Feb", "2700+17-Feb", "2800+18-Feb", "2400+19-Feb", "2600+20-Feb", "2800+22-Feb"])
+        portfolio_value=["2000+15-Feb", "2400+16-Feb", "2700+17-Feb", "2800+18-Feb", "2400+19-Feb", "2600+20-Feb", "2800+21-Feb"])
     eduardo = User(
         full_name='Eduardo A', username='eduardo', email='eduardo@aa.io', password='password', cash=5000)
     bobbie = User(

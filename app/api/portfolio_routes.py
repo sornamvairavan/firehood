@@ -136,6 +136,12 @@ def get_portfolio_chart_details():
 
     user =  User.query.get(user_id)
 
+    user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
+
+    totalValue = 0
+    for portfolio in user_portfolios:
+        totalValue += (portfolio.price * portfolio.quantity)
+
     user_values = user.portfolio_value
 
     values = []
@@ -146,8 +152,14 @@ def get_portfolio_chart_details():
         values.append(splitvd[0])
         date_array.append(splitvd[1])
 
-    print(date_array[-1] == datetime.now().strftime('%d-%b'), "TRUEEEEE")
+    today = datetime.now().strftime('%d-%b')
 
+    if date_array[-1] != today:
+        date_array.append(today)
+        values.append(f"{totalValue}")
+        dv = f"{totalValue}+{today}"
+        user.portfolio_value.append(dv)
+        db.session.commit()
 
     return {"values": values, "dates": date_array}
 

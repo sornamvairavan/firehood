@@ -3,9 +3,10 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from datetime import datetime
+
 
 auth_routes = Blueprint('auth', __name__)
-
 
 def validation_errors_to_error_messages(validation_errors):
     """
@@ -59,6 +60,7 @@ def sign_up():
     """
     Creates a new user and logs them in
     """
+    today = datetime.now().strftime('%d-%b')
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -67,7 +69,8 @@ def sign_up():
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
-            cash=5000
+            cash=5000,
+            portfolio_value=[f"0+{today}"]
         )
         db.session.add(user)
         db.session.commit()

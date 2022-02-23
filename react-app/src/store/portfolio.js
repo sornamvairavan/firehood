@@ -145,6 +145,9 @@ export default function portfolioReducer(state = initialState, action) {
             newState = {...state}
             delete newState.portfolios[action.portfolioId]
             return newState
+        case GET_PORTFLIO_CHART:
+            newState = {...state, values: action.portfolioValues.values, dates: action.portfolioValues.dates}
+            return newState
         default:
             return state;
     }

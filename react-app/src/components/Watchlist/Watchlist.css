@@ -185,3 +185,7 @@ a {
     cursor: auto;
     border: none;
 }
+
+.portfolio-chart {
+    margin: 60px;
+}

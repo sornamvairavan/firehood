@@ -1,36 +1,37 @@
-import { useEffect} from 'react';
+import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Plot from 'react-plotly.js';
+import { portfolioChart} from "../../store/portfolio";
 
 export default function PortfolioChart() {
     const dispatch = useDispatch();
 
+    const user_values = useSelector(state => state.portfolio.values)
+    const port_dates = useSelector(state => state.portfolio.dates)
+     
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
-
-    }, [dispatch])
+        dispatch(portfolioChart())
+            .then(() => setIsLoaded(true))
+    }, [dispatch, isLoaded])
 
     return (
-        <>  
-            {/* <div>
-                {warnings.length > 0 && <ul className="warning">
-                {warnings.map((warning, idx) => <li key={idx}>{warning}</li>)}
-                </ul>}
-            </div> */}
-            {/* {(
+        <div className="portfolio-chart">  
+            {(
                 <Plot
                 data={[
                 {
-                    x: stock_dates,
-                    y: stock_prices,
+                    x: port_dates,
+                    y: user_values,
                     type: 'scatter',
                     mode: 'lines+markers',
-                    marker: {color: '#FF5000'},
+                    marker: {color: 'rgb(0,200,5)'},
                 },
                 ]}
-                layout={{width: 820, height: 440}}
+                layout={{width: 820, height: 440, title: 'Portfolio Chart'}}
                 />
-            )} */}
-        </>
+            )}
+        </div>
     )
 }
