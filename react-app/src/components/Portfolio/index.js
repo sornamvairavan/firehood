@@ -26,7 +26,7 @@ export default function Portfolio() {
     }
 
     return (
-        <>
+        <div>
             <div className="stocklist-container">
                 <div className="portfolio-title-container">
                     <span className="watchlist-title">Stocks</span>
@@ -49,6 +49,6 @@ export default function Portfolio() {
             <div>
                 <PortfolioChart />
             </div>
-        </>
+        </div>
     )
 }
