@@ -159,6 +159,7 @@ def get_portfolio_chart_details():
         values.append(f"{totalValue}")
         dv = f"{totalValue}+{today}"
         user.portfolio_value = user.portfolio_value + [dv]
+        user.updated_at = datetime.now()
         db.session.commit()
 
     return {"values": values, "dates": date_array}
