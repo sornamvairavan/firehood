@@ -27,7 +27,7 @@ def valid_email(form, field):
 
 
 class SignUpForm(FlaskForm):
-    fullname = StringField('fullname', validators=[DataRequired()])
-    username = StringField('username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists, valid_email])
-    password = StringField('password', validators=[DataRequired(), Length(min=6, message="Password must be at least 6 characters")])
+    fullname = StringField('fullname', validators=[DataRequired(), Length(max=50, message="Name must be less than 50 characters")])
+    username = StringField('username', validators=[DataRequired(), username_exists, Length(max=40, message="Username must be less than 40 characters")])
+    email = StringField('email', validators=[DataRequired(), user_exists, valid_email, Length(max=255, message="Email must be less than 255 characters")])
+    password = StringField('password', validators=[DataRequired(), Length(min=6, message="Password must be at least 6 characters"), Length(max=255, message="Password must be less than 255 characters")])

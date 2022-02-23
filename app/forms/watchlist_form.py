@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired, ValidationError, Length
 from app.models import Watchlist
 from flask_login import current_user
 
@@ -15,4 +15,4 @@ def watchlist_exists(form, field):
             raise ValidationError('Watchlist already exists.')
 
 class WatchlistForm(FlaskForm):
-    name = StringField('name', validators=[DataRequired(), watchlist_exists])
+    name = StringField('name', validators=[DataRequired(), watchlist_exists, Length(max=50, message="Name must be less than 50 characters")])
