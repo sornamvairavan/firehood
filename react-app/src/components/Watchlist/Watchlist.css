@@ -191,12 +191,9 @@ a {
 }
 
 .portfolio-details {
-    /* display: flex;
-    flex-direction: column; */
     font-size: 32px;
     margin-left: 60px;
-    margin-top: 50px;
+    margin-top: 60px;
     font-weight: 500;
-    padding: 5px;
     letter-spacing: -.33px;
 }
