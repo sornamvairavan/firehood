@@ -1,4 +1,4 @@
-.auth-container {
+/* .auth-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -12,10 +12,12 @@
 .robin-image, .login-image {
     height: 100%;
     overflow: hidden;
-}
+} */
 
 .auth-form-container {
-    margin: auto;
+    display: flex;
+    justify-content: center;
+
 }
 
 .auth-logo {
