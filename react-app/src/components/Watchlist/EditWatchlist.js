@@ -48,7 +48,7 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     />
-                    <button onClick={editWatchlist} type="submit" disabled={!name || name==watchlist?.name} className="save-button">Save Changes</button>
+                    <button onClick={editWatchlist} type="submit" disabled={!name || name===watchlist?.name} className="save-button">Save Changes</button>
                 </form>
             </div>
          </>
