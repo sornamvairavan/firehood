@@ -6,13 +6,14 @@ from app.models import db, User
 def seed_users():
     demo = User(
         full_name='Demo', username='Demo', email='demo@aa.io', password='password', cash=5000, 
-        portfolio_value=["1082.70+16-Feb", "2242.71+17-Feb", "3026.05+18-Feb", "2956.08+21-Feb", "3800.02+22-Feb"])
+        portfolio_value=["1082.70+16-Feb", "2242.71+17-Feb", "3026.05+18-Feb", "2956.08+21-Feb", "3800.02+22-Feb"], 
+        updated_at="2022-02-22 08:13:37.516563-08")
     eduardo = User(
         full_name='Eduardo A', username='eduardo', email='eduardo@aa.io', password='password', cash=5000,
-        portfolio_value=["0+22-Feb"])
+        portfolio_value=["0+22-Feb"], updated_at = "2022-02-22 08:13:37.516563-08")
     bobbie = User(
         full_name='Bob T', username='bobbie', email='bobbie@aa.io', password='password', cash=5000,
-        portfolio_value=["0+22-Feb"])
+        portfolio_value=["0+22-Feb"], updated_at="2022-02-22 08:13:37.516563-08")
 
     db.session.add(demo)
     db.session.add(eduardo)

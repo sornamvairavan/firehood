@@ -4,7 +4,7 @@ from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
 from datetime import datetime
-
+import pytz
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -60,7 +60,7 @@ def sign_up():
     """
     Creates a new user and logs them in
     """
-    today = datetime.now().strftime('%d-%b')
+    today = datetime.now(pytz.timezone('US/Eastern')).strftime('%d-%b')
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -70,7 +70,8 @@ def sign_up():
             email=form.data['email'],
             password=form.data['password'],
             cash=5000,
-            portfolio_value=[f"0+{today}"]
+            portfolio_value=[f"0+{today}"],
+            updated_at = datetime.now(pytz.timezone('US/Eastern'))
         )
         db.session.add(user)
         db.session.commit()

@@ -155,7 +155,7 @@ def get_portfolio_chart_details():
         date_array.append(splitvd[1])
 
     today = datetime.now(pytz.timezone('US/Eastern')).strftime('%d-%b')
-    
+
     if date_array[-1] != today:
         dv = f"{totalValue}+{today}"
         user.portfolio_value = user.portfolio_value + [dv]
