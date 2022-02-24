@@ -78,7 +78,7 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
                 </div>
                 <div className="stock-card-cost">
                     <span>Estimated Cost: </span>
-                    <span>${cost.toFixed(2)}</span>
+                    <span>${cost.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                 </div>
                 <div className="buy-sell-button">
                     <button type="submit" onClick={buyShares} disabled={!quantity || quantity <= 0} className="buy-review-order">Buy Shares</button>
