@@ -5,6 +5,7 @@ from app.models import Stock, db
 
 search_routes = Blueprint('search', __name__)
 
+
 @search_routes.route('/<q>')
 @login_required
 def search(q):

@@ -6,6 +6,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from datetime import datetime
 import pytz
 
+
 auth_routes = Blueprint('auth', __name__)
 
 def validation_errors_to_error_messages(validation_errors):

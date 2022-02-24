@@ -7,6 +7,7 @@ import finnhub
 from time import time
 from datetime import datetime
 
+
 FIN_KEY = os.environ.get("FIN_KEY")
 FIN_KEY2 = os.environ.get("FIN_KEY2")
 YF_KEY = os.environ.get("YF_KEY")
@@ -41,6 +42,7 @@ def more_than_sixhours(stock):
         return False
 
 stock_routes = Blueprint('stocks', __name__)
+
 
 @stock_routes.route('/')
 @login_required

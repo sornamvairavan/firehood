@@ -4,6 +4,7 @@ from app.models import Watchlist, db, Stock
 from app.forms import WatchlistForm
 from app.api.stock_routes import more_than_sixhours
 
+
 watchlist_routes = Blueprint('watchlists', __name__)
 
 def validation_errors_to_error_messages(validation_errors):
@@ -46,7 +47,6 @@ def add_watchlist():
         db.session.commit()
         return new_watchlist.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-
 
 
 # Add a stock to a list

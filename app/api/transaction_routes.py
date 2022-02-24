@@ -2,7 +2,9 @@ from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from app.models import Transaction
 
+
 transaction_routes = Blueprint('transactions', __name__)
+
 
 # Get all of the user's transactions
 @transaction_routes.route("/")

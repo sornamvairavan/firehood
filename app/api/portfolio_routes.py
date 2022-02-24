@@ -18,6 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+
 # Get all of the user's portfolios 
 @portfolio_routes.route("/")
 @login_required
@@ -32,6 +33,7 @@ def get_users_portfolios():
             db.session.commit()
 
     return jsonify([portfolio.to_dict() for portfolio in user_portfolios])
+
 
 # Buy a stock
 @portfolio_routes.route("/<int:stock_id>", methods=['POST'])
