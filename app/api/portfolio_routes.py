@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Portfolio, db, Transaction, User
 from datetime import datetime
 import pytz
-from app.api.stock_routes import more_than_halfday
+from app.api.stock_routes import more_than_sixhours
 
 
 portfolio_routes = Blueprint('portfolios', __name__)
@@ -26,7 +26,11 @@ def get_users_portfolios():
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
     for portfolio in user_portfolios:
-        more_than_halfday(portfolio.stock)
+        result = more_than_sixhours(portfolio.stock)
+        print(result, "?????????????????")
+        if result > 0:
+            portfolio.price = result
+            db.session.commit()
 
     return jsonify([portfolio.to_dict() for portfolio in user_portfolios])
 

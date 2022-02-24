@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Watchlist, db, Stock
 from app.forms import WatchlistForm
-from app.api.stock_routes import more_than_halfday
+from app.api.stock_routes import more_than_sixhours
 
 watchlist_routes = Blueprint('watchlists', __name__)
 
@@ -26,7 +26,7 @@ def get_users_watchlist():
 
     for watchlist in user_watchlists:
         for stock in watchlist.stocks:
-            more_than_halfday(stock)
+            more_than_sixhours(stock)
 
     return jsonify([watchlist.to_dict() for watchlist in user_watchlists])
 

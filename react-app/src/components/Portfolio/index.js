@@ -22,6 +22,7 @@ export default function Portfolio() {
         let sum = 0;
         userPortfoliosArr.forEach((portfolio) => {
             sum += (portfolio.quantity * portfolio.int_price)
+            console.log(portfolio.quantity, portfolio.int_price)
         })
         return sum.toFixed(2)
     }

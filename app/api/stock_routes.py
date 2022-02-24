@@ -27,16 +27,16 @@ def get_price(ticker):
         # time = data["t"]
     return [price]
     
-def more_than_halfday(stock):
+def more_than_sixhours(stock):
     epoch_time = time()
     difference = epoch_time - float(stock.last_updated)
-    if difference > 43200:
+    if difference > 21600:
         result = get_price(stock.ticker_symbol)
         stock.price = result[0]
         stock.last_updated = epoch_time
         stock.updated_at = datetime.now()
         db.session.commit()
-        return True
+        return stock.price
     else:
         return False
 
@@ -54,7 +54,7 @@ def get_all_stocks():
 def get_stock_detail(ticker):
 
     stock = Stock.query.filter(Stock.ticker_symbol == ticker).first()
-    more_than_halfday(stock)
+    more_than_sixhours(stock)
     
     return stock.to_dict()
 
