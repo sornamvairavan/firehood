@@ -1,4 +1,3 @@
-from xmlrpc.client import ProtocolError
 from app.models import db, User
 
 

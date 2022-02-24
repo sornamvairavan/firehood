@@ -27,8 +27,7 @@ def get_users_portfolios():
 
     for portfolio in user_portfolios:
         result = more_than_sixhours(portfolio.stock)
-        print(result, "?????????????????")
-        if result > 0:
+        if result:
             portfolio.price = result
             db.session.commit()
 
