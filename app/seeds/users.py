@@ -5,8 +5,8 @@ from app.models import db, User
 def seed_users():
     demo = User(
         full_name='Demo', username='Demo', email='demo@aa.io', password='password', cash=5000, 
-        portfolio_value=["1082.70+16-Feb", "2242.71+17-Feb", "3026.05+18-Feb", "2956.08+21-Feb", "3800.02+22-Feb", "4010.45+23-Feb"], 
-        updated_at="2022-02-22 08:13:37.516563-08")
+        portfolio_value=["1105.00+16-Feb", "2299.24+17-Feb", "3072.58+18-Feb", "2987.25+21-Feb", "4018.05+22-Feb", "3907.7+23-Feb"], 
+        updated_at="2022-02-23 08:13:37.516563-08")
     eduardo = User(
         full_name='Eduardo A', username='eduardo', email='eduardo@aa.io', password='password', cash=5000,
         portfolio_value=["0+22-Feb"], updated_at = "2022-02-22 08:13:37.516563-08")
