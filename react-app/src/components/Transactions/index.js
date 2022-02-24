@@ -40,7 +40,7 @@ export default function Transaction() {
                         <td>{transaction?.created_at}</td>
                         <td id={transaction.cap_type}>{transaction?.cap_type}</td>
                         <td>{transaction?.stock?.ticker}</td>
-                        <td>{transaction?.stock?.price}</td>
+                        <td>{transaction?.price}</td>
                         <td>{transaction?.quantity}</td>
                         <td>{transaction?.value}</td>
                     </tr>
