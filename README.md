@@ -25,7 +25,7 @@ Firehood is built on a React frontend with a Flask backend, using PostgreSQL as 
 ## Firehood setup
 1. Clone this repository (*https://github.com/sornamvairavan/firehood.git*)
 2. Install dependencies - `pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt`
-3. Create a **.env** file based on the .env.example with proper settings required for the development environment
+3. Create a `.env` file based on the **.env.example** with proper settings required for the development environment
 4. Setup PostgreSQL user, password and database and to make sure it matches the **.env** file
 5. Get into pipenv, migrate the database, seed the database, and run the flask app using the following commands:
    * `pipenv shell`
