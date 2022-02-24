@@ -154,16 +154,21 @@ def get_portfolio_chart_details():
         values.append(splitvd[0])
         date_array.append(splitvd[1])
 
-    today = datetime.now(pytz.timezone('America/NewYork')).strftime('%d-%b')
-
-    date_array.append(today)
-    values.append(f"{totalValue}")
+    today = datetime.now(pytz.timezone('US/Eastern')).strftime('%d-%b')
     
     if date_array[-1] != today:
         dv = f"{totalValue}+{today}"
         user.portfolio_value = user.portfolio_value + [dv]
-        user.updated_at = datetime.now()
+        user.updated_at = datetime.now(pytz.timezone('US/Eastern'))
         db.session.commit()
+
+    update = user.updated_at.strftime('%d-%b')
+
+    if date_array[-1] == update:
+        date_array.pop()
+        values.pop()
+        date_array.append(today)
+        values.append(f"{totalValue}")
 
     return {"values": values, "dates": date_array}
 
