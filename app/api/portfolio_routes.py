@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Portfolio, db, Transaction, User
 from datetime import datetime
+import pytz
 from app.api.stock_routes import more_than_halfday
 
 
@@ -153,11 +154,12 @@ def get_portfolio_chart_details():
         values.append(splitvd[0])
         date_array.append(splitvd[1])
 
-    today = datetime.now().strftime('%d-%b')
+    today = datetime.now(pytz.timezone('America/NewYork')).strftime('%d-%b')
 
+    date_array.append(today)
+    values.append(f"{totalValue}")
+    
     if date_array[-1] != today:
-        date_array.append(today)
-        values.append(f"{totalValue}")
         dv = f"{totalValue}+{today}"
         user.portfolio_value = user.portfolio_value + [dv]
         user.updated_at = datetime.now()
