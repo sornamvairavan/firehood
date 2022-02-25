@@ -42,6 +42,11 @@ def add_portfolio(stock_id):
     
     new_port = request.json
 
+    try:
+        int(new_port["quantity"])
+    except ValueError:
+        return {"errors": ["Please enter a valid quantity"]}, 400
+
     if int(new_port["quantity"]) <= 0:
         return {"errors": ["Please enter a valid quantity"]}, 400
 
@@ -96,6 +101,11 @@ def add_portfolio(stock_id):
 def update_portfolio(stock_id):
 
     updated_port = request.json
+
+    try:
+        int(updated_port["quantity"])
+    except ValueError:
+        return {"errors": ["Please enter a valid quantity"]}, 400
 
     if int(updated_port["quantity"]) <= 0:
         return {"errors": ["Please enter a valid quantity"]}, 400
