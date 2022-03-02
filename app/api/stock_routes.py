@@ -29,9 +29,10 @@ def get_price(ticker):
     return [price]
     
 def more_than_sixhours(stock):
+    SIX_HOURS_IN_SECONDS = 21600
     epoch_time = time()
     difference = epoch_time - float(stock.last_updated)
-    if difference > 21600:
+    if difference > SIX_HOURS_IN_SECONDS:
         result = get_price(stock.ticker_symbol)
         stock.price = result[0]
         stock.last_updated = epoch_time
