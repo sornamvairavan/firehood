@@ -25,14 +25,14 @@ export default function News() {
         </ul>}
         <div>
             {warning.length === 0 && news && (
-                news.map((n) => (
-                    <div className="news-card-main">
-                      <a href={n.url} target="_blank" className="news-card">
+                news.map((n, idx1) => (
+                    <div className="news-card-main" key={idx1}>
+                      <a href={n.url} target="_blank" className="news-card" rel="noreferrer">
                         <div>
                           <p className="news-source">⚡︎ {n.source}</p>
                           <p className="news-title">{n.headline}</p>
                         </div>
-                        <img className="news-img" src={n.image} />
+                        <img className="news-img" src={n.image} alt="news" />
                       </a>
                     </div>
                   ))
