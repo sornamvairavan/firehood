@@ -185,7 +185,9 @@ def get_portfolio_chart_details():
         date_array.append(today)
         values.append(f"{totalValue}")
 
-    return {"values": values, "dates": date_array}
+    change = "rgb(0,200,5)" if (values[-2] < values[-1]) else "#FF5000"
+
+    return {"values": values, "dates": date_array, "change":change}
 
 
 

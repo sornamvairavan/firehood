@@ -9,6 +9,8 @@ export default function StockChart() {
     const { ticker } = useParams();
     const stock_prices = useSelector(state => state.stock?.prices)
     const stock_dates = useSelector(state => state.stock?.dates)
+    const color = useSelector(state => state.stock?.change)
+    console.log(color)
 
     const [warnings, setWarnings] = useState([])
 
@@ -35,7 +37,7 @@ export default function StockChart() {
                     y: stock_prices,
                     type: 'scatter',
                     mode: 'lines+markers',
-                    marker: {color: '#FF5000'},
+                    marker: {color: color},
                 },
                 ]}
                 layout={{width: 820, height: 440}}

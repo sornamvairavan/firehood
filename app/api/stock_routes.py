@@ -88,8 +88,8 @@ def get_stock_chart(ticker):
         # stock.last_updated = time()
         # stock.updated_at = datetime.now()
         # db.session.commit()
-        
-        return {"prices": close_prices, "dates": datetime_array}
+        change = "rgb(0,200,5)" if (close_prices[-2] < close_prices[-1]) else "#FF5000"
+        return {"prices": close_prices, "dates": datetime_array, "change": change}
         
     except:
         try:
@@ -102,8 +102,8 @@ def get_stock_chart(ticker):
             close_prices = []
             for date in dates.keys():
                 close_prices.append(dates[date]["4. close"])
-
-            return {"prices": close_prices, "dates": datetime_array}
+            change = "rgb(0,200,5)" if (close_prices[-2] < close_prices[-1]) else "#FF5000"
+            return {"prices": close_prices, "dates": datetime_array, "change": change}
         except:
             return {"errors": ["No chart available at this time"]}
 

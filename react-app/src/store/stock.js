@@ -79,7 +79,7 @@ export default function stockReducer(state = initialState, action) {
             newState.stocks[action.stock.ticker] = action.stock
             return newState;
         case GET_CHART:
-            newState = {...state, prices: action.stockDetails.prices, dates: action.stockDetails.dates}
+            newState = {...state, prices: action.stockDetails.prices, dates: action.stockDetails.dates, change: action.stockDetails.change}
             return newState;
         default:
             return state;

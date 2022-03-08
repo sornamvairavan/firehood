@@ -8,6 +8,7 @@ export default function PortfolioChart({totalPortfolioValue}) {
 
     const user_values = useSelector(state => state.portfolio.values)
     const port_dates = useSelector(state => state.portfolio.dates)
+    const color = useSelector(state => state.portfolio.change)
      
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -28,7 +29,7 @@ export default function PortfolioChart({totalPortfolioValue}) {
                     y: user_values,
                     type: 'scatter',
                     mode: 'lines+markers',
-                    marker: {color: 'rgb(0,200,5)'},
+                    marker: {color: color},
                 },
                 ]}
                 layout={{width: 850, height: 550, title: 'Portfolio Chart', yaxis: {rangemode: 'tozero', tickformat: ',d'}}}
