@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Watchlist from "../Watchlist"
 import { getUserPortfolios } from "../../store/portfolio";
 import PortfolioChart from "./PortfolioChart";
+import News from "../News";
 
 export default function Portfolio() {
     const dispatch = useDispatch()
@@ -51,6 +52,9 @@ export default function Portfolio() {
             </div>
             <div>
                 <PortfolioChart totalPortfolioValue={totalPortfolioValue}/>
+            </div>
+            <div>
+                <News />
             </div>
         </div>
     )

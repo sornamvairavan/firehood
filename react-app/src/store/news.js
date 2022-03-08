@@ -5,16 +5,14 @@ const getTheNews = (news) => ({
     news
 })
 
-export const getNews = (q) => async(dispatch) => {
-    const response = await fetch(`/api/news/${q}`)
+export const getNews = () => async(dispatch) => {
+    const response = await fetch(`/api/news/`)
 
     if (response.ok) {
         const data = await response.json();
-        if (data.errors) {
-            dispatch(getTheNews(data.errors))
-        } else {
-            dispatch(getTheNews(data.news))
-        }
+        if (data) {
+            dispatch(getTheNews(data))
+        } 
         return data
     } 
 }

@@ -1,6 +1,5 @@
 import os
 from flask import Blueprint
-from flask_login import login_required
 import finnhub
 
 
@@ -13,7 +12,6 @@ finnhub_client = finnhub.Client(api_key={FIN_KEY})
 finnhub2_client = finnhub.Client(api_key={FIN_KEY2})
 
 @news_routes.route("/")
-@login_required
 def get_news():
     try:
         data = finnhub_client.general_news('general', min_id=0)
