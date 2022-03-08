@@ -14,7 +14,7 @@ export default function News() {
         return dispatch(getNews())
             .then((data) => {
                 if (data.errors) setWarning(data.errors)
-                })
+            })
     }, [dispatch])
 
     return (

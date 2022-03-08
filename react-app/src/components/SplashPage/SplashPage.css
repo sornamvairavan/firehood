@@ -25,7 +25,8 @@
     flex-direction: column;
     justify-content: center;
     height: 30em;
-    margin: 0 50px 100px 50px;
+    margin: 0 50px 100px 70px;
+    width: 75%;
 }
 
 .splash-text-container h2 {
