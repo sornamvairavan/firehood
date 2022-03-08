@@ -6,6 +6,7 @@ import stock from './stock'
 import portfolio from './portfolio'
 import transaction from './transaction';
 import search from './search'
+import news from './news'
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   stock,
   portfolio,
   transaction,
-  search
+  search,
+  news
 });
 
 
