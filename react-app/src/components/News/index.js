@@ -28,7 +28,7 @@ export default function News() {
                 news.map((n) => (
                     <div className="news-card-main">
                       <a href={n.url} target="_blank" className="news-card">
-                        <div className="news-text">
+                        <div>
                           <p className="news-source">⚡︎ {n.source}</p>
                           <p className="news-title">{n.headline}</p>
                         </div>

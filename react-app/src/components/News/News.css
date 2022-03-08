@@ -1,14 +1,6 @@
 .news-heading {
     margin-left: 160px;
 }
-
-.news-main {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 40px;
-  }
   
 .news-card-main {
     margin-left: 160px;
