@@ -115,8 +115,8 @@ const SignUpForm = () => {
       </div>
       <div className="signup-content-container">
         <div>
-          <h2>Make your Play Money Move</h2>
-          <p>Firehood lets you invest in companies you love, commission-free.</p>
+          <h2>Make Your Money Move</h2>
+          <p className="signup-content">Firehood lets you invest in companies you love, commission-free to achieve FIRE and live happily ever after.</p>
         </div>
         <div>
           <div className="signup-heading">Commission-free trading</div>

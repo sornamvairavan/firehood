@@ -18,7 +18,7 @@ export default function SplashPage() {
             <h2 className="header1">Investing for Everyone</h2>
             <div>
               <h3 className="one-liner">Explore your path to Financial Independence, Retire Early (FIRE) today!</h3>
-              <h3 className="one-liner">Commission-free investing, plus the tools you need to put your play money in motion.</h3>
+              <h3 className="one-liner">Commission-free investing, plus the tools you need to put your Firehood money in motion.</h3>
             </div>
             <div className="signup-cont">
               <Link to="/sign-up" className='splash-signup'>Sign up</Link>
