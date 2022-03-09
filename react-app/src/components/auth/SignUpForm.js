@@ -120,7 +120,7 @@ const SignUpForm = () => {
         </div>
         <div>
           <div className="signup-heading">Commission-free trading</div>
-          <div className="signup-content">Practice virtual trading to sharpen your knowledge of how the stock market works with our bonus of F$5,000 provided, and make commission-free trades in stocks with Firehood. </div>
+          <div className="signup-content">Practice virtual trading to sharpen your knowledge of how the stock market works with our bonus of Firehood $5,000 provided, and make commission-free trades in stocks with Firehood. </div>
         </div>
         <div>
           <div className="signup-heading">Prepare yourself to trade</div>
