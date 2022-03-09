@@ -57,60 +57,76 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className='auth-form-container'>
-      <form onSubmit={onSignUp} className="auth-form">
-      <h1 className="form-title">Sign up for Firehood</h1>
-      <img src={logo} alt="logo" className="auth-logo"/>
-        <div>
-          {errors.length > 0 && <ul className="errors">
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>}
+    <div className="auth-container">
+      <div className='auth-form-container sign-up-cont'>
+        <form onSubmit={onSignUp} className="auth-form">
+        <h1 className="form-title">Sign up for Firehood</h1>
+        <img src={logo} alt="logo" className="auth-logo"/>
+          <div>
+            {errors.length > 0 && <ul className="errors">
+              {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>}
+          </div>
+          <div className='input-container'>
+            <label>Name</label>
+            <input
+              type='text'
+              name='fullname'
+              autoComplete='off'
+              onChange={updateFullname}
+              value={fullname}
+            ></input>
+            <label>Username</label>
+            <input
+              type='text'
+              name='username'
+              autoComplete='off'
+              onChange={updateUsername}
+              value={username}
+            ></input>
+            <label>Email</label>
+            <input
+              type='text'
+              name='email'
+              autoComplete='off'
+              onChange={updateEmail}
+              value={email}
+            ></input>
+            <label>Password</label>
+            <input
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+            ></input>
+            <label>Repeat Password</label>
+            <input
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+            ></input>
+            <button type='submit' className="auth-button">Sign Up</button>
+            <button onClick={demoLogin} to="#" id="demo-button">Demo</button>
+            <p>Already have an account? <Link to="/login">Login here.</Link></p>
+          </div>
+        </form>
+      </div>
+      <div className="signup-content-container">
+        <div className="signup-info">
+          <div className="signup-heading">Commission-free trading</div>
+          <div className="signup-content">Break free from commission-fees and make unlimited commission-free trades in stocks, funds, and options with Firehood Financial. </div>
         </div>
-        <div className='input-container'>
-          <label>Name</label>
-          <input
-            type='text'
-            name='fullname'
-            autoComplete='off'
-            onChange={updateFullname}
-            value={fullname}
-          ></input>
-          <label>Username</label>
-          <input
-            type='text'
-            name='username'
-            autoComplete='off'
-            onChange={updateUsername}
-            value={username}
-          ></input>
-          <label>Email</label>
-          <input
-            type='text'
-            name='email'
-            autoComplete='off'
-            onChange={updateEmail}
-            value={email}
-          ></input>
-          <label>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-          ></input>
-          <label>Repeat Password</label>
-          <input
-            type='password'
-            name='repeat_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-          <button type='submit' className="auth-button">Sign Up</button>
-          <button onClick={demoLogin} to="#" id="demo-button">Demo</button>
-          <p>Already have an account? <Link to="/login">Login here.</Link></p>
+        <div className="signup-info">
+          <div className="signup-heading">Account Protection</div>
+          <div className="signup-content">Robinshould Financial is a member of SIPC. Securities in your account protected up to $500,000. For details, please see www.sipc.org.</div>
         </div>
-      </form>
+        <div className="signup-info">
+          <div className="signup-heading">Stay on top of your portfolio</div>
+          <div className="signup-content">Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</div>
+        </div>
+      </div>
     </div>
   );
 };
