@@ -124,7 +124,7 @@ const SignUpForm = () => {
         </div>
         <div>
           <div className="signup-heading">Account Protection</div>
-          <div className="signup-content">Robinshould Financial is a member of SIPC. Securities in your account protected up to $500,000. For details, please see www.sipc.org.</div>
+          <div className="signup-content">Firehood Financial is a member of SIPC. Securities in your account protected up to $500,000. For details, please see www.sipc.org.</div>
         </div>
         <div>
           <div className="signup-heading">Stay on top of your portfolio</div>

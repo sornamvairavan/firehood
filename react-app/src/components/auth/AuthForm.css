@@ -31,7 +31,14 @@
 
 .sign-up-cont {
     margin: 40px auto;
+    overflow-y: auto;
+    overflow-x: none;
+    margin-bottom: 100px;
 }
+
+/* .sign-up-cont::-webkit-scrollbar {
+    display: none;
+} */
 
 .signup-content-container {
     display: flex;
