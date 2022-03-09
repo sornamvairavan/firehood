@@ -120,15 +120,15 @@ const SignUpForm = () => {
         </div>
         <div>
           <div className="signup-heading">Commission-free trading</div>
-          <div className="signup-content">Break free from commission-fees and make unlimited commission-free trades in stocks, funds, and options with Firehood Financial. </div>
+          <div className="signup-content">Practice virtual trading to sharpen your knowledge of how the stock market works with our bonus of F$5,000 provided, and make commission-free trades in stocks with Firehood. </div>
         </div>
         <div>
-          <div className="signup-heading">Account Protection</div>
-          <div className="signup-content">Firehood Financial is a member of SIPC. Securities in your account protected up to $500,000. For details, please see www.sipc.org.</div>
+          <div className="signup-heading">Prepare yourself to trade</div>
+          <div className="signup-content">Firehood provides the tools you need to prepare yourself to start investing in stocks without risking real money.</div>
         </div>
         <div>
-          <div className="signup-heading">Stay on top of your portfolio</div>
-          <div className="signup-content">Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</div>
+          <div className="signup-heading">Stay on top of the stocks</div>
+          <div className="signup-content">Stay up to date with the news and set up customized watchlists to stay on top of the stocks as casually or as relentlessly as you like. Controlling the flow of info is up to you.</div>
         </div>
       </div>
     </div>
