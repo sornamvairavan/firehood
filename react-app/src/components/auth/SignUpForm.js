@@ -114,15 +114,19 @@ const SignUpForm = () => {
         </form>
       </div>
       <div className="signup-content-container">
-        <div className="signup-info">
+        <div>
+          <h2>Make your Play Money Move</h2>
+          <p>Firehood lets you invest in companies you love, commission-free.</p>
+        </div>
+        <div>
           <div className="signup-heading">Commission-free trading</div>
           <div className="signup-content">Break free from commission-fees and make unlimited commission-free trades in stocks, funds, and options with Firehood Financial. </div>
         </div>
-        <div className="signup-info">
+        <div>
           <div className="signup-heading">Account Protection</div>
           <div className="signup-content">Robinshould Financial is a member of SIPC. Securities in your account protected up to $500,000. For details, please see www.sipc.org.</div>
         </div>
-        <div className="signup-info">
+        <div>
           <div className="signup-heading">Stay on top of your portfolio</div>
           <div className="signup-content">Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</div>
         </div>
