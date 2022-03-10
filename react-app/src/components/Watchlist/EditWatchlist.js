@@ -35,7 +35,7 @@ export default function EditWatchlistForm({ watchlistId, setShowEditModal }) {
     return (
         <>
             <div>
-                <i className="fa-solid fa-xmark" onClick={() => setShowEditModal(false)}></i>
+                <i className="fa-solid fa-xmark" onClick={() => setShowEditModal(false)} title="Close"></i>
                 <h3 className="watchlist-form-title">Edit List</h3>
                 <div>
                     {errors?.length > 0 && <ul className="errors">

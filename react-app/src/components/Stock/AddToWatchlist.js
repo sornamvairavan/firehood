@@ -41,7 +41,7 @@ export default function AddToWatchlistForm({ setShowAddtoListModal, stockId, sto
     return (
         <>
         <div>
-            <i className="fa-solid fa-xmark" onClick={() => setShowAddtoListModal(false)}></i>
+            <i className="fa-solid fa-xmark" onClick={() => setShowAddtoListModal(false)} title="Close"></i>
             <h3 className="watchlist-form-title">Add Stock to Your Lists</h3>
             <div>
                 {errors?.length > 0 && <ul className="errors">

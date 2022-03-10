@@ -57,7 +57,7 @@ export default function Watchlist() {
         <div>
             <div className="watchlist-title-container">
                 <span className="watchlist-title">Lists</span>
-                <span><i className="fa-solid fa-plus" onClick={openNewWatchlistForm}></i></span>
+                <span><i className="fa-solid fa-plus" onClick={openNewWatchlistForm} title="Add new list"></i></span>
             </div>
             <div>
             {showNewForm && (
@@ -69,8 +69,8 @@ export default function Watchlist() {
                     <div className="watchlist-name-container">
                         <div>{watchlist.name}</div>
                         <div>
-                            <i className="fa-solid fa-gear" onClick={openEditWatchlistForm} id={watchlist.id}></i>
-                            <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id}></i>
+                            <i className="fa-solid fa-gear" onClick={openEditWatchlistForm} id={watchlist.id} title="Edit list"></i>
+                            <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id} title="Delete list"></i>
                         </div>
                     </div>
                     {watchlist.stocks?.length > 0 &&  (
@@ -85,7 +85,7 @@ export default function Watchlist() {
                                         <div>
                                             <span className="remove-price">
                                                 <div className="list-price">{stock?.price}</div>
-                                                <span><i className="fa-solid fa-xmark remove fa-xs" onClick={(e) => removeStock(stock.id, watchlist.id)}></i></span>
+                                                <span><i className="fa-solid fa-xmark remove fa-xs" title="Remove stock from list" onClick={(e) => removeStock(stock.id, watchlist.id)}></i></span>
                                             </span>
                                         </div>
                                     </div>
