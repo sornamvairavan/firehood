@@ -22,6 +22,7 @@
   }
 
 table {
+    position: relative;
     width: 100%;
     text-align: center;
     vertical-align: bottom;
@@ -58,4 +59,6 @@ th {
     background-color: #9a9b9b;
     color: white;
     text-align: center;
+    position: sticky;
+    top: 0
 }
