@@ -62,7 +62,7 @@ def add_portfolio(stock_id):
             portfolio.quantity += int(new_port["quantity"])
             new_transaction = Transaction(
                 type = "Buy",
-                price = portfolio.price,
+                price = new_port["price"],
                 quantity = new_port["quantity"],
                 user_id = user_id,
                 stock_id = stock_id,
