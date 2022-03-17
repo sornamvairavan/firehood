@@ -110,7 +110,7 @@ a {
     border-radius: 5px;
     width: 300px;
     height: 60vh;
-    max-height: 70vh;
+    max-height: 600px;
     overflow-y: auto;
     overflow-x: none;
 }

@@ -17,7 +17,7 @@ const NavBar = () => {
           <span className="nav-cash">Cash Balance: {user?.cash}</span>
           <NavLink to="/" className="nav-tabs" exact>Portfolio</NavLink>
           <NavLink to="/transactions" className="nav-tabs">Transactions</NavLink>
-          <span>Welcome {user.fullname}! </span>
+          <span className="welcome">Welcome {user.fullname}! </span>
           <LogoutButton />
       </>
     )
