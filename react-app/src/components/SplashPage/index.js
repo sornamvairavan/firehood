@@ -39,11 +39,16 @@ export default function SplashPage() {
             </div>
             <div>Sornam Vairavan</div>
             <a href="https://www.linkedin.com/in/sornamvairavan" target="_blank" rel="noreferrer">
-              <i className="fab fa-linkedin fa-lg"></i>
+              <i className="fab fa-linkedin fa-lg" title="LinkedIn"></i>
             </a>
             <a href="https://github.com/sornamvairavan" target="_blank" rel="noreferrer">
-              <i className="fab fa-github fa-lg"></i>
+              <i className="fab fa-github fa-lg" title="GitHub"></i>
             </a>
+            <div>
+            <a href="https://github.com/sornamvairavan/firehood" target="_blank" rel="noreferrer">
+            <i className="fa-solid fa-folder-open" title="GitHub Repo"></i>
+            </a>
+            </div>
           </footer>
       </div>
     )
