@@ -17,6 +17,9 @@ class Transaction(db.Model):
     stock = db.relationship("Stock", back_populates="transaction")
 
     def to_dict(self):
+
+        sign = "+" if self.type == "Buy" else "-"
+
         return {
             'id': self.id,
             'type': self.type,
@@ -27,6 +30,6 @@ class Transaction(db.Model):
             'stock_id': self.stock_id,
             'created_at': self.created_at.strftime("%d %b, %Y"),
             'stock': self.stock.to_dict(),
-            'value': "${:,.2f}".format(self.quantity * self.price),
+            'value': sign + "${:,.2f}".format(self.quantity * self.price),
             'cap_type': self.type.upper()
         }

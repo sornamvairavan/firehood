@@ -11,6 +11,13 @@
     opacity: 0.75;
 }
 
+.transactions-container span {
+    align-self: flex-end;
+    margin-right: 12%;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
 .table-container {
     height: 70vh;
     width: 80%;

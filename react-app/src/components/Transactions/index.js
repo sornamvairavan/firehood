@@ -15,9 +15,24 @@ export default function Transaction() {
             .then(() => setIsLoaded(true))
     }, [dispatch, isLoaded])
 
+    function totalProfitorLoss(userTransactionsArr){
+        let sum = 0;
+        userTransactionsArr.forEach((transaction) => {
+            if (transaction.cap_type === "BUY") {
+                sum -= (transaction.quantity * transaction.int_price)
+            } else {
+                sum += (transaction.quantity * transaction.int_price)
+            }
+        })
+        return sum.toFixed(2)
+    }
+
     return (
         <div className="transactions-container">
             <h4>TRANSACTIONS</h4>
+            <span>
+                Total Profit/Loss: ${totalProfitorLoss(userTransactionsArr).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </span>
             {userTransactionsArr.length === 0 && (
                 <h2>You have no transactions</h2>
             )}
