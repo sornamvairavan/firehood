@@ -14,6 +14,7 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
     const [quantity, setQuantity] = useState(0)
     const [cost, setCost] = useState(0.00)
     const [isLoaded, setIsLoaded] = useState(false)
+    const [message, setMessage] = useState("")
 
     useEffect(() => {
         setCost(quantity * parseFloat(stockIntPrice))
@@ -33,6 +34,14 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
         }
       }, [])
 
+    useEffect(() => {
+        const timedMessage = setTimeout(() => {
+            setMessage("")
+        }, (2000))
+
+        return () => clearTimeout(timedMessage)
+    }, [message])
+
     const buyShares = async (e) => {
         e.preventDefault()
 
@@ -47,14 +56,16 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
         if (data.errors) {
             setErrors(data.errors)
         } else {
-            setIsLoaded(true)
-            history.push("/")
+            setIsLoaded(!isLoaded)
+            setQuantity(0)
+            setCost(0.00)
+            setMessage("Successfull!")
         }
     }
 
     return (
         <div className='share-form-container'>
-            <h4 className="portfolio-title-container">Buy {stockTicker}</h4>
+            <h4 className="portfolio-title-container">Buy {stockTicker} <span id="message">{message}</span></h4>
             <div>
                 {errors?.length > 0 && <ul className="errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}

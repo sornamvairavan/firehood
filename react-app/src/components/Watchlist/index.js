@@ -32,24 +32,30 @@ export default function Watchlist() {
         setShowNewForm(true)
     }
     
-    const openEditWatchlistForm = (e) => {
-        setEditWatchlistId(e.target.id)
+    const openEditWatchlistForm = (watchlistId) => {
+        setEditWatchlistId(watchlistId)
         setShowEditModal(true)
     }
 
-    const deleteWatchlist = (e) => {
-        return dispatch(deleteWatchlistById(Number(e.target.id)))
-            .then(() => setIsLoaded(!isLoaded))
+    const deleteWatchlist = (watchlistId) => {
+        const confirmed = window.confirm("Are you sure you want to delete this watchlist?")
+        if (confirmed) {
+            return dispatch(deleteWatchlistById(Number(watchlistId)))
+                .then(() => setIsLoaded(!isLoaded))
+        }
       }
 
 
     const removeStock = (stockId, watchlistId) => {
-        let payload = {
-            stockId,
-            watchlistId
+        const confirmed = window.confirm("Are you sure you want to remove this stock from the watchlist?")
+            if (confirmed) {
+                let payload = {
+                stockId,
+                watchlistId
+            }
+            return dispatch(removeStockFromList(payload))
+                .then(() => setIsLoaded(!isLoaded))
         }
-        return dispatch(removeStockFromList(payload))
-            .then(() => setIsLoaded(!isLoaded))
     }   
 
 
@@ -69,8 +75,8 @@ export default function Watchlist() {
                     <div className="watchlist-name-container">
                         <div>{watchlist.name}</div>
                         <div>
-                            <i className="fa-solid fa-gear" onClick={openEditWatchlistForm} id={watchlist.id} title="Edit list"></i>
-                            <i className="fa-solid fa-circle-xmark" onClick={deleteWatchlist} id={watchlist.id} title="Delete list"></i>
+                            <i className="fa-solid fa-gear" onClick={() => openEditWatchlistForm(watchlist.id)} title="Edit list"></i>
+                            <i className="fa-solid fa-circle-xmark" onClick={() => deleteWatchlist(watchlist.id)} title="Delete list"></i>
                         </div>
                     </div>
                     {watchlist.stocks?.length > 0 &&  (

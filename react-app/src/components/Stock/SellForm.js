@@ -17,6 +17,7 @@ export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPri
     const [quantity, setQuantity] = useState(0)
     const [cost, setCost] = useState(0.00)
     const [isLoaded, setIsLoaded] = useState(false)
+    const [message, setMessage] = useState("")
 
     useEffect(() => {
         dispatch(getUserPortfolios())
@@ -30,11 +31,20 @@ export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPri
 
     useEffect(() => {
         return () => {
-         setErrors([])
-         setQuantity(0)
-         setCost(0)
+        setIsLoaded(false)
+        setErrors([])
+        setQuantity(0)
+        setCost(0)
         }
       }, [])
+
+    useEffect(() => {
+        const timedMessage = setTimeout(() => {
+            setMessage("")
+        }, (2000))
+
+        return () => clearTimeout(timedMessage)
+    }, [message])
 
     const sellShares = async (e) => {
         e.preventDefault()
@@ -49,15 +59,17 @@ export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPri
         if (data.errors) {
             setErrors(data.errors)
         } else {
-            setIsLoaded(true)
-            history.push("/")
+            setIsLoaded(!isLoaded)
+            setQuantity(0)
+            setCost(0.00)
+            setMessage("Successfull!")
         }
     }
 
 
     return (
         <div className='share-form-container'>
-            <h4 className='portfolio-title-container'>Sell {stockTicker}</h4>
+            <h4 className='portfolio-title-container'>Sell {stockTicker} <span id="message">{message}</span></h4>
             <div>
                 {errors?.length > 0 && <ul className="errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}

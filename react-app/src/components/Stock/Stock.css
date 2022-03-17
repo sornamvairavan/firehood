@@ -144,3 +144,10 @@
     font-size: 14px;
     color: #fc5f17;
 }
+
+#message {
+    font-size: 0.8em;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(0,200,5);
+}
