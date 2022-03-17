@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 import { getUserPortfolios, sellStock } from '../../store/portfolio'
 import { authenticate } from '../../store/session'
 
 
 export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPrice }) {
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const userPortfoliosObj = useSelector(state => state.portfolio.portfolios)
     const userPortfoliosArr = Object.values(userPortfoliosObj)

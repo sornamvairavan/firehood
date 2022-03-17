@@ -10,7 +10,6 @@ export default function StockChart() {
     const stock_prices = useSelector(state => state.stock?.prices)
     const stock_dates = useSelector(state => state.stock?.dates)
     const color = useSelector(state => state.stock?.change)
-    console.log(color)
 
     const [warnings, setWarnings] = useState([])
 

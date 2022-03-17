@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 import { buyStock } from '../../store/portfolio'
 import { authenticate } from '../../store/session'
 
 
 export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPrice }) {
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const userCash = useSelector((state) => state.session.user.cash);
     const [errors, setErrors] = useState([])
