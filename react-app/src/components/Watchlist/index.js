@@ -38,7 +38,7 @@ export default function Watchlist() {
     }
 
     const deleteWatchlist = (watchlistId) => {
-        const confirmed = window.confirm("Are you sure you want to delete this watchlist?")
+        const confirmed = window.confirm("Are you sure you want to delete this list?")
         if (confirmed) {
             return dispatch(deleteWatchlistById(Number(watchlistId)))
                 .then(() => setIsLoaded(!isLoaded))
@@ -47,7 +47,7 @@ export default function Watchlist() {
 
 
     const removeStock = (stockId, watchlistId) => {
-        const confirmed = window.confirm("Are you sure you want to remove this stock from the watchlist?")
+        const confirmed = window.confirm("Are you sure you want to remove this stock from the list?")
             if (confirmed) {
                 let payload = {
                 stockId,
