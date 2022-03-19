@@ -1,8 +1,8 @@
 ## Overview
-[Firehood](https://firehood.herokuapp.com/), your way to "Financial Independence, Retire Early", is a [Robinhood](https://robinhood.com/us/en/) clone, which allows users to buy and sell NASDAQ-100 stocks with fake money. Firehood provides you a way to achieve FIRE, and live happily ever after.
+[Firehood](https://firehood.herokuapp.com/), your way to "Financial Independence, Retire Early", is a [Robinhood](https://robinhood.com/us/en/) clone, which allows users to buy and sell S&P500 stocks with fake money. Firehood provides you a way to achieve FIRE, and live happily ever after.
 
 ## Application Architecture
-Firehood is built on a React frontend with a Flask backend, using PostgreSQL as a database. Firehood relies on Yahoo Finance API and Finnhub API to get the latest stock market prices and Plotly charts for rendering historical charts. 
+Firehood is built on a React frontend with a Flask backend, using PostgreSQL as a database. Firehood relies on Yahoo Finance API and Finnhub API to get the latest stock market prices and news and Plotly charts for rendering historical charts. 
 
 ## Technologies used
 **Frontend**
@@ -53,7 +53,4 @@ Users will be able to search for stocks based on the company name or ticker. The
 
 ## Link to Wiki docs
 *https://github.com/sornamvairavan/firehood/wiki*
-
-## Next steps
-- News feature
 
