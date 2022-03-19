@@ -191,8 +191,8 @@ a {
     margin: 60px 60px 0px 100px;
 }
 
-.portfolio-chart > * {
-    z-index: -50;
+.portfolio-chart {
+    z-index: -5;
 }
 
 .portfolio-details {

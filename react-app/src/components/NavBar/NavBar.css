@@ -12,6 +12,7 @@
   font-size: 0.85em;
   margin: 10px;
   background-color: white;
+  z-index: 100;
 }
 
 .logo-img {

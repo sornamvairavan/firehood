@@ -18,7 +18,7 @@ class Transaction(db.Model):
 
     def to_dict(self):
 
-        sign = "+" if self.type == "Buy" else "-"
+        sign = "-" if self.type == "Buy" else "+"
 
         return {
             'id': self.id,

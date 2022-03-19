@@ -4,8 +4,8 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        full_name='Demo', username='Demo', email='demo@aa.io', password='password', cash=5000, 
-        portfolio_value=["1105.00+16-Feb", "2299.24+17-Feb", "3072.58+18-Feb", "3072.58+19-Feb", "3072.58+20-Feb", "2987.25+21-Feb", "4018.05+22-Feb", "3907.7+23-Feb", "3821.8+24-Feb", "4026.15+25-Feb", "4026.15+26-Feb", "4026.15+27-Feb"], 
+        full_name='Demo', username='Demo', email='demo@aa.io', password='password', cash=1363.73, 
+        portfolio_value=["938.05+14-Mar", "1931.08+15-Mar", "2618.58+16-Mar", "3636.73+17-Mar"], 
         updated_at="2022-02-23 08:13:37.516563-08")
     eduardo = User(
         full_name='Eduardo A', username='eduardo', email='eduardo@aa.io', password='password', cash=5000,

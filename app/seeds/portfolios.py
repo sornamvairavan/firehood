@@ -2,9 +2,9 @@ from app.models import db, Portfolio
 
 def seed_portfolios():
     demo_p1 = Portfolio(
-        price=390.8,  quantity=5, user_id=1, stock_id=68)
+        price=380.6,  quantity=5, user_id=1, stock_id=329)
     demo_p2 = Portfolio(
-        price=210.48,  quantity=10, user_id=1, stock_id=39)
+        price=216.49,  quantity=10, user_id=1, stock_id=190)
 
     db.session.add(demo_p1)
     db.session.add(demo_p2)
