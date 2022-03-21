@@ -9,6 +9,7 @@ export default function PortfolioChart({totalPortfolioValue}) {
     const user_values = useSelector(state => state.portfolio.values)
     const port_dates = useSelector(state => state.portfolio.dates)
     const color = useSelector(state => state.portfolio.change)
+    const [chartWidth, setChartWidth] = useState(820)
      
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -17,13 +18,9 @@ export default function PortfolioChart({totalPortfolioValue}) {
             .then(() => setIsLoaded(true))
     }, [dispatch, isLoaded])
 
-    let chartWidth = 820
-    let chartHeight = 550
-
     useEffect(() => {
-        if (window.innerWidth < 820) {
-            chartWidth = 470
-            chartHeight = 450
+        if (window.screen.width < 1350) {
+            setChartWidth(470)
         }
     }, [])
 
@@ -43,7 +40,7 @@ export default function PortfolioChart({totalPortfolioValue}) {
                     marker: {color: color},
                 },
                 ]}
-                layout={{width: chartWidth, height: chartHeight, title: 'Portfolio Chart', yaxis: {rangemode: 'tozero', tickformat: ',d'}}}
+                layout={{width: chartWidth, height: 550, title: 'Portfolio Chart', yaxis: {rangemode: 'tozero', tickformat: ',d'}}}
                 />
             </>
             )}
