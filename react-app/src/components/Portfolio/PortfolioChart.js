@@ -19,8 +19,10 @@ export default function PortfolioChart({totalPortfolioValue}) {
     }, [dispatch, isLoaded])
 
     useEffect(() => {
-        if (window.screen.width < 1350) {
+        if (window.screen.width < 1200) {
             setChartWidth(470)
+        } else if (window.screen.width < 1350) {
+            setChartWidth(700)
         }
     }, [])
 
