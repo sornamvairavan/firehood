@@ -17,6 +17,17 @@ export default function PortfolioChart({totalPortfolioValue}) {
             .then(() => setIsLoaded(true))
     }, [dispatch, isLoaded])
 
+    let chartWidth = 820
+    let chartHeight = 550
+
+    useEffect(() => {
+        if (window.innerWidth < 820) {
+            chartWidth = 470
+            chartHeight = 450
+        }
+    }, [])
+
+
     return (
         <div className="portfolio-chart">  
             {(  
@@ -32,7 +43,7 @@ export default function PortfolioChart({totalPortfolioValue}) {
                     marker: {color: color},
                 },
                 ]}
-                layout={{width: 850, height: 550, title: 'Portfolio Chart', yaxis: {rangemode: 'tozero', tickformat: ',d'}}}
+                layout={{width: chartWidth, height: chartHeight, title: 'Portfolio Chart', yaxis: {rangemode: 'tozero', tickformat: ',d'}}}
                 />
             </>
             )}
