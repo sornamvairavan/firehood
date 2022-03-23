@@ -12,6 +12,7 @@ export default function StockChart() {
     const color = useSelector(state => state.stock?.change)
 
     const [warnings, setWarnings] = useState([])
+    const [chartWidth, setChartWidth] = useState(820)
 
     useEffect(() => {
         return dispatch(getStockChart(ticker))
@@ -20,6 +21,14 @@ export default function StockChart() {
         })
 
     }, [dispatch, ticker])
+
+    useEffect(() => {
+        if (window.screen.width < 1200) {
+            setChartWidth(470)
+        } else if (window.screen.width < 1350) {
+            setChartWidth(700)
+        }
+    }, [])
 
     return (
         <>  
@@ -39,7 +48,7 @@ export default function StockChart() {
                     marker: {color: color},
                 },
                 ]}
-                layout={{width: 820, height: 440}}
+                layout={{width: chartWidth, height: 440}}
                 />
             )}
         </>
