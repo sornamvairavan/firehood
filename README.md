@@ -18,7 +18,7 @@ Firehood is built on a React frontend with a Flask backend, using PostgreSQL as 
 - PostgreSQL
 - SQLAlchemy
 
-**Stock Data API**
+**Stock and News Data API**
 - Yahoo Finance API
 - Finnhub API
 
@@ -50,6 +50,10 @@ Users' transaction table would be updated with their every buy and sell.
 ### Search
 Users will be able to search for stocks based on the company name or ticker. The search bar drops suggestions for the at least five companies that the user may be searching for.
 ![Search](https://res.cloudinary.com/dikzc7kwd/image/upload/v1645728144/Screen_Shot_2022-02-24_at_10.42.13_AM_ecm4fd.png)
+
+### News
+Users can view the latest current news from the Portfolio page.
+![News](https://res.cloudinary.com/dikzc7kwd/image/upload/v1648317108/Screen_Shot_2022-03-26_at_10.51.38_AM_w6isrd.png)
 
 ## Link to Wiki docs
 *https://github.com/sornamvairavan/firehood/wiki*
