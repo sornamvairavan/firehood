@@ -53,7 +53,7 @@ Users will be able to search for stocks based on the company name or ticker. The
 
 ### News
 Users can view the latest current news from the Portfolio page.
-![News](https://res.cloudinary.com/dikzc7kwd/image/upload/v1648317108/Screen_Shot_2022-03-26_at_10.51.38_AM_w6isrd.png)
+![News](https://res.cloudinary.com/dikzc7kwd/image/upload/v1648317397/Screen_Shot_2022-03-26_at_10.51.38_AM_ahynjf.png)
 
 ## Link to Wiki docs
 *https://github.com/sornamvairavan/firehood/wiki*
