@@ -37,19 +37,19 @@ Firehood is built on a React frontend with a Flask backend, using PostgreSQL as 
 ## Features
 ### Portfolio and Watchlists
 Users can view their portfolio chart when logged in that shows the movement of the stocks in their portfolio. Users can also create a list in their watchlist and add stocks that they want to keep track of to the list.
-![Portfolio and Watchlists](https://res.cloudinary.com/dikzc7kwd/image/upload/v1645727971/Screen_Shot_2022-02-24_at_10.39.15_AM_qioaeg.png)
+![Portfolio and Watchlists](https://res.cloudinary.com/dikzc7kwd/image/upload/v1648584072/Screen_Shot_2022-03-29_at_1.00.59_PM_yxnjkb.png)
 
 ### Stock Detail
 Users can view the historical chart, buy and sell that stock from the stock detail page.
-![Stock Detail](https://res.cloudinary.com/dikzc7kwd/image/upload/v1645728053/Screen_Shot_2022-02-24_at_10.40.41_AM_ljigmv.png)
+![Stock Detail](https://res.cloudinary.com/dikzc7kwd/image/upload/v1648584135/Screen_Shot_2022-03-29_at_1.02.06_PM_z09zbx.png)
 
 ### Transactions
 Users' transaction table would be updated with their every buy and sell.
-![Transactions](https://res.cloudinary.com/dikzc7kwd/image/upload/v1645728096/Screen_Shot_2022-02-24_at_10.41.25_AM_ncheib.png)
+![Transactions](https://res.cloudinary.com/dikzc7kwd/image/upload/v1648584342/Screen_Shot_2022-03-29_at_1.03.03_PM_zokgyw.png)
 
 ### Search
 Users will be able to search for stocks based on the company name or ticker. The search bar drops suggestions for the at least five companies that the user may be searching for.
-![Search](https://res.cloudinary.com/dikzc7kwd/image/upload/v1645728144/Screen_Shot_2022-02-24_at_10.42.13_AM_ecm4fd.png)
+![Search](https://res.cloudinary.com/dikzc7kwd/image/upload/v1648585190/Screen_Shot_2022-03-29_at_1.19.39_PM_v8avs1.png)
 
 ### News
 Users can view the latest current news from the Portfolio page.
