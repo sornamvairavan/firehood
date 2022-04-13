@@ -31,7 +31,7 @@ export default function Transaction() {
         <div className="transactions-container">
             <h4>TRANSACTIONS</h4>
             <span>
-                Total Profit/Loss: ${totalProfitorLoss(userTransactionsArr).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                Profit/Loss: ${totalProfitorLoss(userTransactionsArr).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </span>
             {userTransactionsArr.length === 0 && (
                 <h2>You have no transactions</h2>
