@@ -12,7 +12,7 @@ export default function Portfolio() {
     const [isLoaded, setIsLoaded] = useState(false);
     const userPortfoliosObj = useSelector(state => state.portfolio.portfolios)
     const userPortfoliosArr = Object.values(userPortfoliosObj)
-    const userCash = useSelector((state) => state.session.user.int_cash);
+    const userCash = useSelector((state) => state.session.user.float_cash);
 
     useEffect(() => {
         dispatch(getUserPortfolios())
@@ -22,7 +22,7 @@ export default function Portfolio() {
     function portfolioValue(userPortfoliosArr){
         let sum = 0;
         userPortfoliosArr.forEach((portfolio) => {
-            sum += (portfolio.quantity * portfolio.stock.int_price)
+            sum += (portfolio.quantity * portfolio.stock.float_price)
         })
         return sum.toFixed(2)
     }

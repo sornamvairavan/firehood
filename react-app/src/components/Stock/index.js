@@ -40,8 +40,8 @@ export default function Stocks() {
                 <StockChart />
             </div>
             <div className='share-forms'>
-                <BuyForm stockId={stock?.id} stockPrice={stock?.price} stockTicker={stock?.ticker} stockIntPrice={stock?.int_price} />
-                <SellForm stockId={stock?.id} stockPrice={stock?.price} stockTicker={stock?.ticker} stockIntPrice={stock?.int_price} />
+                <BuyForm stockId={stock?.id} stockPrice={stock?.price} stockTicker={stock?.ticker} stockFloatPrice={stock?.float_price} />
+                <SellForm stockId={stock?.id} stockPrice={stock?.price} stockTicker={stock?.ticker} stockFloatPrice={stock?.float_price} />
             </div>
             {showAddtoListModal && (
             <Modal onClose={() => setShowAddtoListModal(false)}>

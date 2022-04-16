@@ -23,7 +23,7 @@ class Transaction(db.Model):
         return {
             'id': self.id,
             'type': self.type,
-            'int_price': self.price,
+            'float_price': self.price,
             'price': "${:,.2f}".format(self.price),
             'quantity': self.quantity,
             'user_id': self.user_id,

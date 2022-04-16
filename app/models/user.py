@@ -39,7 +39,7 @@ class User(db.Model, UserMixin):
             'fullname': self.full_name,
             'username': self.username,
             'email': self.email,
-            'int_cash': self.cash,
+            'float_cash': self.cash,
             'cash': "${:,.2f}".format(self.cash),
             'join': self.created_at.strftime("%Y"),
             'portfolio_value': self.portfolio_value

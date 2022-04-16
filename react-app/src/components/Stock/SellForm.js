@@ -4,7 +4,7 @@ import { getUserPortfolios, sellStock } from '../../store/portfolio'
 import { authenticate } from '../../store/session'
 
 
-export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPrice }) {
+export default function SellForm({ stockId, stockPrice, stockTicker, stockFloatPrice }) {
     const dispatch = useDispatch()
 
     const userPortfoliosObj = useSelector(state => state.portfolio.portfolios)
@@ -23,9 +23,9 @@ export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPri
     }, [dispatch, isLoaded])
 
     useEffect(() => {
-        setCost(quantity * parseFloat(stockIntPrice))
+        setCost(quantity * parseFloat(stockFloatPrice))
         setErrors([])
-    }, [quantity, stockIntPrice])
+    }, [quantity, stockFloatPrice])
 
     useEffect(() => {
         return () => {
@@ -50,7 +50,7 @@ export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPri
         const payload = {
             stockId,
             quantity, 
-            price: stockIntPrice,
+            price: stockFloatPrice,
             cost
         }
 

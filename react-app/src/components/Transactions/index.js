@@ -19,9 +19,9 @@ export default function Transaction() {
         let sum = 0;
         userTransactionsArr.forEach((transaction) => {
             if (transaction.cap_type === "BUY") {
-                sum -= (transaction.quantity * transaction.int_price)
+                sum -= (transaction.quantity * transaction.float_price)
             } else {
-                sum += (transaction.quantity * transaction.int_price)
+                sum += (transaction.quantity * transaction.float_price)
             }
         })
         return sum.toFixed(2)

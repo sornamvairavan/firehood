@@ -4,7 +4,7 @@ import { buyStock } from '../../store/portfolio'
 import { authenticate } from '../../store/session'
 
 
-export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPrice }) {
+export default function BuyForm({ stockId, stockPrice, stockTicker, stockFloatPrice }) {
     const dispatch = useDispatch()
 
     const userCash = useSelector((state) => state.session.user.cash);
@@ -15,9 +15,9 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
     const [message, setMessage] = useState("")
 
     useEffect(() => {
-        setCost(quantity * parseFloat(stockIntPrice))
+        setCost(quantity * parseFloat(stockFloatPrice))
         setErrors([])
-    }, [quantity, stockIntPrice])
+    }, [quantity, stockFloatPrice])
 
     useEffect(() => {
         dispatch(authenticate())
@@ -46,7 +46,7 @@ export default function BuyForm({ stockId, stockPrice, stockTicker, stockIntPric
         const payload = {
             stockId, 
             quantity,
-            price: stockIntPrice,
+            price: stockFloatPrice,
             cost
         }
 
