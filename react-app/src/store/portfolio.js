@@ -66,11 +66,14 @@ export const buyStock = ({ stockId, price, quantity, cost }) => async (dispatch)
         })
     })
 
+    console.log(response, "RESPONSE")
+
     if (response.ok) {
         const portfolio = await response.json()
         dispatch(addPortfolio(portfolio))
         return portfolio
     } else if (response.status < 500) {
+        console.log(response)
         const data = await response.json();
         if (data.errors) {
             return data;

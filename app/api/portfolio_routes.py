@@ -8,24 +8,14 @@ from app.api.stock_routes import more_than_sixhours
 
 portfolio_routes = Blueprint('portfolios', __name__)
 
-def validation_errors_to_error_messages(validation_errors):
-    """
-    Simple function that turns the WTForms validation errors into a simple list
-    """
-    errorMessages = []
-    for field in validation_errors:
-        for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
-    return errorMessages
-
-def valid_quantity(quantity):
+def not_valid_quantity(quantity):
     try:
         int(quantity)
     except ValueError:
-        return {"errors": ["Please enter a valid quantity"]}, 400
+        return True
 
     if int(quantity) <= 0:
-        return {"errors": ["Please enter a valid quantity"]}, 400
+        return True
 
 def create_new_transaction(type, portfolio, user_id, stock_id):
     new_transaction = Transaction(
@@ -68,7 +58,8 @@ def add_portfolio(stock_id):
     
     new_port = request.json
 
-    valid_quantity(new_port["quantity"])
+    if not_valid_quantity(new_port["quantity"]):
+        return {"errors": ["Please enter a valid quantity"]}, 400
 
     if float(new_port["cost"]) > float(current_user.cash):
         return {"errors": ["You don't have sufficient cash"]}, 400
@@ -104,7 +95,8 @@ def update_portfolio(stock_id):
 
     updated_port = request.json
 
-    valid_quantity(updated_port["quantity"])
+    if not_valid_quantity(updated_port["quantity"]):
+        return {"errors": ["Please enter a valid quantity"]}, 400
  
     user_id = int(current_user.id)
 
