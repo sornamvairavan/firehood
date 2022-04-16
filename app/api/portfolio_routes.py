@@ -18,6 +18,32 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+def valid_quantity(quantity):
+    try:
+        int(quantity)
+    except ValueError:
+        return {"errors": ["Please enter a valid quantity"]}, 400
+
+    if int(quantity) <= 0:
+        return {"errors": ["Please enter a valid quantity"]}, 400
+
+def create_new_transaction(type, portfolio, user_id, stock_id):
+    new_transaction = Transaction(
+        type = type,
+        price = portfolio["price"],
+        quantity = portfolio["quantity"],
+        user_id = user_id,
+        stock_id = stock_id,
+        created_at = datetime.now()
+    )
+    if (type == "Buy"):
+        current_user.cash -= portfolio["cost"]
+    else:
+        current_user.cash += portfolio["cost"]
+
+    db.session.add(new_transaction)
+    db.session.commit()
+
 
 # Get all of the user's portfolios 
 @portfolio_routes.route("/")
@@ -42,13 +68,7 @@ def add_portfolio(stock_id):
     
     new_port = request.json
 
-    try:
-        int(new_port["quantity"])
-    except ValueError:
-        return {"errors": ["Please enter a valid quantity"]}, 400
-
-    if int(new_port["quantity"]) <= 0:
-        return {"errors": ["Please enter a valid quantity"]}, 400
+    valid_quantity(new_port["quantity"])
 
     if float(new_port["cost"]) > float(current_user.cash):
         return {"errors": ["You don't have sufficient cash"]}, 400
@@ -60,17 +80,7 @@ def add_portfolio(stock_id):
     for portfolio in user_portfolios:
         if portfolio.stock_id == stock_id:
             portfolio.quantity += int(new_port["quantity"])
-            new_transaction = Transaction(
-                type = "Buy",
-                price = new_port["price"],
-                quantity = new_port["quantity"],
-                user_id = user_id,
-                stock_id = stock_id,
-                created_at = datetime.now()
-            )
-            current_user.cash -= new_port["cost"]
-            db.session.add(new_transaction)
-            db.session.commit()
+            create_new_transaction("Buy", new_port, user_id, stock_id)
             return portfolio.to_dict()
     
     new_portfolio = Portfolio(
@@ -79,19 +89,11 @@ def add_portfolio(stock_id):
         user_id = user_id,
         stock_id = stock_id
     )
-    new_transaction = Transaction(
-        type = "Buy",
-        price = new_port["price"],
-        quantity = new_port["quantity"],
-        user_id = user_id,
-        stock_id = stock_id,
-        created_at = datetime.now()
-    )
-    current_user.cash -= new_port["cost"]
 
     db.session.add(new_portfolio)
-    db.session.add(new_transaction)
     db.session.commit()
+
+    create_new_transaction("Buy", new_port, user_id, stock_id)
     return new_portfolio.to_dict()
 
 
@@ -102,13 +104,7 @@ def update_portfolio(stock_id):
 
     updated_port = request.json
 
-    try:
-        int(updated_port["quantity"])
-    except ValueError:
-        return {"errors": ["Please enter a valid quantity"]}, 400
-
-    if int(updated_port["quantity"]) <= 0:
-        return {"errors": ["Please enter a valid quantity"]}, 400
+    valid_quantity(updated_port["quantity"])
  
     user_id = int(current_user.id)
 
@@ -121,17 +117,8 @@ def update_portfolio(stock_id):
                 return {"errors": ["You can only sell within the number of shares you hold"]}, 400
             else:
                 portfolio.quantity -= int(updated_port["quantity"])
-                new_transaction = Transaction(
-                    type = "Sell",
-                    price = portfolio.price,
-                    quantity = updated_port["quantity"],
-                    user_id = user_id,
-                    stock_id = stock_id,
-                    created_at = datetime.now()
-                )
-                current_user.cash += float(updated_port["cost"])
-                db.session.add(new_transaction)
-                db.session.commit()
+
+                create_new_transaction("Sell", updated_port, user_id, stock_id)
 
                 updated_portfolio = Portfolio.query.get(portfolio.id)
 

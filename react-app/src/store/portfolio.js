@@ -80,13 +80,14 @@ export const buyStock = ({ stockId, price, quantity, cost }) => async (dispatch)
     }
 }
 
-export const sellStock = ({ stockId, quantity, cost }) => async (dispatch)  => {
+export const sellStock = ({ stockId, price, quantity, cost }) => async (dispatch)  => {
     const response = await fetch(`/api/portfolios/${stockId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+            price,
             quantity,
             cost
         })

@@ -21,11 +21,9 @@ def get_price(ticker):
     try:
         data = finnhub_client.quote(ticker)
         price = data["pc"]
-        # time = data["t"]
     except:
         data = finnhub2_client.quote(ticker)
         price = data["pc"]
-        # time = data["t"]
     return [price]
     
 def more_than_sixhours(stock):
@@ -83,11 +81,6 @@ def get_stock_chart(ticker):
             datetime_time = datetime.fromtimestamp(epoch_time).strftime('%d %b')
             datetime_array.append(datetime_time)
 
-        # stock = Stock.query.filter(Stock.ticker_symbol == ticker).first()
-        # stock.price = close_prices[-1]
-        # stock.last_updated = time()
-        # stock.updated_at = datetime.now()
-        # db.session.commit()
         change = "rgb(0,200,5)" if (close_prices[-2] < close_prices[-1]) else "#FF5000"
         return {"prices": close_prices, "dates": datetime_array, "change": change}
         

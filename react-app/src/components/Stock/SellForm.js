@@ -50,6 +50,7 @@ export default function SellForm({ stockId, stockPrice, stockTicker, stockIntPri
         const payload = {
             stockId,
             quantity, 
+            price: stockIntPrice,
             cost
         }
 
