@@ -39,6 +39,7 @@ def create_new_transaction(type, portfolio, user_id, stock_id):
 @portfolio_routes.route("/")
 @login_required
 def get_users_portfolios():
+
     user_id = int(current_user.id)
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
@@ -164,10 +165,10 @@ def get_portfolio_chart_details():
         date_array.append(today)
         values.append(f"{totalValue}")
 
-    change = "rgb(0,200,5)" if (values[-2] < values[-1]) else "#FF5000"
+    change = "rgb(0,200,5)"
+
+    if len(values) > 1 and values[-2] > values[-1]:
+        change = "#FF5000"
 
     return {"values": values, "dates": date_array, "change":change}
-
-
-
     
