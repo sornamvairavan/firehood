@@ -35,10 +35,12 @@ def create_new_transaction(type, portfolio, user_id, stock_id):
     db.session.commit()
 
 
-# Get all of the user's portfolios 
 @portfolio_routes.route("/")
 @login_required
 def get_users_portfolios():
+    """
+    Gets all of the user's portfolios
+    """
 
     user_id = int(current_user.id)
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
@@ -52,10 +54,13 @@ def get_users_portfolios():
     return jsonify([portfolio.to_dict() for portfolio in user_portfolios])
 
 
-# Buy a stock
 @portfolio_routes.route("/<int:stock_id>", methods=['POST'])
 @login_required
 def add_portfolio(stock_id):
+    """
+    User buys a new stock or any additional shares of a stock they already hold
+    A new transaction would be created for the buy
+    """
     
     new_port = request.json
 
@@ -89,10 +94,14 @@ def add_portfolio(stock_id):
     return new_portfolio.to_dict()
 
 
-# Sell a stock
 @portfolio_routes.route("/<int:stock_id>", methods=['PUT'])
 @login_required
 def update_portfolio(stock_id):
+    """
+    User sells shares of a stock they already hold
+    If user sells all of the shares of a stock they hold, it would be removed from their portfolio
+    A new transaction would be created for the sell
+    """
 
     updated_port = request.json
 
@@ -125,10 +134,14 @@ def update_portfolio(stock_id):
     return {"errors": ["You do not hold any of these shares to sell"]}, 400
 
 
-# Portfolio value chart
 @portfolio_routes.route("/chart")
 @login_required
 def get_portfolio_chart_details():
+    """
+    Data inputs required for user's portfolio chart of their portfolio holdings
+    Color would vary based on the change from previous day
+    """
+
     user_id = int(current_user.id)
 
     user =  User.query.get(user_id)
@@ -170,5 +183,5 @@ def get_portfolio_chart_details():
     if len(values) > 1 and values[-2] > values[-1]:
         change = "#FF5000"
 
-    return {"values": values, "dates": date_array, "change":change}
+    return {"values": values, "dates": date_array, "change": change}
     
