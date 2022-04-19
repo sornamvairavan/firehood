@@ -76,27 +76,27 @@ def get_stock_chart(ticker):
         close_prices = data["chart"]["result"][0]["indicators"]["quote"][0]["close"]
         timestamp = data["chart"]["result"][0]["timestamp"]
 
-        datetime_array = []
+        dates = []
         for epoch_time in timestamp:
-            datetime_time = datetime.fromtimestamp(epoch_time).strftime('%d %b')
-            datetime_array.append(datetime_time)
+            date = datetime.fromtimestamp(epoch_time).strftime('%d %b')
+            dates.append(date)
 
         change = "rgb(0,200,5)" if (close_prices[-2] < close_prices[-1]) else "#FF5000"
-        return {"prices": close_prices, "dates": datetime_array, "change": change}
+        return {"prices": close_prices, "dates": dates, "change": change}
         
     except:
         try:
             url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&apikey={AV_KEY}'
             r = requests.get(url)
             data = r.json()
-            dates = data["Time Series (Daily)"]
+            dates_dict = data["Time Series (Daily)"]
             
-            datetime_array = list(dates.keys())
+            dates = list(dates_dict.keys())
             close_prices = []
-            for date in dates.keys():
-                close_prices.append(dates[date]["4. close"])
+            for date in dates_dict.keys():
+                close_prices.append(dates_dict[date]["4. close"])
             change = "rgb(0,200,5)" if (close_prices[-2] < close_prices[-1]) else "#FF5000"
-            return {"prices": close_prices, "dates": datetime_array, "change": change}
+            return {"prices": close_prices, "dates": dates, "change": change}
         except:
             return {"errors": ["No chart available at this time"]}
 
