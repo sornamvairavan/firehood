@@ -8,6 +8,8 @@ from time import time
 from datetime import datetime
 
 
+stock_routes = Blueprint('stocks', __name__)
+
 FIN_KEY = os.environ.get("FIN_KEY")
 FIN_KEY2 = os.environ.get("FIN_KEY2")
 YF_KEY = os.environ.get("YF_KEY")
@@ -20,27 +22,25 @@ finnhub2_client = finnhub.Client(api_key={FIN_KEY2})
 def get_price(ticker):
     try:
         data = finnhub_client.quote(ticker)
-        price = data["pc"]
+        price = data["c"]
     except:
         data = finnhub2_client.quote(ticker)
-        price = data["pc"]
-    return [price]
+        price = data["c"]
+    return price
     
 def more_than_sixhours(stock):
     SIX_HOURS_IN_SECONDS = 21600
     epoch_time = time()
     difference = epoch_time - float(stock.last_updated)
     if difference > SIX_HOURS_IN_SECONDS:
-        result = get_price(stock.ticker_symbol)
-        stock.price = result[0]
+        price_of_stock = get_price(stock.ticker_symbol)
+        stock.price = price_of_stock
         stock.last_updated = epoch_time
         stock.updated_at = datetime.now()
         db.session.commit()
         return stock.price
     else:
         return False
-
-stock_routes = Blueprint('stocks', __name__)
 
 
 @stock_routes.route('/')

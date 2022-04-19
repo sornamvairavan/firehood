@@ -46,9 +46,9 @@ def get_users_portfolios():
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
     for portfolio in user_portfolios:
-        result = more_than_sixhours(portfolio.stock)
-        if result:
-            portfolio.price = result
+        price_of_stock = more_than_sixhours(portfolio.stock)
+        if price_of_stock:
+            portfolio.price = price_of_stock
             db.session.commit()
 
     return jsonify([portfolio.to_dict() for portfolio in user_portfolios])
@@ -150,32 +150,32 @@ def get_portfolio_chart_details():
 
     totalValue = 0
     for portfolio in user_portfolios:
-        totalValue += (portfolio.stock.price * portfolio.quantity)
+        totalValue += (portfolio.price * portfolio.quantity)
 
     user_values = user.portfolio_value
 
     values = []
-    date_array = []
+    dates = []
 
-    for val in user_values:
-        splitvd = val.split("+")
-        values.append(splitvd[0])
-        date_array.append(splitvd[1])
+    for date_value in user_values:
+        split_dv = date_value.split("+")
+        values.append(split_dv[0])
+        dates.append(split_dv[1])
 
     today = datetime.now(pytz.timezone('US/Eastern')).strftime('%d-%b')
 
-    if date_array[-1] != today:
-        dv = f"{totalValue}+{today}"
-        user.portfolio_value = user.portfolio_value + [dv]
+    if dates[-1] != today:
+        date_value = f"{totalValue}+{today}"
+        user.portfolio_value = user.portfolio_value + [date_value]
         user.updated_at = datetime.now(pytz.timezone('US/Eastern'))
         db.session.commit()
 
     update = user.updated_at.strftime('%d-%b')
 
-    if date_array[-1] == update:
-        date_array.pop()
+    if dates[-1] == update:
+        dates.pop()
         values.pop()
-        date_array.append(today)
+        dates.append(today)
         values.append(f"{totalValue}")
 
     change = "rgb(0,200,5)"
@@ -183,5 +183,5 @@ def get_portfolio_chart_details():
     if len(values) > 1 and values[-2] > values[-1]:
         change = "#FF5000"
 
-    return {"values": values, "dates": date_array, "change": change}
+    return {"values": values, "dates": dates, "change": change}
     
