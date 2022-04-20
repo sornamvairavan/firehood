@@ -10,8 +10,8 @@ def watchlist_exists(form, field):
     user_id = int(current_user.id)
     user_watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
 
-    for w in user_watchlists:
-        if (w.name == name):
+    for watchlist in user_watchlists:
+        if (watchlist.name == name):
             raise ValidationError('Watchlist already exists.')
 
 class WatchlistForm(FlaskForm):

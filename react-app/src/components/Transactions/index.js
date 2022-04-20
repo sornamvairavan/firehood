@@ -15,7 +15,7 @@ export default function Transaction() {
             .then(() => setIsLoaded(true))
     }, [dispatch, isLoaded])
 
-    function totalProfitorLoss(userTransactionsArr){
+    function netTransactions(userTransactionsArr){
         let sum = 0;
         userTransactionsArr.forEach((transaction) => {
             if (transaction.cap_type === "BUY") {
@@ -31,7 +31,7 @@ export default function Transaction() {
         <div className="transactions-container">
             <h4>TRANSACTIONS</h4>
             <span>
-                Net Transactions: ${totalProfitorLoss(userTransactionsArr).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                Net Transactions: ${netTransactions(userTransactionsArr).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </span>
             {userTransactionsArr.length === 0 && (
                 <h2>You have no transactions</h2>
