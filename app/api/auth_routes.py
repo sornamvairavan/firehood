@@ -71,7 +71,7 @@ def sign_up():
             email=form.data['email'],
             password=form.data['password'],
             cash=5000,
-            portfolio_value=[f"0+{today}"],
+            portfolio_value=[f"5000+{today}"],
             updated_at = datetime.now(pytz.timezone('US/Eastern'))
         )
         db.session.add(user)

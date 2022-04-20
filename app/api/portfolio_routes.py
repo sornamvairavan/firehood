@@ -148,7 +148,7 @@ def get_portfolio_chart_details():
 
     user_portfolios = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
-    totalValue = 0
+    totalValue = user.cash
     for portfolio in user_portfolios:
         totalValue += (portfolio.price * portfolio.quantity)
 
