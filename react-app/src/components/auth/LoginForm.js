@@ -61,6 +61,7 @@ const LoginForm = () => {
               autoComplete='off'
               value={email}
               onChange={updateEmail}
+              required={true}
             />
             <label htmlFor='password'>Password</label>
             <input
@@ -68,6 +69,7 @@ const LoginForm = () => {
               type='password'
               value={password}
               onChange={updatePassword}
+              required={true}
             />
             <button type='submit' className="auth-button">Login</button>
             <button onClick={demoLogin} to="#" id="demo-button">Demo</button>

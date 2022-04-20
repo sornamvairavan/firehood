@@ -43,6 +43,7 @@ a {
     font-size: 0.9em;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-weight: bold;
 }
 
 .list-price {
@@ -62,13 +63,17 @@ a {
     margin-top: 15%;
     margin-bottom: 15%;
     font-size: .8em;
-    font-weight: bold;;
+    font-weight: bold;
 }
 
 .stock-card p {
     margin-top: 15%;
     margin-bottom: 15%;
     font-size: .8em;
+}
+
+.stock-card h5 {
+    font-weight: normal;
 }
 
 .remove-price {

@@ -75,6 +75,7 @@ const SignUpForm = () => {
               autoComplete='off'
               onChange={updateFullname}
               value={fullname}
+              required={true}
             ></input>
             <label>Username</label>
             <input
@@ -83,6 +84,7 @@ const SignUpForm = () => {
               autoComplete='off'
               onChange={updateUsername}
               value={username}
+              required={true}
             ></input>
             <label>Email</label>
             <input
@@ -91,6 +93,7 @@ const SignUpForm = () => {
               autoComplete='off'
               onChange={updateEmail}
               value={email}
+              required={true}
             ></input>
             <label>Password</label>
             <input
@@ -98,6 +101,7 @@ const SignUpForm = () => {
               name='password'
               onChange={updatePassword}
               value={password}
+              required={true}
             ></input>
             <label>Repeat Password</label>
             <input
