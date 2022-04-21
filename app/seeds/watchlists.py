@@ -1,7 +1,7 @@
 from app.models import db, Watchlist, Stock
 
 def seed_watchlists():
-    demo_wl1 = Watchlist(name="My Top stocks", user_id=1)
+    demo_wl1 = Watchlist(name="My Top Stocks", user_id=1)
     demo_wl2 = Watchlist(name="Tech", user_id=1)
     demo_wl3 = Watchlist(name="Auto", user_id=1)
     eduardo_wl = Watchlist(name="My Top stocks", user_id=2)
