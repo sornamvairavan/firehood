@@ -34,6 +34,10 @@ def create_new_transaction(type, portfolio, user_id, stock_id):
     db.session.add(new_transaction)
     db.session.commit()
 
+def update_user_portfolio(user, value_date):
+        user.portfolio_value = user.portfolio_value + [value_date]
+        user.updated_at = datetime.now(pytz.timezone('US/Eastern'))
+        db.session.commit()
 
 @portfolio_routes.route("/")
 @login_required
@@ -164,19 +168,15 @@ def get_portfolio_chart_details():
 
     today = datetime.now(pytz.timezone('US/Eastern')).strftime('%d-%b')
 
-    if dates[-1] != today:
-        date_value = f"{totalValue}+{today}"
-        user.portfolio_value = user.portfolio_value + [date_value]
-        user.updated_at = datetime.now(pytz.timezone('US/Eastern'))
-        db.session.commit()
+    value_date = f"{totalValue}+{today}"
+    
+    last_updated = user.updated_at.strftime('%d-%b')
 
-    update = user.updated_at.strftime('%d-%b')
-
-    if dates[-1] == update:
-        dates.pop()
-        values.pop()
-        dates.append(today)
-        values.append(f"{totalValue}")
+    if last_updated != today:
+        update_user_portfolio(user, value_date)
+    else:
+        user.portfolio_value = user.portfolio_value[:len(user.portfolio_value)-1]
+        update_user_portfolio(user, value_date)        
 
     change = "rgb(0,200,5)"
 
