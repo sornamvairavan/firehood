@@ -156,27 +156,26 @@ def get_portfolio_chart_details():
     for portfolio in user_portfolios:
         totalValue += (portfolio.stock.price * portfolio.quantity)
 
-    user_values = user.portfolio_value
+    today = datetime.now(pytz.timezone('US/Eastern')).strftime('%d-%b')
+
+    value_date = f"{totalValue}+{today}"
+
+    last_updated = user.updated_at.strftime('%d-%b')
+
+    if last_updated == today:
+        user.portfolio_value = user.portfolio_value[:len(user.portfolio_value)-1]
+              
+    update_user_portfolio(user, value_date)
 
     values = []
     dates = []
+
+    user_values = user.portfolio_value
 
     for date_value in user_values:
         split_dv = date_value.split("+")
         values.append(split_dv[0])
         dates.append(split_dv[1])
-
-    today = datetime.now(pytz.timezone('US/Eastern')).strftime('%d-%b')
-
-    value_date = f"{totalValue}+{today}"
-    
-    last_updated = user.updated_at.strftime('%d-%b')
-
-    if last_updated != today:
-        update_user_portfolio(user, value_date)
-    else:
-        user.portfolio_value = user.portfolio_value[:len(user.portfolio_value)-1]
-        update_user_portfolio(user, value_date)        
 
     change = "rgb(0,200,5)"
 
