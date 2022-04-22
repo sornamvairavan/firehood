@@ -150,7 +150,7 @@ def get_portfolio_chart_details():
 
     totalValue = user.cash
     for portfolio in user_portfolios:
-        totalValue += (portfolio.price * portfolio.quantity)
+        totalValue += (portfolio.stock.price * portfolio.quantity)
 
     user_values = user.portfolio_value
 
